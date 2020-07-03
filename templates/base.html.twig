@@ -5,9 +5,14 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <style>
+            .dropdown:hover .dropdown-menu{
+                display: block;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,15 +23,15 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('acceuil') }}">
+                        <a class="nav-link" style="color: black" href="{{ path('acceuil') }}">
                             Acceuil
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarClubMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" style="color: black; background: yellow" id="navbarClubMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Club
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarClubMenuLink">
+                        <div class="dropdown-menu" style="background: yellow" aria-labelledby="navbarClubMenuLink">
                             <a class="dropdown-item" href="{{ path('histoire') }}">Histoire</a>
                             <a class="dropdown-item" href="{{ path('enseignants') }}">Les Enseignants</a>
                             <a class="dropdown-item" href="{{ path('bureau') }}">Bureau</a>
@@ -35,28 +40,28 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDisciplinesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" style="color: black; background: orange" id="navbarDisciplinesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Disciplines
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDisciplinesMenuLink">
+                        <div class="dropdown-menu" style="background: orange" aria-labelledby="navbarDisciplinesMenuLink">
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarInscriptionMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" style="color: black; background: green" id="navbarInscriptionMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Inscription
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarInscriptionMenuLink">
+                        <div class="dropdown-menu" style="background: green" aria-labelledby="navbarInscriptionMenuLink">
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarActualitesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" style="color: black; background: blue" id="navbarActualitesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Actualités
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarActualitesMenuLink">
+                        <div class="dropdown-menu" style="background: blue" aria-labelledby="navbarActualitesMenuLink">
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('documents') }}">
+                        <a class="nav-link" style="color: black; background: saddlebrown" href="{{ path('documents') }}">
                             Documents
                         </a>
                     </li>
