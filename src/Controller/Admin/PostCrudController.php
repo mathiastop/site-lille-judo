@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Post;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PostCrudController extends AbstractCrudController
 {
@@ -16,8 +19,10 @@ class PostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            'title',
-            'body',
+            TextField::new('title', 'Titre'),
+            TextareaField::new('body', 'Corps'),
+            DateTimeField::new('createdAt', 'Date de création')->hideOnForm(),
+            DateTimeField::new('updatedAt', 'Date de mise à jour')->hideOnForm(),
         ];
     }
 
