@@ -13,7 +13,7 @@ class AcceuilController extends AbstractController
     public function index()
     {
         return $this->render('acceuil/index.html.twig', [
-            'controller_name' => 'AcceuilController',
+            'controller_name' => 'AccueilController',
         ]);
     }
 }
