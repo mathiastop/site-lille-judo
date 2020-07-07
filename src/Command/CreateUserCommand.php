@@ -14,15 +14,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class CreateUserCommand extends Command
 {
     protected static $defaultName = 'app:create-user';
     private $em;
+    private $encoder;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         $this->em = $em;
+        $this->encoder = $encoder;
 
         parent::__construct();
     }
@@ -53,10 +56,11 @@ class CreateUserCommand extends Command
         $questionRole = new ChoiceQuestion('Choose Role (default ROLE_ADMIN): ', ['ROLE_ADMIN', 'ROLE_USER'], 0);
         $username = $this->getHelper('question')->ask($input, $output, $questionUsername);
         $password = $this->getHelper('question')->ask($input, $output, $questionPassword);
+        $encodedPassword = $this->encoder->encodePassword($user, $password);
         $role = $this->getHelper('question')->ask($input, $output, $questionRole);
 
         $user->setUsername($username);
-        $user->setPassword($password);
+        $user->setPassword($encodedPassword);
         $user->setRoles(array($role));
         $this->em->persist($user);
         $this->em->flush();
