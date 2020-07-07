@@ -84,6 +84,13 @@
                 </ul>
             </div>
         </nav>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="text-center">
+                If you see this, that means you're admin.
+                <a href="{{ path('admin') }}">Admin</a>
+                <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <footer class="page-footer font-small stylish-color-dark pt-4 fixed-bottom">

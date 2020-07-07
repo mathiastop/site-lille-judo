@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Post;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -27,8 +28,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Index', 'fa fa-home');
+        yield MenuItem::linktoDashboard('Index Admin', 'fas fa-tools');
+        yield MenuItem::linkToUrl('Accueil Site', 'fa fa-home', '/');
         yield MenuItem::section('Blog');
         yield MenuItem::linkToCrud('Post', 'fa fa-tag', Post::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
     }
 }
