@@ -3,18 +3,43 @@
 {% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.body }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/src/Controller/AcceuilController.php'|file_link(0) }}">src/Controller/AcceuilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/templates/acceuil/index.html.twig'|file_link(0) }}">templates/acceuil/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="text-center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.75805227567!2d3.071911315859676!3d50.63161128217546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d58cd174730f%3A0xf0f98712dd300f10!2sSports%20de%20contact%20Lille%20Etudiants%20Club!5e0!3m2!1sfr!2sfr!4v1594216294738!5m2!1sfr!2sfr"
+                frameborder="0"
+                width="25%"
+                height="400"
+                allowfullscreen>
+        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10123.531260071102!2d3.0872175!3d50.6292937!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaa09394f92c9509f!2sComplexe%20sportif%20Auguste%20Defaucompret!5e0!3m2!1sfr!2sfr!4v1594217549823!5m2!1sfr!2sfr"
+                frameborder="0"
+                width="25%"
+                height="400"
+                allowfullscreen>
+        </iframe>
+    </div>
 {% endblock %}
