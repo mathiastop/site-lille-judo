@@ -1,0 +1,10 @@
+App\Entity\Post:
+  post{1..100}:
+    title: '<word()>'
+    body: '<text()>'
+
+App\Entity\User:
+  user1:
+    username: 'test'
+    password: 'test'
+    roles: '[ROLE_ADMIN]'
