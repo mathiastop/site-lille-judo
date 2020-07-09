@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\ContactType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ClubController extends AbstractController
@@ -50,10 +53,23 @@ class ClubController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contactIndex()
+    public function contactIndex(Request $request, \Swift_Mailer $mailer)
     {
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactFormData = $form->getData();
+            $message = (new \Swift_Message('Nouveau message - lillejudo.fr'))
+                ->setFrom('fiche.contact0000@gmail.com')
+                ->setTo('top.mathias7241@gmail.com')
+                ->setBody($contactFormData['Message:']);
+            $mailer->send($message);
+            return $this->redirectToRoute('accueil');
+        }
+
         return $this->render('club/contact.html.twig', [
-            'controller_name' => 'ContactController',
+            'form' => $form->createView(),
         ]);
     }
 
