@@ -3,18 +3,85 @@
 {% block title %}Judo - Lille Judo{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#histoireValeurs">Histoire et Valeurs</a></li>
+            <li><a data-toggle="tab" href="#cours">Cours</a></li>
+            <li><a data-toggle="tab" href="#adhésion">Adhésion</a></li>
+        </ul>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/src/Controller/DisciplinesController.php'|file_link(0) }}">src/Controller/DisciplinesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/templates/disciplines/index.html.twig'|file_link(0) }}">templates/disciplines/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div class="tab-content">
+            <div id="histoireValeurs" class="tab-pane fade in active">
+                <h3>Histoire du Judo</h3>
+                <figure class="figure float-left">
+                    <img src="assets/jigoro_kano.jpg" class="figure-img img-fluid" alt="Jigoro Kano">
+                    <figcaption class="figure-caption">Jigoro Kano</figcaption>
+                </figure>
+                <p>
+                    Originellement, le judo sappuie sur trois principes fondamentaux : Shin (l'Esprit), Gi (la Technique) et Tai (le Corps).
+                    Ces concepts trouvent leur source au sein des écoles de jujitsu Kito-Ryu, Yoshin-Ryu et Tenjin-Shino-Ryu que maître Jigoro Kano
+                    a lui-même fréquenté et desquelles il a extrait le Gokyo (Cinq Principes de Techniques), le Koshiki no Kata (Formes des temps anciens)
+                    et l'Itsutsu no Kata (Cinq Principes énergétiques).
+                </p>
+                <p>
+                    Jigoro Kano étudia tout dabord auprès de maître Fukuda de l'école de Tenjin-shinyo-Ryu, un disciple d'Iso Mataeman à partir de 1877.
+                    Après la mort de son maître, en 1879, on considère que cette école disparue en 1879, après la mort du maitre alors qu'il n'avait pas
+                    désigné de successeur.
+                </p>
+                <p>
+                    Jigoro Kano rejoint en 1881 l'école Kito Ryu qui était spécialisée dans le corps à corps. Il y découvrit les techniques de projection
+                    (le Nage Waza) et le principe de Seiryoku Zenyo (un maximum defficacité pour un minimum deffort).
+                </p>
+                <p>
+                    Les techniques de cette école font essentiellement parti de l'Atemi Waza (on y référence 124 techniques d'Atemi), de l'Osaekomi Waza
+                    (immobilisation au sol) et de Shime Waza (étranglements). On retrouve ainsi son influence dans le Kimeno no Kata (forme self défence du judo).<br/>
+                    En 1882, Jigoro Kano effectua une synthèse des différents enseignements qu'il avait reçus et créa sa propre méthode de jujitsu qu'il baptisa
+                    « judo » (Voie de la souplesse). Il bâtit son premier dojo qu'il appella le Kodokan (« le lieu où l'on étudie la voie »).<br/>
+                </p>
+                <p>
+                    Au début du XXe siècle, des personnes se sont inquiétées de la disparition de ce savoir, due à la modernisation de l'armée,
+                    et ont collecté les techniques de différentes écoles (ryu) de jujitsu pour en faire une pratique moderne, adaptée à la nouvelle société;
+                    ainsi naquirent le judo, l'aïkido ou plus récemment le jiu-jitsu brésilien. De par ce fait, le jujitsu est souvent qualifié d'« art-mère ».<br/>
+                </p>
+                <h3>Le Judo: pour qui ?</h3>
+                <figure class="figure float-right">
+                    <img src="assets/obi_katakana_ceinture.jpg" class="figure-img img-fluid" alt="Obi - Ceinture">
+                    <figcaption class="figure-caption text-right">Obi - Ceinture</figcaption>
+                </figure>
+                <p>
+                    Le Judo peut être pratiqué par tous : enfants (à partir de 5 ans baby-judo), adolescents et adultes, hommes et femmes. Proposé comme art martial, le Judo connaît aujourdhui un réel succès chez les plus jeunes. Les grades sont : ceinture blanche lorsqu'on débute, jaune, orange, verte, bleue, marron et enfin la noire qui comprend plusieurs DAN.<br/>
+                    Pour une progression des plus jeunes il y a une normalisation des grades : ceinture blanche à liserés, blanche et jaune, jaune, jaune et orange, orange, orange et verte, verte , verte et bleue, bleue, marron et enfin noire.<br/>
+                </p>
+                <h3>Les Valeurs du Judo</h3>
+                <figure class="text-center">
+                    <img src="assets/code_moral_judo.jpg" class="figure-img img-fluid" alt="Code Moral du Judo">
+                    <figcaption class="figure-caption">Code Moral du Judo</figcaption>
+                </figure>
+                <p>
+                    Dans sa pratique le judoka est à la recherche du meilleur emploi de l’énergie physique et mentale.<br/>
+                    Ce principe suggère l’application à tout problème de la solution la plus pertinente : agir juste au bon moment, utiliser la force et les intentions du partenaire contre lui-même.<br/>
+                    Il incite à une recherche constante et dynamique de perfection.
+                </p>
+                <p>
+                    En Judo, les progrès individuels passent par l’entraide et par l’union de notre force et de celle des autres.<br/>
+                    La présence du partenaire, du groupe est nécessaire et bénéfique à la progression de chacun
+                </p>
+                <p>
+                    Le grade du judoka est représenté par une triple valeur:<br/>
+                    « SHIN », correspondant à la valeur morale,<br/>
+                    « GHI », valeur technique,<br/>
+                    « TAI », valeur corporelle.<br/>
+                    Le « SHIN », cité en premier, donne seul le sens aux deux autres.
+                </p>
+            </div>
+            <div id="cours" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="adhésion" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
