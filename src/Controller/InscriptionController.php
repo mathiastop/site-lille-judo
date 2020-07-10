@@ -16,4 +16,24 @@ class InscriptionController extends AbstractController
             'controller_name' => 'InscriptionController',
         ]);
     }
+
+    /**
+     * @Route("/adhesion", name="adhesion")
+     */
+    public function indexAdhesion()
+    {
+        return $this->render('inscription/adhesion.html.twig', [
+            'controller_name' => 'AdhesionController',
+        ]);
+    }
+
+    /**
+     * @Route("/competitions", name="competitions")
+     */
+    public function indexCompetitions()
+    {
+        return $this->render('inscription/competitions.html.twig', [
+            'controller_name' => 'CompetitionsController',
+        ]);
+    }
 }
