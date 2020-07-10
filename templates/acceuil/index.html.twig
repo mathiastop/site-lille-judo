@@ -3,11 +3,10 @@
 {% block title %}Acceuil - Lille Judo{% endblock %}
 
 {% block body %}
-    <div>
+    <div class="container">
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Title</th>
                 <th>Body</th>
             </tr>
@@ -15,7 +14,6 @@
             <tbody>
             {% for post in posts %}
                 <tr>
-                    <td>{{ post.id }}</td>
                     <td>{{ post.title }}</td>
                     <td>{{ post.body }}</td>
                 </tr>
