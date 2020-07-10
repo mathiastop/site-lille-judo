@@ -30,7 +30,7 @@ class DisciplinesController extends AbstractController
     }
 
     /**
-     * @Route("/judo/inscription", name="downloadInscription")
+     * @Route("/judo/inscription", name="downloadJudoInscription")
      */
     public function inscriptionJudo()
     {
