@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\PostRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ActualitesController extends AbstractController
@@ -20,10 +24,18 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/newsletter", name="newsletter")
      */
-    public function indexNewletter()
+    public function indexNewletter(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
     {
+        $data = $postRepository->findBy([],['createdAt' => 'desc']);
+
+        $posts = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('actualites/newsletter.html.twig', [
-            'controller_name' => 'NewsletterController',
+            'posts' => $posts,
         ]);
     }
 
