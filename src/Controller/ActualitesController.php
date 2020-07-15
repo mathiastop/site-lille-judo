@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -36,6 +37,16 @@ class ActualitesController extends AbstractController
 
         return $this->render('actualites/newsletter.html.twig', [
             'posts' => $posts,
+        ]);
+    }
+
+    /**
+     * @Route("/newsletter/{id}", name="newsletter_show")
+     */
+    public function showNewsletter(Post $post)
+    {
+        return $this->render('actualites/newsletter-show.html.twig', [
+            'post' => $post,
         ]);
     }
 
