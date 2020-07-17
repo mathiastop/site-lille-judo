@@ -36,7 +36,7 @@ class DisciplinesController extends AbstractController
     {
         $file = new File($this->getParameter('kernel.project_dir').'/public/assets/Fiche_LUC_JUDO_2019_2020.pdf');
 
-        return $this->file($file, 'test.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
+        return $this->file($file, 'Fiche_LUC_JUDO_2019_2020.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
     }
 
     /**
