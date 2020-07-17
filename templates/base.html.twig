@@ -104,7 +104,7 @@
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
                     If you see this, that means you're admin.
-                    <a href="{{ path('admin') }}">Admin</a>
+                    <a href="{{ absolute_url('/admin') }}">Admin</a>
                     <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}

@@ -1,6 +1,28 @@
-#easy_admin:
-#    entities:
-#        # List the entity class name you want to manage
-#        - App\Entity\Product
-#        - App\Entity\Category
-#        - App\Entity\User
+easy_admin:
+    user:
+        name_property_path: 'username'
+    site_name: 'Lille Judo Admin'
+    formats:
+        date: 'd/m/Y'
+        time: 'H:i'
+        datetime: 'd/m/Y H:i:s'
+    design:
+        menu:
+            - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
+            - { entity: 'Post', icon: 'tag' }
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_4.html.twig'
+            - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+    entities:
+        Post:
+            class: App\Entity\Post
+            list:
+                fields:
+                    - { property: 'title', label: 'Titre', type: 'string' }
+                    - { property: 'body', label: 'Corps', type: 'text' }
+                    - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
+                    - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
+            form:
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }

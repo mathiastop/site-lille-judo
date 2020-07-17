@@ -112,6 +112,18 @@
     "egulias/email-validator": {
         "version": "2.1.18"
     },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
+        },
+        "files": [
+            "config/packages/fos_ckeditor.yaml"
+        ]
+    },
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
@@ -148,6 +160,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
+    },
+    "pagerfanta/pagerfanta": {
+        "version": "v2.3.0"
     },
     "php": {
         "version": "7.3"
@@ -410,9 +425,6 @@
             "tests/bootstrap.php"
         ]
     },
-    "symfony/polyfill-intl-grapheme": {
-        "version": "v1.17.1"
-    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.17.1"
     },
@@ -432,9 +444,6 @@
         "version": "v1.17.1"
     },
     "symfony/polyfill-php80": {
-        "version": "v1.17.1"
-    },
-    "symfony/polyfill-uuid": {
         "version": "v1.17.1"
     },
     "symfony/process": {
@@ -499,9 +508,6 @@
     "symfony/stopwatch": {
         "version": "v4.4.10"
     },
-    "symfony/string": {
-        "version": "v5.1.2"
-    },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
         "recipe": {
@@ -554,9 +560,6 @@
     },
     "symfony/twig-pack": {
         "version": "v1.0.0"
-    },
-    "symfony/uid": {
-        "version": "v5.1.2"
     },
     "symfony/validator": {
         "version": "4.3",
