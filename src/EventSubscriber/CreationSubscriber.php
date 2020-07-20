@@ -9,15 +9,18 @@ use App\Entity\User;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\Common\EventSubscriber;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class CreationSubscriber implements EventSubscriber
 {
     private $encoder;
+    private $kernel;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordEncoderInterface $encoder, KernelInterface $kernel)
     {
         $this->encoder = $encoder;
+        $this->kernel = $kernel;
     }
 
     public function getSubscribedEvents()
@@ -25,6 +28,7 @@ class CreationSubscriber implements EventSubscriber
         return [
             Events::prePersist,
             Events::preUpdate,
+            Events::preRemove,
         ];
     }
 
@@ -60,6 +64,32 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatio) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+    }
+
+    public function preRemove(LifecycleEventArgs $args) {
+        $entity = $args->getEntity();
+
+        if ($entity instanceof Post) {
+            $imageName = $entity->getImage();
+            if ($imageName) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/post/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PostClub) {
+            $imageName = $entity->getImage();
+            if ($imageName) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PostNatio) {
+            $imageName = $entity->getImage();
+            if ($imageName) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName);
+            }
             $entity->setUpdatedAt(new \DateTime());
         }
     }
