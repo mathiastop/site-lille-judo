@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Post;
+use App\Entity\PostClub;
 use App\Entity\User;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -37,6 +38,10 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof User) {
             $entity->setPassword($this->encoder->encodePassword($entity, $entity->getPassword()));
         }
+        if ($entity instanceof PostClub) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -44,6 +49,9 @@ class CreationSubscriber implements EventSubscriber
         $entity = $args->getEntity();
 
         if ($entity instanceof Post) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PostClub) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }

@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.path.post_images: /uploads/post
+    app.path.post_club_images: /uploads/club
+    app.path.post_natio_images: /uploads/natio
 
 services:
     # default configuration for services in *this* file

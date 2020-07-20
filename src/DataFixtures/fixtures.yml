@@ -8,3 +8,8 @@ App\Entity\User:
     username: 'test'
     password: 'test'
     roles: '[ROLE_ADMIN]'
+
+App\Entity\PostClub:
+  postClub{1..100}:
+    title: '<word()>'
+    body: '<text()>'

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\PostClub;
+use App\Repository\PostClubRepository;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -28,7 +30,6 @@ class ActualitesController extends AbstractController
     public function indexNewletter(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
     {
         $data = $postRepository->findBy([],['createdAt' => 'desc']);
-
         $posts = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -53,10 +54,27 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/actualites-club", name="actualites-club")
      */
-    public function indexActualitesClub()
+    public function indexActualitesClub(PostClubRepository $postClubRepository, PaginatorInterface $paginator, Request $request)
     {
+        $data = $postClubRepository->findBy([],['createdAt' => 'desc']);
+        $posts = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('actualites/actualites-club.html.twig', [
-            'controller_name' => 'ActualitesClubController',
+            'posts' => $posts,
+        ]);
+    }
+
+    /**
+     * @Route("/actualites-club/{id}", name="actualites-club_show")
+     */
+    public function showActualitesClub(PostClub $postClub)
+    {
+        return $this->render('actualites/actualites-club-show.html.twig', [
+            'post' => $postClub,
         ]);
     }
 

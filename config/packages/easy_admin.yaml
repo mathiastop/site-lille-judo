@@ -10,6 +10,7 @@ easy_admin:
         menu:
             - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
             - { entity: 'Post', icon: 'tag' }
+            - { entity: 'PostClub', icon: 'tag' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
@@ -21,6 +22,20 @@ easy_admin:
                     - { property: 'title', label: 'Titre', type: 'string' }
                     - { property: 'body', label: 'Corps', type: 'text' }
                     - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_images%' }
+                    - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
+                    - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
+            form:
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+        PostClub:
+            class: App\Entity\PostClub
+            list:
+                fields:
+                    - { property: 'title', label: 'Titre', type: 'string' }
+                    - { property: 'body', label: 'Corps', type: 'text' }
+                    - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_club_images%' }
                     - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                     - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
             form:
