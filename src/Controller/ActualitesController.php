@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Entity\PostClub;
+use App\Entity\PostNatio;
 use App\Repository\PostClubRepository;
+use App\Repository\PostNatioRepository;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -81,10 +83,27 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/actualites-nationale-internationale", name="actualites-nationale-internationale")
      */
-    public function indexActualitesNationaleInternationale()
+    public function indexActualitesNationaleInternationale(PostNatioRepository $postNatioRepository, PaginatorInterface $paginator, Request $request)
     {
+        $data = $postNatioRepository->findBy([],['createdAt' => 'desc']);
+        $posts = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('actualites/actualites-nationale-internationale.html.twig', [
-            'controller_name' => 'ActualitesNationaleInternationaleClubController',
+            'posts' => $posts,
+        ]);
+    }
+
+    /**
+     * @Route("/actualites-nationale-internationale/{id}", name="actualites-nationale-internationale_show")
+     */
+    public function showActualitesNationaleInternationale(PostNatio $postNatio)
+    {
+        return $this->render('actualites/actualites-nationale-internationale-show.html.twig', [
+            'post' => $postNatio,
         ]);
     }
 }

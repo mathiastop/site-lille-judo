@@ -13,3 +13,8 @@ App\Entity\PostClub:
   postClub{1..100}:
     title: '<word()>'
     body: '<text()>'
+
+App\Entity\PostNatio:
+  postNatio{1..100}:
+    title: '<word()>'
+    body: '<text()>'
