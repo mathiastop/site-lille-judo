@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DocumentsController extends AbstractController
@@ -15,5 +17,45 @@ class DocumentsController extends AbstractController
         return $this->render('documents/index.html.twig', [
             'controller_name' => 'DocumentsController',
         ]);
+    }
+
+    /**
+     * @Route("/documents/jaune", name="jaune")
+     */
+    public function jaune()
+    {
+        $file = new File($this->getParameter('kernel.project_dir').'/public/assets/passage_jaune.pdf');
+
+        return $this->file($file, 'passage_jaune.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    /**
+     * @Route("/documents/orange", name="orange")
+     */
+    public function orange()
+    {
+        $file = new File($this->getParameter('kernel.project_dir').'/public/assets/passage_orange.pdf');
+
+        return $this->file($file, 'passage_orange.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    /**
+     * @Route("/documents/verte", name="verte")
+     */
+    public function verte()
+    {
+        $file = new File($this->getParameter('kernel.project_dir').'/public/assets/passage_verte.pdf');
+
+        return $this->file($file, 'passage_verte.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    /**
+     * @Route("/documents/marron", name="marron")
+     */
+    public function marron()
+    {
+        $file = new File($this->getParameter('kernel.project_dir').'/public/assets/passage_marron.pdf');
+
+        return $this->file($file, 'passage_marron.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
     }
 }

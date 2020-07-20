@@ -3,18 +3,26 @@
 {% block title %}Documents - Lille Judo{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/src/Controller/DocumentsController.php'|file_link(0) }}">src/Controller/DocumentsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/templates/documents/index.html.twig'|file_link(0) }}">templates/documents/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#grades">Passages des grades</a></li>
+            <li><a data-toggle="tab" href="#exemple">Exemple</a></li>
+            <li><a data-toggle="tab" href="#exemple2">Exemple</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="grades" class="tab-pane fade in active">
+                <h3>Passages des grades</h3>
+                <a href="{{ path('jaune') }}" target="_blank">Ceinture Jaune</a><br/>
+                <a href="{{ path('orange') }}" target="_blank">Ceinture Orange</a><br/>
+                <a href="{{ path('verte') }}" target="_blank">Ceinture Verte</a><br/>
+                <a href="{{ path('marron') }}" target="_blank">Ceinture Marron</a><br/>
+            </div>
+            <div id="exemple" class="tab-pane fade">
+                <h3>Exemple</h3>
+            </div>
+            <div id="exemple2" class="tab-pane fade">
+                <h3>Exemple</h3>
+            </div>
+        </div>
+    </div>
 {% endblock %}
