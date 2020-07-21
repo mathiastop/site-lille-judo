@@ -4,23 +4,29 @@
 
 {% block body %}
     <div class="container">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#grades">Passages des grades</a></li>
-            <li><a data-toggle="tab" href="#exemple">Exemple</a></li>
-            <li><a data-toggle="tab" href="#exemple2">Exemple</a></li>
+        <ul class="nav nav-tabs" id="documentsTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="grades-tab" data-toggle="tab" href="#grades" aria-controls="grades" aria-selected="true">Passages des grades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="exemple-tab" data-toggle="tab" href="#exemple" aria-controls="exemple" aria-selected="false">Exemple</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="exemple2-tab" data-toggle="tab" href="#exemple2" aria-controls="exemple2" aria-selected="false">Exemple</a>
+            </li>
         </ul>
-        <div class="tab-content">
-            <div id="grades" class="tab-pane fade in active">
+        <div class="tab-content" id="documentsTabContent">
+            <div id="grades" class="tab-pane fade show active" role="tabpanel" aria-labelledby="grades-tab">
                 <h3>Passages des grades</h3>
                 <a href="{{ path('jaune') }}" target="_blank">Ceinture Jaune</a><br/>
                 <a href="{{ path('orange') }}" target="_blank">Ceinture Orange</a><br/>
                 <a href="{{ path('verte') }}" target="_blank">Ceinture Verte</a><br/>
                 <a href="{{ path('marron') }}" target="_blank">Ceinture Marron</a><br/>
             </div>
-            <div id="exemple" class="tab-pane fade">
+            <div id="exemple" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple-tab">
                 <h3>Exemple</h3>
             </div>
-            <div id="exemple2" class="tab-pane fade">
+            <div id="exemple2" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple2-tab">
                 <h3>Exemple</h3>
             </div>
         </div>

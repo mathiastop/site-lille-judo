@@ -4,26 +4,34 @@
 
 {% block body %}
     <div class="container">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#judo">Judo</a></li>
-            <li><a data-toggle="tab" href="#jujitsu">Ju Jitsu</a></li>
-            <li><a data-toggle="tab" href="#taiso">Taiso</a></li>
-            <li><a data-toggle="tab" href="#newaza">Ne Waza</a></li>
+        <ul class="nav nav-tabs" id="adhesionTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="judo-tab" data-toggle="tab" href="#judo" aria-controls="judo" aria-selected="true">Judo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="jujitsu-tab" data-toggle="tab" href="#jujitsu" aria-controls="jujitsu" aria-selected="false">Ju Jitsu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="taiso-tab" data-toggle="tab" href="#taiso" aria-controls="taiso" aria-selected="false">Taiso</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="newaza-tab" data-toggle="tab" href="#newaza" aria-controls="newaza" aria-selected="false">Ne Waza</a>
+            </li>
         </ul>
-        <div class="tab-content">
-            <div id="judo" class="tab-pane fade in active">
+        <div class="tab-content" id="adhesionTabContent">
+            <div id="judo" class="tab-pane fade show active" role="tabpanel" aria-labelledby="judo-tab">
                 <h3>Inscription Judo</h3>
                 <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
             </div>
-            <div id="jujitsu" class="tab-pane fade">
+            <div id="jujitsu" class="tab-pane fade" role="tabpanel" aria-labelledby="jujitsu-tab">
                 <h3>Inscription Ju Jitsu</h3>
                 <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
             </div>
-            <div id="taiso" class="tab-pane fade">
+            <div id="taiso" class="tab-pane fade" role="tabpanel" aria-labelledby="taiso-tab">
                 <h3>Inscription Taiso</h3>
                 <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
             </div>
-            <div id="newaza" class="tab-pane fade">
+            <div id="newaza" class="tab-pane fade" role="tabpanel" aria-labelledby="newaza-tab">
                 <h3>Inscription Ne Waza</h3>
                 <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
             </div>

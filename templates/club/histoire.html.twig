@@ -201,14 +201,22 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#historiqueClub">Historique du Club</a></li>
-            <li><a data-toggle="tab" href="#diversPresidents">Les Divers Présidents</a></li>
-            <li><a data-toggle="tab" href="#personnalitesMarquantes">Quelques personnalités marquantes</a></li>
-            <li><a data-toggle="tab" href="#enseignement">L'enseignement</a></li>
+        <ul class="nav nav-tabs"  id="histoireTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="historiqueClub-tab" data-toggle="tab" href="#historiqueClub" aria-controls="historiqueClub" aria-selected="true">Historique du Club</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="diversPresidents-tab" data-toggle="tab" href="#diversPresidents" aria-controls="diversPresidents" aria-selected="false">Les Divers Présidents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="personnalitesMarquantes-tab" data-toggle="tab" href="#personnalitesMarquantes" aria-controls="personnalitesMarquantes" aria-selected="false">Quelques personnalités marquantes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="enseignement-tab" data-toggle="tab" href="#enseignement" aria-controls="enseignement" aria-selected="false">L'enseignement</a>
+            </li>
         </ul>
-        <div class="tab-content">
-            <div id="historiqueClub" class="tab-pane fade in active">
+        <div class="tab-content" id="histoireTabContent">
+            <div class="tab-pane fade show active" id="historiqueClub" role="tabpanel" aria-labelledby="historiqueClub-tab">
                 <h3>Historique du Club</h3>
                 <div class="row">
                     <div class="col-md-12">
@@ -247,7 +255,7 @@
                     </div>
                 </div>
             </div>
-            <div id="diversPresidents" class="tab-pane fade">
+            <div class="tab-pane fade" id="diversPresidents" role="tabpanel" aria-labelledby="diversPresidents-tab">
                 <h3>Les divers Présidents</h3>
                 <div class="row">
                     <div class="col-md-12">
@@ -293,7 +301,7 @@
                     </div>
                 </div>
             </div>
-            <div id="personnalitesMarquantes" class="tab-pane fade">
+            <div class="tab-pane fade" id="personnalitesMarquantes" role="tabpanel" aria-labelledby="personnalitesMarquantes-tab">
                 <h3>Quelques personnalités marquantes</h3>
                 <div class="row">
                     <div class="col-md-12">
@@ -355,7 +363,7 @@
                     </div>
                 </div>
             </div>
-            <div id="enseignement" class="tab-pane fade">
+            <div class="tab-pane fade" id="enseignement" role="tabpanel" aria-labelledby="enseignement-tab">
                 <h3>L'enseignement</h3>
                 <div class="row">
                     <div class="col-md-12">
