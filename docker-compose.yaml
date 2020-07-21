@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  mysql:
-    image: mysql:5.7
-    container_name: workshop-mysql
+  mysql1.6:
+    image: mysql:5.6
+    container_name: lillejudo-mysql
     ports:
       - '3306:3306'
     environment:
@@ -11,14 +11,16 @@ services:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_DATABASE: 'lillejudo'
-    volumes:
-      - db-volumes:/var/lib/mysql
+#    volumes:
+#      - lillejudo-db:/var/lib/mysql16
+
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
       - '8080:80'
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: mysql1.6
       MYSQL_ROOT_PASSWORD: 'root'
 
 volumes:
