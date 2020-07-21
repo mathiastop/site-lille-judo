@@ -3,18 +3,30 @@
 {% block title %}Adhésion - Lille Judo{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/src/Controller/InscriptionController.php'|file_link(0) }}">src/Controller/InscriptionController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/mtop/EPITECH/HUB/lillejudo/templates/inscription/index.html.twig'|file_link(0) }}">templates/inscription/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#judo">Judo</a></li>
+            <li><a data-toggle="tab" href="#jujitsu">Ju Jitsu</a></li>
+            <li><a data-toggle="tab" href="#taiso">Taiso</a></li>
+            <li><a data-toggle="tab" href="#newaza">Ne Waza</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="judo" class="tab-pane fade in active">
+                <h3>Inscription Judo</h3>
+                <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
+            </div>
+            <div id="jujitsu" class="tab-pane fade">
+                <h3>Inscription Ju Jitsu</h3>
+                <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
+            </div>
+            <div id="taiso" class="tab-pane fade">
+                <h3>Inscription Taiso</h3>
+                <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
+            </div>
+            <div id="newaza" class="tab-pane fade">
+                <h3>Inscription Ne Waza</h3>
+                <a href="{{ path('downloadJudoInscription') }}" target="_blank">Fiche d'inscription</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
