@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Lille Judo{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
         <link rel="shortcut icon" type="image/ico" href="{{ asset('assets/favicon.ico') }}"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
@@ -19,6 +18,7 @@
                 background: lightgray;
             }
         </style>
+        {% block stylesheets %}{% endblock %}
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 flex-shrink-0">
