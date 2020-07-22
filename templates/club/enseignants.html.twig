@@ -20,21 +20,43 @@
         <h2 class="text-center">Professeurs</h2>
         <div class="container">
             <ul class="list-group list-group-flush text-center">
-                <li class="list-group-item">
-                    DEPRY Pacôme, 2ème Dan, BE 1
-                </li>
-                <li class="list-group-item">
-                    LABIAUX Lydéric, 2ème Dan, CQP
-                </li>
-                <li class="list-group-item">
-                    SOENNE Philippe, 2ème Dan, BE 1
-                </li>
-                <li class="list-group-item">
-                    DELAUNAY Raphael, 2ème Dan, BE 1
-                </li>
-                <li class="list-group-item">
-                    LABIAUX Chloé, 2ème Dan, CQP
-                </li>
+                {% for professeur in professeurs %}
+                    <li class="list-group-item">
+                    {% if professeur.image %}
+                        <img class="rounded-circle"
+                             src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
+                             width="64"
+                             height="64"
+                             alt="">
+                    {% else %}
+                        <img class="rounded-circle"
+                             src="http://placehold.it/64x64"
+                             width="64"
+                             height="64"
+                             alt="">
+                    {% endif %}
+                        {{ professeur.text }}
+                    </li>
+                {% else %}
+                    <li class="list-group-item">
+                        no records found
+                    </li>
+                {% endfor %}
+{#                <li class="list-group-item">#}
+{#                    DEPRY Pacôme, 2ème Dan, BE 1#}
+{#                </li>#}
+{#                <li class="list-group-item">#}
+{#                    LABIAUX Lydéric, 2ème Dan, CQP#}
+{#                </li>#}
+{#                <li class="list-group-item">#}
+{#                    SOENNE Philippe, 2ème Dan, BE 1#}
+{#                </li>#}
+{#                <li class="list-group-item">#}
+{#                    DELAUNAY Raphael, 2ème Dan, BE 1#}
+{#                </li>#}
+{#                <li class="list-group-item">#}
+{#                    LABIAUX Chloé, 2ème Dan, CQP#}
+{#                </li>#}
             </ul>
         </div>
     </div>

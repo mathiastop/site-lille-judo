@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\ProfesseursRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,10 +34,10 @@ class ClubController extends AbstractController
     /**
      * @Route("/enseignants", name="enseignants")
      */
-    public function enseignantsIndex()
+    public function enseignantsIndex(ProfesseursRepository $professeursRepository)
     {
         return $this->render('club/enseignants.html.twig', [
-            'controller_name' => 'EnseignantsController',
+            'professeurs' => $professeursRepository->findAll(),
         ]);
     }
 

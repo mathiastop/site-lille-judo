@@ -7,11 +7,14 @@ easy_admin:
         time: 'H:i'
         datetime: 'd/m/Y H:i:s'
     design:
+        assets:
+            favicon: '/assets/favicon.ico'
         menu:
             - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
             - { entity: 'Post', icon: 'tag' }
             - { entity: 'PostClub', icon: 'tag' }
             - { entity: 'PostNatio', icon: 'tag' }
+            - { entity: 'Professeurs', icon: 'chalkboard-teacher' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
@@ -58,3 +61,13 @@ easy_admin:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
                       - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+        Professeurs:
+            class: App\Entity\Professeurs
+            list:
+                fields:
+                    - { property: 'text', label: 'Texte', type: 'string' }
+                    - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.post_professeurs_images%' }
+            form:
+                fields:
+                    - { property: 'text', label: 'Texte' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
