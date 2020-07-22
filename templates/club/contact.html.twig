@@ -3,15 +3,15 @@
 {% block title %}Contact - Lille Judo{% endblock %}
 
 {% block body %}
-    <div class="container text-center">
+    <div class="container">
         <h2>Contact</h2>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Send"/>
         {{ form_end(form) }}
     </div>
-    <div class="container text-center">
-        <h2>Réseaux</h2>
-        <a href="https://www.facebook.com/pages/category/Amateur-Sports-Team/LUC-Judo-335783152973/"><img src="{{ asset('assets/FB_logo.jpg') }}" alt="FB Logo"></a>
-    </div>
+{#    <div class="container text-center">#}
+{#        <h2>Réseaux</h2>#}
+{#        <a href="https://www.facebook.com/pages/category/Amateur-Sports-Team/LUC-Judo-335783152973/"><img src="{{ asset('assets/FB_logo.jpg') }}" alt="FB Logo"></a>#}
+{#    </div>#}
 {% endblock %}
