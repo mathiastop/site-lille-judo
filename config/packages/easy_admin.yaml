@@ -16,6 +16,7 @@ easy_admin:
             - { entity: 'PostNatio', icon: 'tag' }
             - { entity: 'Professeurs', icon: 'chalkboard-teacher' }
             - { entity: 'Bureau', icon: 'laptop-house' }
+            - { entity: 'Gallery', icon: 'images' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
@@ -87,3 +88,14 @@ easy_admin:
                     - { property: 'text', label: 'Texte' }
                     - { property: 'role', label: 'Role', type: 'choice', type_options: { choices: { Président: 'Président', Trésorier: 'Trésorier', Secrétaire: 'Secrétaire', 'Secrétaire Adjointe': 'Secrétaire Adjointe' } } }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+        Gallery:
+            class: App\Entity\Gallery
+            label: 'Galerie'
+            list:
+                fields:
+                    - { property: 'name', label: 'Nom', type: 'string' }
+                    - { property: 'galleryImages', label: 'Images' }
+            form:
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'galleryImages', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\GalleryImageType', by_reference: false } }

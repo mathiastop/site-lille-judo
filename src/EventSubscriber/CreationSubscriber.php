@@ -3,6 +3,8 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Bureau;
+use App\Entity\Gallery;
+use App\Entity\GalleryImage;
 use App\Entity\Post;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
@@ -61,6 +63,14 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof Gallery) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof GalleryImage) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -80,6 +90,12 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof Bureau) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof Gallery) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof GalleryImage) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }
@@ -119,6 +135,13 @@ class CreationSubscriber implements EventSubscriber
             $imageName = $entity->getImage();
             if ($imageName) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/bureau/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof GalleryImage) {
+            $imageName = $entity->getImage();
+            if ($imageName) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/gallery/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
