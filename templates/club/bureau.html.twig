@@ -6,66 +6,49 @@
     <div>
         <div class="container">
             <ul class="list-group list-group-flush text-center">
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Président:</span> BONTE Thomas
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Trésorier:</span> PAPEGAY Benoit
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Secrétaire:</span> LECLERCQ Marie
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Secrétaire Adjointe:</span> MAQUERRE Béatrice
-                </li>
+                {% for bureau in bureaux %}
+                    <li class="list-group-item">
+                        {% if bureau.image %}
+                            <img class="rounded-circle"
+                                 src="{{ asset('uploads/bureau/') }}{{ bureau.image }}"
+                                 width="64"
+                                 height="64"
+                                 alt="">
+                        {% endif %}
+                        <span class="font-weight-bold">{{ bureau.role }}:</span> {{ bureau.text }}
+                    </li>
+                {% else %}
+                    <li class="list-group-item">
+                        no records found
+                    </li>
+                {% endfor %}
             </ul>
         </div>
         <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-3">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Président</h2>
-                    <p>
-                        BONTE Thomas
-                    </p>
-                </div>
-                <div class="col-lg-3">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Trésorier</h2>
-                    <p>
-                        PAPEGAY Benoit
-                    </p>
-                </div>
-                <div class="col-lg-3">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Secrétaire</h2>
-                    <p>
-                        LECLERCQ Marie
-                    </p>
-                </div>
-                <div class="col-lg-3">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Secrétaire Adjointe</h2>
-                    <p>
-                        MAQUERRE Béatrice
-                    </p>
-                </div>
+            <div class="row text-center justify-content-center">
+                {% for bureau in bureaux %}
+                    <div class="col-lg-3">
+                        {% if bureau.image %}
+                            <img class="rounded-circle"
+                                 src="{{ asset('uploads/bureau/') }}{{ bureau.image }}"
+                                 width="140"
+                                 height="140"
+                                 alt="">
+                        {% else %}
+                            <img class="rounded-circle"
+                                 src="http://placehold.it/140x140"
+                                 width="140"
+                                 height="140"
+                                 alt="">
+                        {% endif %}
+                        <h2>{{ bureau.role }}</h2>
+                        <p>{{ bureau.text }}</p>
+                    </div>
+                {% else %}
+                    <div class="col-lg-3">
+                        no records found
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

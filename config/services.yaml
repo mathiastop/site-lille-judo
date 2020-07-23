@@ -7,7 +7,8 @@ parameters:
     app.path.post_images: /uploads/post
     app.path.post_club_images: /uploads/club
     app.path.post_natio_images: /uploads/natio
-    app.path.post_professeurs_images: /uploads/professeurs
+    app.path.professeurs_images: /uploads/professeurs
+    app.path.bureau_images: /uploads/bureau
 
 services:
     # default configuration for services in *this* file

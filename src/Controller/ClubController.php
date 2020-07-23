@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\BureauRepository;
 use App\Repository\ProfesseursRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,10 +45,10 @@ class ClubController extends AbstractController
     /**
      * @Route("/bureau", name="bureau")
      */
-    public function bureauIndex()
+    public function bureauIndex(BureauRepository $bureauRepository)
     {
         return $this->render('club/bureau.html.twig', [
-            'controller_name' => 'BureauController',
+            'bureaux' => $bureauRepository->findAll(),
         ]);
     }
 

@@ -59,19 +59,19 @@
             <ul class="list-group list-group-flush text-center">
                 {% for professeur in professeurs %}
                     <li class="list-group-item">
-                    {% if professeur.image %}
-                        <img class="rounded-circle"
-                             src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
-                             width="64"
-                             height="64"
-                             alt="">
-                    {% else %}
-                        <img class="rounded-circle"
-                             src="http://placehold.it/64x64"
-                             width="64"
-                             height="64"
-                             alt="">
-                    {% endif %}
+                        {% if professeur.image %}
+                            <img class="rounded-circle"
+                                 src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
+                                 width="64"
+                                 height="64"
+                                 alt="">
+                        {% else %}
+                            <img class="rounded-circle"
+                                 src="http://placehold.it/64x64"
+                                 width="64"
+                                 height="64"
+                                 alt="">
+                        {% endif %}
                         {{ professeur.text }}
                     </li>
                 {% else %}

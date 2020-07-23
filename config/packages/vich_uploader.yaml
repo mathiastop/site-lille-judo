@@ -11,6 +11,9 @@ vich_uploader:
         post_natio_images:
             uri_prefix: '%app.path.post_natio_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.post_natio_images%'
-        post_profeseurs_images:
-            uri_prefix: '%app.path.post_professeurs_images%'
-            upload_destination: '%kernel.project_dir%/public%app.path.post_professeurs_images%'
+        profeseurs_images:
+            uri_prefix: '%app.path.professeurs_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.professeurs_images%'
+        bureau_images:
+            uri_prefix: '%app.path.bureau_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.bureau_images%'

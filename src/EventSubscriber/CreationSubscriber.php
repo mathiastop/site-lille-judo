@@ -2,6 +2,7 @@
 
 namespace App\EventSubscriber;
 
+use App\Entity\Bureau;
 use App\Entity\Post;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
@@ -56,6 +57,10 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof Bureau) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -72,6 +77,9 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof Professeurs) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof Bureau) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }
@@ -104,6 +112,13 @@ class CreationSubscriber implements EventSubscriber
             $imageName = $entity->getImage();
             if ($imageName) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/professeurs/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof Bureau) {
+            $imageName = $entity->getImage();
+            if ($imageName) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/bureau/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
