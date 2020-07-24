@@ -21,11 +21,6 @@ class Professeurs
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $text;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
@@ -61,21 +56,19 @@ class Professeurs
      */
     private $prenom;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $grade;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $diplome;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    public function setText(string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
     }
 
     public function getImage(): ?string
@@ -160,6 +153,30 @@ class Professeurs
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getGrade(): ?string
+    {
+        return $this->grade;
+    }
+
+    public function setGrade(string $grade): self
+    {
+        $this->grade = $grade;
+
+        return $this;
+    }
+
+    public function getDiplome(): ?string
+    {
+        return $this->diplome;
+    }
+
+    public function setDiplome(string $diplome): self
+    {
+        $this->diplome = $diplome;
 
         return $this;
     }
