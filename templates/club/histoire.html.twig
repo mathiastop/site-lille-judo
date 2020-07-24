@@ -278,62 +278,31 @@
             </div>
             <div class="tab-pane fade" id="personnalitesMarquantes" role="tabpanel" aria-labelledby="personnalitesMarquantes-tab">
                 <h3>Quelques personnalités marquantes</h3>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-timeline">
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        M.M. DEVULDER (Médecine) et MAUFROID (Pharmacie) ont su, dans la période difficile,
-                                        se battre pour promouvoir leur discipline.
-                                    </p>
+                            {% for personnalite in personnalites %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year"></span>
+                                        <h3 class="title">{{ personnalite.titre }}</h3>
+                                        <p class="description">
+                                            {{ personnalite.texte }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        Maurice DECLERCQ, aujourd'hui Chirurgien, Champion de France et International,
-                                        apporta sa contribution dans l'enseignement des étudiants.
-                                    </p>
+                            {% else %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year">0000</span>
+                                        <h3 class="title">No records found</h3>
+                                        <p class="description">
+                                            No records found
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        Lucien BATIGNE, Professeur E.P.S., qui a maintenu la section en l'introduisant dans le
-                                        cadre de l'Arrêté Rectoral (1961-1968).
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        M.M. DEBAECKER et DEKEYSER, jeunes professeurs E.P.S., assurèrent des cours de qualité (1968- 1972).
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        A partir de 1973, M. Jean-Pierre CASTEL, Professeur E.P.S. B.E., sut relancer la section,
-                                        la promouvoir et en faire une section grande et efficace; l'une des meilleures de la Région.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        A partir de 1999, Sylvain CARON, Professeur E.P.S. - B.E. - CN4, Directeur Technique de la section,
-                                        permit aux compétiteurs de s'affirmer dans les Championnats divers.
-                                    </p>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

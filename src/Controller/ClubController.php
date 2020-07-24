@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\ContactType;
 use App\Repository\BureauRepository;
 use App\Repository\HistoriqueClubRepository;
+use App\Repository\HistoriquePersonnalitesRepository;
 use App\Repository\HistoriquePresidentsRepository;
 use App\Repository\ProfesseursRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,7 +30,10 @@ class ClubController extends AbstractController
     /**
      * @Route("/histoire", name="histoire")
      */
-    public function histoireIndex(Breadcrumbs $breadcrumbs, RouterInterface $router, HistoriqueClubRepository $historiqueClubRepository, HistoriquePresidentsRepository $historiquePresidentsRepository)
+    public function histoireIndex(Breadcrumbs $breadcrumbs, RouterInterface $router,
+                                  HistoriqueClubRepository $historiqueClubRepository,
+                                  HistoriquePresidentsRepository $historiquePresidentsRepository,
+                                  HistoriquePersonnalitesRepository $historiquePersonnalitesRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Club");
@@ -38,6 +42,7 @@ class ClubController extends AbstractController
         return $this->render('club/histoire.html.twig', [
             'historiques' => $historiqueClubRepository->findAllOrderByDate(),
             'presidents' => $historiquePresidentsRepository->findAllOrderByDate(),
+            'personnalites' => $historiquePersonnalitesRepository->findAll(),
         ]);
     }
 

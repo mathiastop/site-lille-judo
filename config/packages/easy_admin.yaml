@@ -13,7 +13,7 @@ easy_admin:
             - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
             - { label: 'Club' }
             - label: 'Histoire'
-              children: ['HistoireClub', 'HistoirePresidents']
+              children: ['HistoireClub', 'HistoirePresidents', 'HistoirePersonnalites']
             - { entity: 'Professeurs', label: 'Enseignants', icon: 'chalkboard-teacher' }
             - { entity: 'Bureau', icon: 'laptop-house' }
             - { label: 'Disciplines' }
@@ -142,4 +142,15 @@ easy_admin:
                 fields:
                     - { property: 'titre', label: 'Nom' }
                     - { property: 'annee', label: 'Année', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'textarea' }
+        HistoirePersonnalites:
+            class: App\Entity\HistoriquePersonnalites
+            label: 'Quelques personnalités marquantes'
+            list:
+                fields:
+                    - { property: 'titre', label: 'Nom', type: 'string' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'titre', label: 'Nom' }
                     - { property: 'texte', label: 'Texte', type: 'textarea' }
