@@ -278,7 +278,6 @@
             </div>
             <div class="tab-pane fade" id="personnalitesMarquantes" role="tabpanel" aria-labelledby="personnalitesMarquantes-tab">
                 <h3>Quelques personnalités marquantes</h3>
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-timeline">
@@ -312,34 +311,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-timeline">
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        On fit appel à des civils professeurs de Judo Diplômés d'Etat. Il y eu Messieurs MARIOTTE
-                                        et VIAENE, B.E., coordonnés par Lucien BATIGNE.
-                                    </p>
+                            {% for enseignement in enseignements %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year"></span>
+                                        <p class="description">
+                                            {{ enseignement.texte }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        Ensuite, Messieurs DEBAECKER et DEKEYSER, Professeurs d'E.P.S. et B.E. continuèrent avec
-                                        Jean-Pierre CASTEL, Professeur E.P.S., qui prit successivement, avec brio, les fonctions
-                                        de Directeur Technique puis de Président.
-                                    </p>
+                            {% else %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year">0000</span>
+                                        <h3 class="title">No records found</h3>
+                                        <p class="description">
+                                            No records found
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year"></span>
-                                    <p class="description">
-                                        Avec une équipe solide, Jean-Pierre CASTEL fit progresser le L.U.C. et amena la section
-                                        à un excellent niveau.
-                                    </p>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\ContactType;
 use App\Repository\BureauRepository;
 use App\Repository\HistoriqueClubRepository;
+use App\Repository\HistoriqueEnseignementRepository;
 use App\Repository\HistoriquePersonnalitesRepository;
 use App\Repository\HistoriquePresidentsRepository;
 use App\Repository\ProfesseursRepository;
@@ -33,7 +34,8 @@ class ClubController extends AbstractController
     public function histoireIndex(Breadcrumbs $breadcrumbs, RouterInterface $router,
                                   HistoriqueClubRepository $historiqueClubRepository,
                                   HistoriquePresidentsRepository $historiquePresidentsRepository,
-                                  HistoriquePersonnalitesRepository $historiquePersonnalitesRepository)
+                                  HistoriquePersonnalitesRepository $historiquePersonnalitesRepository,
+                                  HistoriqueEnseignementRepository $historiqueEnseignementRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Club");
@@ -43,6 +45,7 @@ class ClubController extends AbstractController
             'historiques' => $historiqueClubRepository->findAllOrderByDate(),
             'presidents' => $historiquePresidentsRepository->findAllOrderByDate(),
             'personnalites' => $historiquePersonnalitesRepository->findAll(),
+            'enseignements' => $historiqueEnseignementRepository->findAll(),
         ]);
     }
 
