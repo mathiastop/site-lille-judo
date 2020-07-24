@@ -140,7 +140,7 @@ class CreationSubscriber implements EventSubscriber
         }
         if ($entity instanceof GalleryImage) {
             $imageName = $entity->getImage();
-            if ($imageName) {
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/gallery/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/gallery/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());

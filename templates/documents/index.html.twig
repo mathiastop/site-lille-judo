@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Documents - Lille Judo{% endblock %}
-
+{% block stylesheets %}{% endblock %}
 {% block body %}
     <div class="container">
         <ul class="nav nav-tabs" id="documentsTab" role="tablist">
@@ -9,7 +9,7 @@
                 <a class="nav-link active" id="grades-tab" data-toggle="tab" href="#grades" aria-controls="grades" aria-selected="true">Passages des grades</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="exemple-tab" data-toggle="tab" href="#exemple" aria-controls="exemple" aria-selected="false">Exemple</a>
+                <a class="nav-link" id="galerie-tab" data-toggle="tab" href="#galerie" aria-controls="galerie" aria-selected="false">Galerie</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="exemple2-tab" data-toggle="tab" href="#exemple2" aria-controls="exemple2" aria-selected="false">Exemple</a>
@@ -23,8 +23,24 @@
                 <a href="{{ path('verte') }}" target="_blank">Ceinture Verte</a><br/>
                 <a href="{{ path('marron') }}" target="_blank">Ceinture Marron</a><br/>
             </div>
-            <div id="exemple" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple-tab">
-                <h3>Exemple</h3>
+            <div id="galerie" class="tab-pane fade" role="tabpanel" aria-labelledby="galerie-tab">
+                {% for gallery in gallerys %}
+                    <h3>{{ gallery.name }}</h3>
+                    <div class="row text-center text-lg-left">
+                        {% for galleryImage in gallery.getGalleryImages() %}
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail" src="{{ asset('uploads/gallery/') }}{{ galleryImage.image }}" alt="">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div>
+                        no records found
+                    </div>
+                {% endfor %}
+                </div>
             </div>
             <div id="exemple2" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple2-tab">
                 <h3>Exemple</h3>

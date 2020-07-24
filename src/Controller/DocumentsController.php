@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\GalleryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -12,10 +13,10 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/documents", name="documents")
      */
-    public function index()
+    public function index(GalleryRepository $galleryRepository)
     {
         return $this->render('documents/index.html.twig', [
-            'controller_name' => 'DocumentsController',
+            'gallerys' => $galleryRepository->findAll()
         ]);
     }
 
