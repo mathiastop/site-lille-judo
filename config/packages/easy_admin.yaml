@@ -11,11 +11,16 @@ easy_admin:
             favicon: '/assets/favicon.ico'
         menu:
             - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
+            - { label: 'Club' }
+            - { entity: 'Professeurs', label: 'Enseignants', icon: 'chalkboard-teacher' }
+            - { entity: 'Bureau', icon: 'laptop-house' }
+            - { label: 'Disciplines' }
+            - { label: 'Inscription' }
+            - { label: 'Actualités' }
             - { entity: 'Post', icon: 'tag' }
             - { entity: 'PostClub', icon: 'tag' }
-            - { entity: 'PostNatio', icon: 'tag' }
-            - { entity: 'Professeurs', icon: 'chalkboard-teacher' }
-            - { entity: 'Bureau', icon: 'laptop-house' }
+            - { entity: 'PostNatio', icon: 'globe' }
+            - { label: 'Documents' }
             - { entity: 'Gallery', icon: 'images' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
@@ -68,6 +73,7 @@ easy_admin:
                       - { property: 'imageFile', label: 'Image', type: 'vich_image' }
         Professeurs:
             class: App\Entity\Professeurs
+            label: 'Enseignants'
             list:
                 fields:
                     - { property: 'nom', label: 'Nom', type: 'string' }
