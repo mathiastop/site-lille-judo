@@ -70,11 +70,17 @@ easy_admin:
             class: App\Entity\Professeurs
             list:
                 fields:
+                    - { property: 'nom', label: 'Nom', type: 'string' }
+                    - { property: 'prenom', label: 'Prénom', type: 'string' }
                     - { property: 'text', label: 'Texte', type: 'string' }
+                    - { property: 'role', label: 'Role', type: 'string' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.professeurs_images%' }
             form:
                 fields:
+                    - { property: 'nom', label: 'Nom' }
+                    - { property: 'prenom', label: 'Prénom' }
                     - { property: 'text', label: 'Texte' }
+                    - { property: 'role', label: 'Role' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image' }
         Bureau:
             class: App\Entity\Bureau

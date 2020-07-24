@@ -48,7 +48,7 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Les Enseignants");
 
         return $this->render('club/enseignants.html.twig', [
-            'professeurs' => $professeursRepository->findAll(),
+            'professeurs' => $professeursRepository->findAllOrderByName(),
         ]);
     }
 

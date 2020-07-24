@@ -5,114 +5,42 @@
 {% block body %}
     <div>
         <div class="container">
-            <ul class="list-group list-group-flush text-center">
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Directeur Technique Compétitions Adultes:</span> BONTE Thomas, 2ème Dan, DE
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Directeur Technique Enseignement et Pédagogie:</span> MAZURIER Alexandre, 2ème Dan, DE
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Directeur Technique Ne-Waza:</span> PFANZELT Helmut, 4ème Dan, CQP
-                </li>
-            </ul>
-        </div>
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-4">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Directeur Technique Compétitions Adultes</h2>
-                    <p>
-                        BONTE Thomas, 2ème Dan, DE
-                    </p>
-                </div>
-                <div class="col-lg-4">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Directeur Technique Enseignement et Pédagogie</h2>
-                    <p>
-                        MAZURIER Alexandre, 2ème Dan, DE
-                    </p>
-                </div>
-                <div class="col-lg-4">
-                    <img class="rounded-circle"
-                         src="http://placehold.it/140x140"
-                         width="140"
-                         height="140"
-                         alt="">
-                    <h2>Directeur Technique Ne-Waza</h2>
-                    <p>
-                        PFANZELT Helmut, 4ème Dan, CQP
-                    </p>
-                </div>
-            </div>
-        </div>
-        <h2 class="text-center">Professeurs</h2>
-        <div class="container">
-            <ul class="list-group list-group-flush text-center">
+            <div class="row text-center justify-content-center">
                 {% for professeur in professeurs %}
-                    <li class="list-group-item">
+                    <div class="col-lg-4">
                         {% if professeur.image %}
                             <img class="rounded-circle"
                                  src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
-                                 width="64"
-                                 height="64"
+                                 width="140"
+                                 height="140"
                                  alt="">
                         {% else %}
-                            <img class="rounded-circle"
-                                 src="http://placehold.it/64x64"
-                                 width="64"
-                                 height="64"
-                                 alt="">
-                        {% endif %}
-                        {{ professeur.text }}
-                    </li>
-                {% else %}
-                    <li class="list-group-item">
-                        no records found
-                    </li>
-                {% endfor %}
-                <div class="row justify-content-center">
-                    {% for professeur in professeurs %}
-                        <div class="col-lg-4">
-                            {% if professeur.image %}
-                                <img class="rounded-circle"
-                                     src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
-                                     width="140"
-                                     height="140"
-                                     alt="">
-                            {% else %}
-                                <img class="rounded-circle"
-                                     src="http://placehold.it/140x140"
-                                     width="140"
-                                     height="140"
-                                     alt="">
-                            {% endif %}
-                            <p>
-                                {{ professeur.text }}
-                            </p>
-                        </div>
-                    {% else %}
-                        <div class="col-lg-4">
                             <img class="rounded-circle"
                                  src="http://placehold.it/140x140"
                                  width="140"
                                  height="140"
                                  alt="">
-                            <p>
-                                no records found
-                            </p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </ul>
+                        {% endif %}
+                        <p><strong>{{ professeur.role }}</strong></p>
+                        <p>
+                            {{ professeur.prenom }}
+                            {{ professeur.nom }}
+                            {{ professeur.text }}
+                        </p>
+                    </div>
+                {% else %}
+                    <div class="col-lg-4">
+                        <img class="rounded-circle"
+                             src="http://placehold.it/140x140"
+                             width="140"
+                             height="140"
+                             alt="">
+                        <p>
+                            no records found
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
