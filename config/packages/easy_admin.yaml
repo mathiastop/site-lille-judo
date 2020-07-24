@@ -86,12 +86,14 @@ easy_admin:
             class: App\Entity\Bureau
             list:
                 fields:
-                    - { property: 'text', label: 'Texte', type: 'string' }
+                    - { property: 'nom', label: 'Nom', type: 'string' }
+                    - { property: 'prenom', label: 'Prénom', type: 'string' }
                     - { property: 'role', label: 'Role', type: 'string' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.bureau_images%' }
             form:
                 fields:
-                    - { property: 'text', label: 'Texte' }
+                    - { property: 'nom', label: 'Nom' }
+                    - { property: 'prenom', label: 'Prénom' }
                     - { property: 'role', label: 'Role', type: 'choice', type_options: { choices: { Président: 'Président', Trésorier: 'Trésorier', Secrétaire: 'Secrétaire', 'Secrétaire Adjointe': 'Secrétaire Adjointe' } } }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image' }
         Gallery:

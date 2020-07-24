@@ -62,6 +62,18 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Bureau");
 
         return $this->render('club/bureau.html.twig', [
+            'president' => $bureauRepository->findOneBy([
+                'role' => 'Président'
+            ]),
+            'tresorier' => $bureauRepository->findOneBy([
+                'role' => 'Trésorier'
+            ]),
+            'secretaire' => $bureauRepository->findOneBy([
+                'role' => 'Secrétaire'
+            ]),
+            'secretaireAdj' => $bureauRepository->findOneBy([
+                'role' => 'Secrétaire Adjointe'
+            ]),
             'bureaux' => $bureauRepository->findAll(),
         ]);
     }

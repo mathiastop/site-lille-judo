@@ -36,11 +36,11 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" style="color: black; background: yellow" id="navbarClubMenuLink"
+                            <a class="nav-link dropdown-toggle" style="color: black; background: #ffde3d" id="navbarClubMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Club
                             </a>
-                            <div class="dropdown-menu" style="background: yellow" aria-labelledby="navbarClubMenuLink">
+                            <div class="dropdown-menu" style="background: #ffde3d" aria-labelledby="navbarClubMenuLink">
                                 <a class="dropdown-item" href="{{ path('histoire') }}">Histoire</a>
                                 <a class="dropdown-item" href="{{ path('enseignants') }}">Les Enseignants</a>
                                 <a class="dropdown-item" href="{{ path('bureau') }}">Bureau</a>
@@ -96,9 +96,9 @@
             </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
-                    If you see this, that means you're admin.
-                    <a href="{{ absolute_url('/admin') }}">Admin</a>
-                    <a href="{{ path('app_logout') }}">Logout</a>
+                    Si vous voyez ceci, cela veut dore que vous êtes connecté en tant qu'administrateur.<br/>
+                    <a href="{{ absolute_url('/admin') }}">Accueil Administration </a>/
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
             {% endif %}
             <div class="container">
