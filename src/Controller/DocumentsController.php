@@ -7,14 +7,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class DocumentsController extends AbstractController
 {
     /**
      * @Route("/documents", name="documents")
      */
-    public function index(GalleryRepository $galleryRepository)
+    public function index(GalleryRepository $galleryRepository, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Documents");
+
         return $this->render('documents/index.html.twig', [
             'gallerys' => $galleryRepository->findAll()
         ]);

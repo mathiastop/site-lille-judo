@@ -13,6 +13,8 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class ActualitesController extends AbstractController
 {
@@ -29,7 +31,7 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/newsletter", name="newsletter")
      */
-    public function indexNewletter(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
+    public function indexNewletter(PostRepository $postRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $data = $postRepository->findBy([],['createdAt' => 'desc']);
         $posts = $paginator->paginate(
@@ -37,6 +39,9 @@ class ActualitesController extends AbstractController
             $request->query->getInt('page', 1),
             10
         );
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Newsletter");
 
         return $this->render('actualites/newsletter.html.twig', [
             'posts' => $posts,
@@ -46,8 +51,13 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/newsletter/{id}", name="newsletter_show")
      */
-    public function showNewsletter(Post $post)
+    public function showNewsletter(Post $post, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Newsletter", $router->generate('newsletter'));
+        $breadcrumbs->addItem($post->getTitle());
+
         return $this->render('actualites/newsletter-show.html.twig', [
             'post' => $post,
         ]);
@@ -56,7 +66,7 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/actualites-club", name="actualites-club")
      */
-    public function indexActualitesClub(PostClubRepository $postClubRepository, PaginatorInterface $paginator, Request $request)
+    public function indexActualitesClub(PostClubRepository $postClubRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $data = $postClubRepository->findBy([],['createdAt' => 'desc']);
         $posts = $paginator->paginate(
@@ -64,6 +74,9 @@ class ActualitesController extends AbstractController
             $request->query->getInt('page', 1),
             10
         );
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Actulités Club", $router->generate('actualites-club'));
 
         return $this->render('actualites/actualites-club.html.twig', [
             'posts' => $posts,
@@ -73,8 +86,13 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/actualites-club/{id}", name="actualites-club_show")
      */
-    public function showActualitesClub(PostClub $postClub)
+    public function showActualitesClub(PostClub $postClub, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Actulités Club", $router->generate('actualites-club'));
+        $breadcrumbs->addItem($postClub->getTitle());
+
         return $this->render('actualites/actualites-club-show.html.twig', [
             'post' => $postClub,
         ]);
@@ -83,7 +101,7 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/actualites-nationale-internationale", name="actualites-nationale-internationale")
      */
-    public function indexActualitesNationaleInternationale(PostNatioRepository $postNatioRepository, PaginatorInterface $paginator, Request $request)
+    public function indexActualitesNationaleInternationale(PostNatioRepository $postNatioRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $data = $postNatioRepository->findBy([],['createdAt' => 'desc']);
         $posts = $paginator->paginate(
@@ -91,6 +109,9 @@ class ActualitesController extends AbstractController
             $request->query->getInt('page', 1),
             10
         );
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Actualités Nationale Internationale", $router->generate('actualites-nationale-internationale'));
 
         return $this->render('actualites/actualites-nationale-internationale.html.twig', [
             'posts' => $posts,
@@ -100,8 +121,13 @@ class ActualitesController extends AbstractController
     /**
      * @Route("/actualites-nationale-internationale/{id}", name="actualites-nationale-internationale_show")
      */
-    public function showActualitesNationaleInternationale(PostNatio $postNatio)
+    public function showActualitesNationaleInternationale(PostNatio $postNatio, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Actualités Nationale Internationale", $router->generate('actualites-nationale-internationale'));
+        $breadcrumbs->addItem($postNatio->getTitle());
+
         return $this->render('actualites/actualites-nationale-internationale-show.html.twig', [
             'post' => $postNatio,
         ]);

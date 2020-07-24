@@ -101,6 +101,9 @@
                     <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
+            <div class="container">
+                {{ wo_render_breadcrumbs() }}
+            </div>
             {% block body %}{% endblock %}
         </div>
         <footer class="footer mt-auto py-3 flex-shrink-0">

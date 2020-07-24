@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class ClubController extends AbstractController
 {
@@ -25,8 +27,12 @@ class ClubController extends AbstractController
     /**
      * @Route("/histoire", name="histoire")
      */
-    public function histoireIndex()
+    public function histoireIndex(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Histoire");
+
         return $this->render('club/histoire.html.twig', [
             'controller_name' => 'HistoireController',
         ]);
@@ -35,8 +41,12 @@ class ClubController extends AbstractController
     /**
      * @Route("/enseignants", name="enseignants")
      */
-    public function enseignantsIndex(ProfesseursRepository $professeursRepository)
+    public function enseignantsIndex(ProfesseursRepository $professeursRepository, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Les Enseignants");
+
         return $this->render('club/enseignants.html.twig', [
             'professeurs' => $professeursRepository->findAll(),
         ]);
@@ -45,8 +55,12 @@ class ClubController extends AbstractController
     /**
      * @Route("/bureau", name="bureau")
      */
-    public function bureauIndex(BureauRepository $bureauRepository)
+    public function bureauIndex(BureauRepository $bureauRepository, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Bureau");
+
         return $this->render('club/bureau.html.twig', [
             'bureaux' => $bureauRepository->findAll(),
         ]);
@@ -55,7 +69,7 @@ class ClubController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contactIndex(Request $request, \Swift_Mailer $mailer)
+    public function contactIndex(Request $request, \Swift_Mailer $mailer, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $form = $this->createForm(ContactType::class);
 
@@ -67,8 +81,12 @@ class ClubController extends AbstractController
                 ->setTo('top.mathias7241@gmail.com')
                 ->setBody($contactFormData['Message:']);
             $mailer->send($message);
+
             return $this->redirectToRoute('accueil');
         }
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Contact");
 
         return $this->render('club/contact.html.twig', [
             'form' => $form->createView(),
@@ -78,8 +96,12 @@ class ClubController extends AbstractController
     /**
      * @Route("/dojo", name="dojo")
      */
-    public function dojoIndex()
+    public function dojoIndex(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Dojo");
+
         return $this->render('club/dojo.html.twig', [
             'controller_name' => 'DojoController',
         ]);

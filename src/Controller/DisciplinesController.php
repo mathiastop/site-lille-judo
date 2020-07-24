@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class DisciplinesController extends AbstractController
 {
@@ -22,8 +24,12 @@ class DisciplinesController extends AbstractController
     /**
      * @Route("/judo", name="judo")
      */
-    public function indexJudo()
+    public function indexJudo(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Disciplines");
+        $breadcrumbs->addItem("Judo");
+
         return $this->render('disciplines/judo.html.twig', [
             'controller_name' => 'JudoController',
         ]);
@@ -42,8 +48,12 @@ class DisciplinesController extends AbstractController
     /**
      * @Route("/ju-jitsu", name="ju-jitsu")
      */
-    public function indexJuJitsu()
+    public function indexJuJitsu(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Disciplines");
+        $breadcrumbs->addItem("Ju Jitsu");
+
         return $this->render('disciplines/ju-jitsu.html.twig', [
             'controller_name' => 'JuJitsuController',
         ]);
@@ -52,8 +62,12 @@ class DisciplinesController extends AbstractController
     /**
      * @Route("/taiso", name="taiso")
      */
-    public function indexTaiso()
+    public function indexTaiso(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Disciplines");
+        $breadcrumbs->addItem("Taiso");
+
         return $this->render('disciplines/taiso.html.twig', [
             'controller_name' => 'TaisoController',
         ]);
@@ -62,8 +76,12 @@ class DisciplinesController extends AbstractController
     /**
      * @Route("/ne-waza", name="ne-waza")
      */
-    public function indexNeWaza()
+    public function indexNeWaza(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Disciplines");
+        $breadcrumbs->addItem("Ne Waza");
+
         return $this->render('disciplines/ne-waza.html.twig', [
             'controller_name' => 'NeWazaController',
         ]);
