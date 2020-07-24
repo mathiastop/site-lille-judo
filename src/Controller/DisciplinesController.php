@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\FicheInscriptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -33,16 +34,6 @@ class DisciplinesController extends AbstractController
         return $this->render('disciplines/judo.html.twig', [
             'controller_name' => 'JudoController',
         ]);
-    }
-
-    /**
-     * @Route("/judo/inscription", name="downloadJudoInscription")
-     */
-    public function inscriptionJudo()
-    {
-        $file = new File($this->getParameter('kernel.project_dir').'/public/assets/Fiche_LUC_JUDO_2019_2020.pdf');
-
-        return $this->file($file, 'Fiche_LUC_JUDO_2019_2020.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
     }
 
     /**

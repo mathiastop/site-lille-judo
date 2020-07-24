@@ -18,6 +18,7 @@ easy_admin:
             - { entity: 'Bureau', icon: 'laptop-house' }
             - { label: 'Disciplines' }
             - { label: 'Inscription' }
+            - { entity: 'FicheInscription', label: "Fiche d'inscription", icon: 'copy' }
             - { label: 'Actualités' }
             - { entity: 'Post', icon: 'tag' }
             - { entity: 'PostClub', icon: 'tag' }
@@ -42,7 +43,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
         PostClub:
             class: App\Entity\PostClub
             label: 'Actualités Club'
@@ -57,7 +58,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
         PostNatio:
               class: App\Entity\PostNatio
               label: 'Actualités Nationale/Internationale'
@@ -72,7 +73,7 @@ easy_admin:
                   fields:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                      - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                      - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
         Professeurs:
             class: App\Entity\Professeurs
             label: 'Enseignants'
@@ -91,7 +92,7 @@ easy_admin:
                     - { property: 'grade', label: 'Grade' }
                     - { property: 'diplome', label: 'Diplomes' }
                     - { property: 'role', label: 'Role' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
         Bureau:
             class: App\Entity\Bureau
             list:
@@ -105,7 +106,7 @@ easy_admin:
                     - { property: 'nom', label: 'Nom' }
                     - { property: 'prenom', label: 'Prénom' }
                     - { property: 'role', label: 'Role', type: 'choice', type_options: { choices: { Président: 'Président', Trésorier: 'Trésorier', Secrétaire: 'Secrétaire', 'Secrétaire Adjointe': 'Secrétaire Adjointe' } } }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
         Gallery:
             class: App\Entity\Gallery
             label: 'Galerie'
@@ -163,3 +164,12 @@ easy_admin:
             form:
                 fields:
                     - { property: 'texte', label: 'Texte', type: 'textarea' }
+        FicheInscription:
+            class: App\Entity\FicheInscription
+            label: "Fiche d'inscription"
+            list:
+                fields:
+                    - { property: 'fiche', label: 'Fiche', type: 'string' }
+            form:
+                fields:
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }

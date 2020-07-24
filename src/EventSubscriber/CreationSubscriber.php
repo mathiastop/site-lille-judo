@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Bureau;
+use App\Entity\FicheInscription;
 use App\Entity\Gallery;
 use App\Entity\GalleryImage;
 use App\Entity\Post;
@@ -71,6 +72,10 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof FicheInscription) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -98,6 +103,9 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof GalleryImage) {
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof FicheInscription) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preRemove(LifecycleEventArgs $args) {
@@ -105,35 +113,35 @@ class CreationSubscriber implements EventSubscriber
 
         if ($entity instanceof Post) {
             $imageName = $entity->getImage();
-            if ($imageName) {
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/post/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/post/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostClub) {
             $imageName = $entity->getImage();
-            if ($imageName) {
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatio) {
             $imageName = $entity->getImage();
-            if ($imageName) {
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatio) {
             $imageName = $entity->getImage();
-            if ($imageName) {
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/professeurs/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/professeurs/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof Bureau) {
             $imageName = $entity->getImage();
-            if ($imageName) {
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/bureau/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/bureau/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
@@ -143,6 +151,14 @@ class CreationSubscriber implements EventSubscriber
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/gallery/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/gallery/'.$imageName);
             }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof FicheInscription) {
+            $imageName = $entity->getFiche();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/fiche/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/fiche/'.$imageName);
+            }
+            $entity->setFiche('null');
             $entity->setUpdatedAt(new \DateTime());
         }
     }

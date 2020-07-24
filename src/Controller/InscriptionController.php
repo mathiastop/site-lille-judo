@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Repository\FicheInscriptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
@@ -10,13 +13,17 @@ use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 class InscriptionController extends AbstractController
 {
     /**
-     * @Route("/inscription", name="inscription")
+     * @Route("/inscription", name="downloadInscription")
      */
-    public function index()
+    public function inscriptionJudo(FicheInscriptionRepository $ficheInscriptionRepository)
     {
-        return $this->render('inscription/index.html.twig', [
-            'controller_name' => 'InscriptionController',
-        ]);
+        $fiche = $ficheInscriptionRepository->findOneBy([], ['id' => 'DESC']);
+        if ($fiche) {
+            $file = new File($this->getParameter('kernel.project_dir').'/public'.$this->getParameter('app.path.fiche_inscription').'/'.$fiche->getFiche());
+
+            return $this->file($file, $fiche->getFiche(), ResponseHeaderBag::DISPOSITION_INLINE);
+        }
+        return $this->render('inscription/no-file.html.twig');
     }
 
     /**
