@@ -96,7 +96,7 @@
             </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
-                    Si vous voyez ceci, cela veut dore que vous êtes connecté en tant qu'administrateur.<br/>
+                    Si vous voyez ceci, cela veut dire que vous êtes connecté en tant qu'administrateur.<br/>
                     <a href="{{ absolute_url('/admin') }}">Accueil Administration </a>/
                     <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
