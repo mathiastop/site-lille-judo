@@ -12,6 +12,8 @@ easy_admin:
         menu:
             - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
             - { label: 'Club' }
+            - label: 'Histoire'
+              children: ['HistoireClub']
             - { entity: 'Professeurs', label: 'Enseignants', icon: 'chalkboard-teacher' }
             - { entity: 'Bureau', icon: 'laptop-house' }
             - { label: 'Disciplines' }
@@ -115,3 +117,16 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'galleryImages', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\GalleryImageType', by_reference: false } }
+        HistoireClub:
+            class: App\Entity\HistoriqueClub
+            label: 'Historique du Club'
+            list:
+                fields:
+                    - { property: 'titre', label: 'Titre', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'annee', label: 'Année', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'textarea' }

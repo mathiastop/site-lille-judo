@@ -221,36 +221,27 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-timeline">
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">1950</span>
-                                    <h3 class="title">Création de la section Judo</h3>
-                                    <p class="description">
-                                        Créée en 1950, la section Judo eut du mal à se développer faute de salles. Animée par des étudiants Ceinture Noire,
-                                        apôtres du Judo et dévoués à son développement (M.M. DEVULDER, MAUFROID), la section se pérennisa cependant.
-                                    </p>
+                            {% for historique in historiques %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year">{{ historique.annee }}</span>
+                                        <h3 class="title">{{ historique.titre }}</h3>
+                                        <p class="description">
+                                            {{ historique.texte }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">1961</span>
-                                    <h3 class="title">Relance de la discipline</h3>
-                                    <p class="description">
-                                        En 1961, les cours se faisaient dans une arrière salle de café. L'arrivée des Professeurs d'E.P.S. permit de
-                                        relancer la discipline en même temps que s'ouvraient deux salles de sport universitaire (Salle DEBEYRE et salle CHATELET).
-                                    </p>
+                            {% else %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year">0000</span>
+                                        <h3 class="title">No records found</h3>
+                                        <p class="description">
+                                            No records found
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">0000</span>
-                                    <h3 class="title">Titre</h3>
-                                    <p class="description">
-                                        Par la suite, une autre salle de judo fut construite à DEBEYRE pour s'achever dans une très belle et grande salle dans le même gymnase.
-                                        Le Judo était devenue majeur.
-                                    </p>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\ContactType;
 use App\Repository\BureauRepository;
+use App\Repository\HistoriqueClubRepository;
 use App\Repository\ProfesseursRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,14 +28,14 @@ class ClubController extends AbstractController
     /**
      * @Route("/histoire", name="histoire")
      */
-    public function histoireIndex(Breadcrumbs $breadcrumbs, RouterInterface $router)
+    public function histoireIndex(Breadcrumbs $breadcrumbs, RouterInterface $router, HistoriqueClubRepository $historiqueClubRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Club");
         $breadcrumbs->addItem("Histoire");
 
         return $this->render('club/histoire.html.twig', [
-            'controller_name' => 'HistoireController',
+            'historiques' => $historiqueClubRepository->findAllOrderByDate(),
         ]);
     }
 
