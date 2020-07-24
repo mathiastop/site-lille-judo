@@ -13,8 +13,19 @@ class AcceuilController extends AbstractController
      */
     public function index(PostRepository $postRepository)
     {
+        $posts = $postRepository->findBy([],['id'=>'DESC'],5,0);
+        $first = $posts[0];
+        $second = $posts[1];
+        $third = $posts[2];
+        $fourth = $posts[3];
+        $fifth = $posts[4];
+
         return $this->render('acceuil/index.html.twig', [
-            'posts' => $postRepository->findBy([],['id'=>'DESC'],6,0),
+            'first' => $first,
+            'second' => $second,
+            'third' => $third,
+            'fourth' => $fourth,
+            'fifth' => $fifth,
         ]);
     }
 }
