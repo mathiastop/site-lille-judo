@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\HistoriqueClub;
+use App\Entity\HistoriquePresidents;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method HistoriqueClub|null find($id, $lockMode = null, $lockVersion = null)
- * @method HistoriqueClub|null findOneBy(array $criteria, array $orderBy = null)
- * @method HistoriqueClub[]    findAll()
- * @method HistoriqueClub[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method HistoriquePresidents|null find($id, $lockMode = null, $lockVersion = null)
+ * @method HistoriquePresidents|null findOneBy(array $criteria, array $orderBy = null)
+ * @method HistoriquePresidents[]    findAll()
+ * @method HistoriquePresidents[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class HistoriqueClubRepository extends ServiceEntityRepository
+class HistoriquePresidentsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, HistoriqueClub::class);
+        parent::__construct($registry, HistoriquePresidents::class);
     }
 
     /**
-     * @return HistoriqueClub[]
+     * @return HistoriquePresidents[]
      */
     public function findAllOrderByDate(): array
     {
@@ -28,7 +28,7 @@ class HistoriqueClubRepository extends ServiceEntityRepository
 
         $sql = '
             SELECT *
-            FROM historique_club h
+            FROM historique_presidents h
             ORDER BY h.annee
         ';
         $stmt = $conn->prepare($sql);
@@ -36,8 +36,9 @@ class HistoriqueClubRepository extends ServiceEntityRepository
 
         return $stmt->fetchAll();
     }
+
     // /**
-    //  * @return HistoriqueClub[] Returns an array of HistoriqueClub objects
+    //  * @return HistoriquePresidents[] Returns an array of HistoriquePresidents objects
     //  */
     /*
     public function findByExampleField($value)
@@ -54,7 +55,7 @@ class HistoriqueClubRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?HistoriqueClub
+    public function findOneBySomeField($value): ?HistoriquePresidents
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.exampleField = :val')

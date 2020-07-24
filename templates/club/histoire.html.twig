@@ -251,43 +251,27 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-timeline">
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">1950</span>
-                                    <h3 class="title">M. DEVULDER</h3>
-                                    <p class="description">
-                                        M. DEVULDER, étudiant en Médecine, excellent combattant, tenait avec J.M. MAGIN, la section à bout de bras.
-                                    </p>
+                            {% for president in presidents %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year">{{ president.annee }}</span>
+                                        <h3 class="title">{{ president.titre }}</h3>
+                                        <p class="description">
+                                            {{ president.texte }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">1957</span>
-                                    <h3 class="title">Dr. CASAGNE</h3>
-                                    <p class="description">
-                                        Le Docteur CASAGNE, Médecin Fédéral de la Ligue des Flandres Artois, accepta de prendre la Direction.
-                                    </p>
+                            {% else %}
+                                <div class="timeline">
+                                    <div class="timeline-content">
+                                        <span class="timeline-year">0000</span>
+                                        <h3 class="title">No records found</h3>
+                                        <p class="description">
+                                            No records found
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">1973</span>
-                                    <h3 class="title">Dr. LEON</h3>
-                                    <p class="description">
-                                        Le Docteur LEON accepta la responsabilité de la section. puis le docteur GUITTELIER assura la Direction
-                                        administrative, tandis que Jean-Pierre CASTEL assurait la Direction technique.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <span class="timeline-year">1993</span>
-                                    <h3 class="title">Jean-Pierre CASTEL</h3>
-                                    <p class="description">
-                                        La Présidence est assurée par Jean-Pierre CASTEL qui, avec compétence et dynamisme, en a fait une solide section.
-                                    </p>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
