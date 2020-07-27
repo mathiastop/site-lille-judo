@@ -91,11 +91,19 @@
             </nav>
             <div style="background: #A93514">
                 <div class="container">
-                    <a href="{{ path('boutique') }}" style="color: black"><strong>Boutique</strong></a>
-                    <h1 class="display-3 text-center" style="color: black"><strong>LUC JUDO</strong><br/>
-                        <small class="text-white">Judo - Ju Jitsu - Ne Waza - Taiso</small>
-                    </h1>
+                    <a class="float-left" href="{{ path('boutique') }}" style="color: black"><strong>Boutique</strong></a>
+                    <div class="text-right">
+                        <a href="https://www.facebook.com/pages/category/Amateur-Sports-Team/LUC-Judo-335783152973/" target="_blank">
+                            <img src="{{ asset('assets/fb_logo.png') }}"
+                                 height="100"
+                                 width="100"
+                                 alt="fb_logo">
+                        </a>
+                    </div>
                 </div>
+                <h1 class="display-3 float-none text-center" style="color: black"><strong>LUC JUDO</strong><br/>
+                    <small class="text-white">Judo - Ju Jitsu - Ne Waza - Taiso</small>
+                </h1>
             </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
