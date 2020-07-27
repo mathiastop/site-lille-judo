@@ -3,45 +3,43 @@
 {% block title %}Enseignants - Lille Judo{% endblock %}
 
 {% block body %}
-    <div>
-        <div class="container">
-            <div class="row text-center justify-content-center">
-                {% for professeur in professeurs %}
-                    <div class="col-lg-4">
-                        {% if professeur.image %}
-                            <img class="rounded-circle"
-                                 src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
-                                 width="140"
-                                 height="140"
-                                 alt="">
-                        {% else %}
-                            <img class="rounded-circle"
-                                 src="http://placehold.it/140x140"
-                                 width="140"
-                                 height="140"
-                                 alt="">
-                        {% endif %}
-                        <p><strong>{{ professeur.role }}</strong></p>
-                        <p>
-                            {{ professeur.prenom }}
-                            {{ professeur.nom }}
-                            {{ professeur.grade }}
-                            {{ professeur.diplome }}
-                        </p>
-                    </div>
-                {% else %}
-                    <div class="col-lg-4">
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            {% for professeur in professeurs %}
+                <div class="col-lg-4">
+                    {% if professeur.image %}
+                        <img class="rounded-circle"
+                             src="{{ asset('uploads/professeurs/') }}{{ professeur.image }}"
+                             width="140"
+                             height="140"
+                             alt="">
+                    {% else %}
                         <img class="rounded-circle"
                              src="http://placehold.it/140x140"
                              width="140"
                              height="140"
                              alt="">
-                        <p>
-                            no records found
-                        </p>
-                    </div>
-                {% endfor %}
-            </div>
+                    {% endif %}
+                    <p><strong>{{ professeur.role }}</strong></p>
+                    <p>
+                        {{ professeur.prenom }}
+                        {{ professeur.nom }}
+                        {{ professeur.grade }}
+                        {{ professeur.diplome }}
+                    </p>
+                </div>
+            {% else %}
+                <div class="col-lg-4">
+                    <img class="rounded-circle"
+                         src="http://placehold.it/140x140"
+                         width="140"
+                         height="140"
+                         alt="">
+                    <p>
+                        no records found
+                    </p>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

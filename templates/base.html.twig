@@ -90,9 +90,12 @@
                 </div>
             </nav>
             <div style="background: #A93514">
-                <h1 class="display-3 text-center" style="color: black"><strong>LUC JUDO</strong><br/>
-                    <small class="text-white">Judo - Ju Jitsu - Ne Waza - Taiso</small>
-                </h1>
+                <div class="container">
+                    <a href="{{ path('boutique') }}" style="color: black"><strong>Boutique</strong></a>
+                    <h1 class="display-3 text-center" style="color: black"><strong>LUC JUDO</strong><br/>
+                        <small class="text-white">Judo - Ju Jitsu - Ne Waza - Taiso</small>
+                    </h1>
+                </div>
             </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
