@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Acceuil - Lille Judo{% endblock %}
+{% block stylesheets %}
+    <style>
+        .iframe-outer, .iframe-inner {
+            height: 300px;
+            width: 300px;
+        }
+        .iframe-outer {
+            display: inline-block;
+            position: relative;
+        }
+        .iframe-inner {
+            overflow: hidden;
+            border-radius: 5000px;
+            position: absolute;
+        }
 
+        .iframe-inner iframe {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
 {% block body %}
 {#    TODO: Remove this div before true launching#}
     <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
@@ -10,133 +31,126 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="container">
-        <div id="carouselAcceuilPosts" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselAcceuilPosts" data-slide-to="{{ first.id }}" class="active"></li>
-                <li data-target="#carouselAcceuilPosts" data-slide-to="{{ second.id }}"></li>
-                <li data-target="#carouselAcceuilPosts" data-slide-to="{{ third.id }}"></li>
-                <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fourth.id }}"></li>
-                <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fifth.id }}"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    {% if first.image %}
-                        <a href="{{ path('newsletter_show', {'id': first.id}) }}">
-                            <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ first.image }}" alt="">
-                        </a>
-                    {% else %}
-                        <a href="{{ path('newsletter_show', {'id': first.id}) }}">
-                            <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
-                        </a>
-                    {% endif %}
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ first.title }}</h5>
-                        <p>{{ first.body }}</p>
+    <div class="container-fluid">
+        <div class="row text-center justify-content-center">
+            <div class="col-xl my-auto">
+                <div class="iframe-outer">
+                    <div class="iframe-inner">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.75805227567!2d3.071911315859676!3d50.63161128217546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d58cd174730f%3A0xf0f98712dd300f10!2sSports%20de%20contact%20Lille%20Etudiants%20Club!5e0!3m2!1sfr!2sfr!4v1594216294738!5m2!1sfr!2sfr"
+                                class="embed-responsive-item"
+                                allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    {% if second.image %}
-                    <a href="{{ path('newsletter_show', {'id': second.id}) }}">
-                        <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ second.image }}" alt="">
+                <h2>156 rue Charles Debierre</h2>
+            </div>
+            <div class="col-xl-6">
+                <div id="carouselAcceuilPosts" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ first.id }}" class="active"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ second.id }}"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ third.id }}"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fourth.id }}"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fifth.id }}"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if first.image %}
+                                <a href="{{ path('newsletter_show', {'id': first.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ first.image }}" alt="">
+                                </a>
+                            {% else %}
+                                <a href="{{ path('newsletter_show', {'id': first.id}) }}">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                </a>
+                            {% endif %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ first.title }}</h5>
+                                <p>{{ first.body }}</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            {% if second.image %}
+                                <a href="{{ path('newsletter_show', {'id': second.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ second.image }}" alt="">
+                                </a>
+                            {% else %}
+                                <a href="{{ path('newsletter_show', {'id': second.id}) }}">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                </a>
+                            {% endif %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ second.title }}</h5>
+                                <p>{{ second.body }}</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            {% if third.image %}
+                                <a href="{{ path('newsletter_show', {'id': third.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ third.image }}" alt="">
+                                </a>
+                            {% else %}
+                                <a href="{{ path('newsletter_show', {'id': third.id}) }}">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                </a>
+                            {% endif %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ third.title }}</h5>
+                                <p>{{ third.body }}</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            {% if fourth.image %}
+                                <a href="{{ path('newsletter_show', {'id': fourth.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ fourth.image }}" alt="">
+                                </a>
+                            {% else %}
+                                <a href="{{ path('newsletter_show', {'id': fourth.id}) }}">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                </a>
+                            {% endif %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ fourth.title }}</h5>
+                                <p>{{ fourth.body }}</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            {% if fifth.image %}
+                                <a href="{{ path('newsletter_show', {'id': fifth.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ fifth.image }}" alt="">
+                                </a>
+                            {% else %}
+                                <a href="{{ path('newsletter_show', {'id': fifth.id}) }}">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                </a>
+                            {% endif %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ fifth.title }}</h5>
+                                <p>{{ fifth.body }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselAcceuilPosts" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
                     </a>
-                    {% else %}
-                    <a href="{{ path('newsletter_show', {'id': second.id}) }}">
-                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                    <a class="carousel-control-next" href="#carouselAcceuilPosts" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
                     </a>
-                    {% endif %}
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ second.title }}</h5>
-                        <p>{{ second.body }}</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    {% if third.image %}
-                        <a href="{{ path('newsletter_show', {'id': third.id}) }}">
-                            <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ third.image }}" alt="">
-                        </a>
-                    {% else %}
-                        <a href="{{ path('newsletter_show', {'id': third.id}) }}">
-                            <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
-                        </a>
-                    {% endif %}
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ third.title }}</h5>
-                        <p>{{ third.body }}</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    {% if fourth.image %}
-                        <a href="{{ path('newsletter_show', {'id': fourth.id}) }}">
-                            <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ fourth.image }}" alt="">
-                        </a>
-                    {% else %}
-                        <a href="{{ path('newsletter_show', {'id': fourth.id}) }}">
-                            <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
-                        </a>
-                    {% endif %}
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ fourth.title }}</h5>
-                        <p>{{ fourth.body }}</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    {% if fifth.image %}
-                        <a href="{{ path('newsletter_show', {'id': fifth.id}) }}">
-                            <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ fifth.image }}" alt="">
-                        </a>
-                    {% else %}
-                        <a href="{{ path('newsletter_show', {'id': fifth.id}) }}">
-                            <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
-                        </a>
-                    {% endif %}
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ fifth.title }}</h5>
-                        <p>{{ fifth.body }}</p>
-                    </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselAcceuilPosts" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselAcceuilPosts" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="col-xl my-auto">
+                <div class="iframe-outer">
+                    <div class="iframe-inner">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d894.800914630943!2d3.0873630056344954!3d50.62936125849722!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d5faea376d7d%3A0x4f55bddb5cd9f71d!2sEspace%20Sportif%20Defaucompret!5e0!3m2!1sfr!2sfr!4v1595857882269!5m2!1sfr!2sfr"
+                                class="embed-responsive-item"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <h2>72-74 rue du Long Pot</h2>
+            </div>
         </div>
-    </div>
-{#    <div>#}
-{#        <div class="embed-responsive embed-responsive-4by3">#}
-{#            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.75805227567!2d3.071911315859676!3d50.63161128217546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d58cd174730f%3A0xf0f98712dd300f10!2sSports%20de%20contact%20Lille%20Etudiants%20Club!5e0!3m2!1sfr!2sfr!4v1594216294738!5m2!1sfr!2sfr"#}
-{#                    class="embed-responsive-item"#}
-{#                    width="400"#}
-{#                    height="400"#}
-{#                    allowfullscreen>#}
-{#            </iframe>#}
-{#        </div>#}
-{#        <div class="embed-responsive embed-responsive-4by3">#}
-{#            <iframe#}
-{#                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10123.531260071102!2d3.0872175!3d50.6292937!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaa09394f92c9509f!2sComplexe%20sportif%20Auguste%20Defaucompret!5e0!3m2!1sfr!2sfr!4v1594217549823!5m2!1sfr!2sfr"#}
-{#                    class="embed-responsive-item"#}
-{#                    width="400"#}
-{#                    height="400"#}
-{#                    allowfullscreen>#}
-{#            </iframe>#}
-{#        </div>#}
-{#    </div>#}
-    <div class="text-center">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.75805227567!2d3.071911315859676!3d50.63161128217546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d58cd174730f%3A0xf0f98712dd300f10!2sSports%20de%20contact%20Lille%20Etudiants%20Club!5e0!3m2!1sfr!2sfr!4v1594216294738!5m2!1sfr!2sfr"
-                frameborder="0"
-                width="25%"
-                height="400"
-                allowfullscreen>
-        </iframe>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10123.531260071102!2d3.0872175!3d50.6292937!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaa09394f92c9509f!2sComplexe%20sportif%20Auguste%20Defaucompret!5e0!3m2!1sfr!2sfr!4v1594217549823!5m2!1sfr!2sfr"
-                frameborder="0"
-                width="25%"
-                height="400"
-                allowfullscreen>
-        </iframe>
     </div>
 {% endblock %}
