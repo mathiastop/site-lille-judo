@@ -12,16 +12,33 @@
                 <a class="nav-link" id="galerie-tab" data-toggle="tab" href="#galerie" aria-controls="galerie" aria-selected="false">Galerie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="exemple2-tab" data-toggle="tab" href="#exemple2" aria-controls="exemple2" aria-selected="false">Exemple</a>
+                <a class="nav-link" id="exemple-tab" data-toggle="tab" href="#exemple" aria-controls="exemple" aria-selected="false">Exemple</a>
             </li>
         </ul>
         <div class="tab-content" id="documentsTabContent">
             <div id="grades" class="tab-pane fade show active" role="tabpanel" aria-labelledby="grades-tab">
                 <h3>Passages des grades</h3>
-                <a href="{{ path('jaune') }}" target="_blank">Ceinture Jaune</a><br/>
-                <a href="{{ path('orange') }}" target="_blank">Ceinture Orange</a><br/>
-                <a href="{{ path('verte') }}" target="_blank">Ceinture Verte</a><br/>
-                <a href="{{ path('marron') }}" target="_blank">Ceinture Marron</a><br/>
+                <ul class="nav nav-tabs" id="gradesTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="fiches-tab" data-toggle="tab" href="#fiches" aria-controls="fiches" aria-selected="true">Fiches Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="fiches-tab" data-toggle="tab" href="#photos" aria-controls="photos" aria-selected="true">Photos Passages</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="gradesTabContent">
+                    <div id="fiches" class="tab-pane fade show active" role="tabpanel" aria-labelledby="fiches-tab">
+                        <h3>Fiches Techniques</h3>
+                        <a href="{{ path('jaune') }}" target="_blank">Ceinture Jaune</a><br/>
+                        <a href="{{ path('orange') }}" target="_blank">Ceinture Orange</a><br/>
+                        <a href="{{ path('verte') }}" target="_blank">Ceinture Verte</a><br/>
+                        <a href="{{ path('marron') }}" target="_blank">Ceinture Marron</a><br/>
+                    </div>
+                    <div id="photos" class="tab-pane fade" role="tabpanel" aria-labelledby="photos-tab">
+                        <h3>Photos Passages</h3>
+                        test
+                    </div>
+                </div>
             </div>
             <div id="galerie" class="tab-pane fade" role="tabpanel" aria-labelledby="galerie-tab">
                 {% for gallery in gallerys %}
@@ -40,9 +57,8 @@
                         no records found
                     </div>
                 {% endfor %}
-                </div>
             </div>
-            <div id="exemple2" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple2-tab">
+            <div id="exemple" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple-tab">
                 <h3>Exemple</h3>
             </div>
         </div>
