@@ -2,6 +2,9 @@
 
 {% block title %}Documents - Lille Judo{% endblock %}
 
+{% block stylesheets %}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <ul class="nav nav-tabs" id="documentsTab" role="tablist">
@@ -39,7 +42,9 @@
                         <div class="row text-center justify-content-center">
                             {% for photos_passages_grade in photos_passages_grades %}
                                 <div class="col-lg-3 col-md-4 col-6">
-                                    <img class="img-fluid img-thumbnail" src="{{ asset('uploads/passage_grades/') }}{{ photos_passages_grade.image }}" alt="">
+                                    <a href="{{ asset('uploads/passage_grades/') }}{{ photos_passages_grade.image }}" data-toggle="lightbox">
+                                        <img class="img-fluid img-thumbnail" src="{{ asset('uploads/passage_grades/') }}{{ photos_passages_grade.image }}" alt="">
+                                    </a>
                                 </div>
                             {% else %}
                                 <div>
@@ -56,7 +61,7 @@
                     <div class="row text-center text-lg-left">
                         {% for galleryImage in gallery.getGalleryImages() %}
                             <div class="col-lg-3 col-md-4 col-6">
-                                <a href="#" class="d-block mb-4 h-100">
+                                <a href="{{ asset('uploads/gallery/') }}{{ galleryImage.image }}" data-toggle="lightbox">
                                     <img class="img-fluid img-thumbnail" src="{{ asset('uploads/gallery/') }}{{ galleryImage.image }}" alt="">
                                 </a>
                             </div>
@@ -73,4 +78,13 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 {% endblock %}
