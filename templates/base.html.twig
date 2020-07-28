@@ -11,7 +11,7 @@
             body {
                 height: 100%;
             }
-            a {
+            a, a:hover {
                 color: #A93514;
             }
             .dropdown:hover .dropdown-menu{
@@ -135,7 +135,9 @@
                 <div class="container">
                     <div class="row text-center justify-content-center">
                         <div class="col my-auto">
-                            <a href="{{ path('boutique') }}" style="color: black"><strong>Boutique</strong></a>
+                            <a href="{{ path('boutique') }}" style="color: black">
+                                <h4><strong>Boutique</strong></h4>
+                            </a>
                         </div>
                         <div class="col my-auto">
                             <a href="https://www.facebook.com/pages/category/Amateur-Sports-Team/LUC-Judo-335783152973/" target="_blank">
@@ -147,9 +149,73 @@
                         </div>
                     </div>
                 </div>
-                <h1 class="display-3 text-center" style="color: black"><strong>LUC JUDO</strong><br/>
-                    <small class="text-white">Judo - Ju Jitsu - Ne Waza - Taiso</small>
-                </h1>
+                <div class="container-fluid">
+                    <div class="row text-center justify-content-center">
+                        <div class="col d-none d-lg-block">
+                            <div class="row">
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/politesse.png') }}" class="figure-img img-fluid" alt="Politesse">
+                                        <figcaption class="figure-caption text-white">Politesse</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/courage.png') }}" class="figure-img img-fluid" alt="Courage">
+                                        <figcaption class="figure-caption text-white">Courage</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/sincerite.png') }}" class="figure-img img-fluid" alt="Sincérité">
+                                        <figcaption class="figure-caption text-white">Sincérité</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/honneur.png') }}" class="figure-img img-fluid" alt="Honneur">
+                                        <figcaption class="figure-caption text-white">Honneur</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-3 text-center" style="color: black"><strong>LUC JUDO</strong><br/>
+                                <small class="text-white">Judo - Ju Jitsu - Taiso - Ne Waza</small>
+                            </h1>
+                        </div>
+                        <div class="col d-none d-lg-block">
+                            <div class="row">
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/modestie.png') }}" class="figure-img img-fluid" alt="Modestie">
+                                        <figcaption class="figure-caption text-white">Modestie</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/respect.png') }}" class="figure-img img-fluid" alt="Respect">
+                                        <figcaption class="figure-caption text-white">Respect</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/controle-de-soi.png') }}" class="figure-img img-fluid" alt="Contrôle de soi">
+                                        <figcaption class="figure-caption text-white">Contrôle de soi</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col">
+                                    <figure class="figure">
+                                        <img src="{{ asset('assets/amitie.png') }}" class="figure-img img-fluid" alt="Amitié">
+                                        <figcaption class="figure-caption text-white">Amitié</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
