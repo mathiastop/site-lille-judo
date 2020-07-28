@@ -27,7 +27,7 @@ easy_admin:
             - { entity: 'PostNatio', icon: 'globe' }
             - { label: 'Documents' }
             - { entity: 'Gallery', icon: 'images' }
-            - { entity: 'PhotosPassagesGrades', icon: 'tag' }
+            - { entity: 'PhotosPassagesGrades', icon: 'graduation-cap' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
@@ -46,7 +46,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
         PostClub:
             class: App\Entity\PostClub
             label: 'Actualités Club'
