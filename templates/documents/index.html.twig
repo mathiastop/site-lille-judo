@@ -32,10 +32,52 @@
                 <div class="tab-content" id="gradesTabContent">
                     <div id="fiches" class="tab-pane fade show active" role="tabpanel" aria-labelledby="fiches-tab">
                         <h3>Fiches Techniques</h3>
-                        <a href="{{ path('jaune') }}" target="_blank">Ceinture Jaune</a><br/>
-                        <a href="{{ path('orange') }}" target="_blank">Ceinture Orange</a><br/>
-                        <a href="{{ path('verte') }}" target="_blank">Ceinture Verte</a><br/>
-                        <a href="{{ path('marron') }}" target="_blank">Ceinture Marron</a><br/>
+                        <div class="row text-center justify-content-center">
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/jaune_debout.png') }}" alt="jaune_debout">
+                            </div>
+                            <div class="col-lg-4 my-auto">
+                                <a href="{{ path('jaune') }}" target="_blank">
+                                    <h2>Ceinture Jaune</h2>
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/jaune_sol.png') }}" alt="jaune_sol">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/orange_debout.png') }}" alt="orange_debout">
+                            </div>
+                            <div class="col-lg-4 my-auto">
+                                <a href="{{ path('orange') }}" target="_blank">
+                                    <h2>Ceinture Orange</h2>
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/orange_sol.png') }}" alt="orange_sol">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/verte_debout.png') }}" alt="verte_debout">
+                            </div>
+                            <div class="col-lg-4 my-auto">
+                                <a href="{{ path('verte') }}" target="_blank">
+                                    <h2>Ceinture Verte</h2>
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/verte_sol.png') }}" alt="verte_sol">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/marron_debout.png') }}" alt="marron_debout">
+                            </div>
+                            <div class="col-lg-4 my-auto">
+                                <a href="{{ path('marron') }}" target="_blank">
+                                    <h2>Ceinture Marron</h2>
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="{{ asset('assets/marron_sol.png') }}" alt="marron_sol">
+                            </div>
+                        </div>
                     </div>
                     <div id="photos" class="tab-pane fade" role="tabpanel" aria-labelledby="photos-tab">
                         <h3>Photos Passages</h3>
