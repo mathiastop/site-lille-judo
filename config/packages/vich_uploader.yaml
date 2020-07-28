@@ -23,6 +23,9 @@ vich_uploader:
         boutique_images:
             uri_prefix: '%app.path.boutique_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.boutique_images%'
+        passage_grades_images:
+            uri_prefix: '%app.path.passage_grades_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.passage_grades_images%'
         fiche_inscription:
             uri_prefix: '%app.path.fiche_inscription%'
             upload_destination: '%kernel.project_dir%/public%app.path.fiche_inscription%'

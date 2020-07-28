@@ -7,6 +7,7 @@ use App\Entity\Bureau;
 use App\Entity\FicheInscription;
 use App\Entity\Gallery;
 use App\Entity\GalleryImage;
+use App\Entity\PhotosPassagesGrades;
 use App\Entity\Post;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
@@ -81,6 +82,10 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof PhotosPassagesGrades) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -112,6 +117,9 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof Boutique) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PhotosPassagesGrades) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }
@@ -170,8 +178,15 @@ class CreationSubscriber implements EventSubscriber
         }
         if ($entity instanceof Boutique) {
             $imageName = $entity->getImage();
-            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/fiche/'.$imageName)) {
-                unlink($this->kernel->getProjectDir().'/public/uploads/fiche/'.$imageName);
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/boutique/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/boutique/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PhotosPassagesGrades) {
+            $imageName = $entity->getImage();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }

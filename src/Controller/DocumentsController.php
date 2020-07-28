@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\GalleryRepository;
+use App\Repository\PhotosPassagesGradesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -15,13 +16,14 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/documents", name="documents")
      */
-    public function index(GalleryRepository $galleryRepository, Breadcrumbs $breadcrumbs, RouterInterface $router)
+    public function index(GalleryRepository $galleryRepository, Breadcrumbs $breadcrumbs, RouterInterface $router, PhotosPassagesGradesRepository $photosPassagesGradesRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Documents");
 
         return $this->render('documents/index.html.twig', [
-            'gallerys' => $galleryRepository->findAll()
+            'gallerys' => $galleryRepository->findAll(),
+            'photos_passages_grades' => $photosPassagesGradesRepository->findAll(),
         ]);
     }
 

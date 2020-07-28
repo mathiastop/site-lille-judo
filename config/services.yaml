@@ -11,6 +11,7 @@ parameters:
     app.path.bureau_images: /uploads/bureau
     app.path.gallery_images: /uploads/gallery
     app.path.boutique_images: /uploads/boutique
+    app.path.passage_grades_images: /uploads/passage_grades
     app.path.fiche_inscription: /uploads/fiche
 
 services:

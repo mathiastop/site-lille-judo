@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Documents - Lille Judo{% endblock %}
-{% block stylesheets %}{% endblock %}
+
 {% block body %}
     <div class="container">
         <ul class="nav nav-tabs" id="documentsTab" role="tablist">
@@ -36,7 +36,17 @@
                     </div>
                     <div id="photos" class="tab-pane fade" role="tabpanel" aria-labelledby="photos-tab">
                         <h3>Photos Passages</h3>
-                        test
+                        <div class="row text-center justify-content-center">
+                            {% for photos_passages_grade in photos_passages_grades %}
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <img class="img-fluid img-thumbnail" src="{{ asset('uploads/passage_grades/') }}{{ photos_passages_grade.image }}" alt="">
+                                </div>
+                            {% else %}
+                                <div>
+                                    no records found
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

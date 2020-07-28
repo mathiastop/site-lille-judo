@@ -27,6 +27,7 @@ easy_admin:
             - { entity: 'PostNatio', icon: 'globe' }
             - { label: 'Documents' }
             - { entity: 'Gallery', icon: 'images' }
+            - { entity: 'PhotosPassagesGrades', icon: 'tag' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
@@ -186,4 +187,13 @@ easy_admin:
                 fields:
                     - { property: 'objet', label: 'Objet' }
                     - { property: 'prix', label: 'Prix', type: 'money' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true }  }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
+        PhotosPassagesGrades:
+            class: App\Entity\PhotosPassagesGrades
+            label: "Photos Passage Grades"
+            list:
+                fields:
+                    - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.passage_grades_images%' }
+            form:
+                fields:
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
