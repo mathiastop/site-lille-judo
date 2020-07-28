@@ -16,7 +16,6 @@
             border-radius: 5000px;
             position: absolute;
         }
-
         .iframe-inner iframe {
             height: 100%;
             width: 100%;
@@ -57,76 +56,71 @@
                         <div class="carousel-item active">
                             {% if first.image %}
                                 <a href="{{ path('newsletter_show', {'id': first.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ first.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ first.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('newsletter_show', {'id': first.id}) }}">
-                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ first.title }}</h5>
-                                <p>{{ first.body }}</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if second.image %}
                                 <a href="{{ path('newsletter_show', {'id': second.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ second.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ second.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('newsletter_show', {'id': second.id}) }}">
-                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ second.title }}</h5>
-                                <p>{{ second.body }}</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if third.image %}
                                 <a href="{{ path('newsletter_show', {'id': third.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ third.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ third.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('newsletter_show', {'id': third.id}) }}">
-                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ third.title }}</h5>
-                                <p>{{ third.body }}</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if fourth.image %}
                                 <a href="{{ path('newsletter_show', {'id': fourth.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ fourth.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ fourth.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('newsletter_show', {'id': fourth.id}) }}">
-                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ fourth.title }}</h5>
-                                <p>{{ fourth.body }}</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if fifth.image %}
                                 <a href="{{ path('newsletter_show', {'id': fifth.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/post/') }}{{ fifth.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ fifth.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('newsletter_show', {'id': fifth.id}) }}">
-                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ fifth.title }}</h5>
-                                <p>{{ fifth.body }}</p>
                             </div>
                         </div>
                     </div>
