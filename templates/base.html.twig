@@ -223,6 +223,8 @@
                     <a href="{{ absolute_url('/admin') }}">Accueil Administration </a>/
                     <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
+            {% else %}
+                <br/>
             {% endif %}
             <div class="container">
                 {{ wo_render_breadcrumbs() }}

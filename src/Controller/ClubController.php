@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\ContactType;
 use App\Repository\BureauRepository;
+use App\Repository\DojoRepository;
 use App\Repository\HistoriqueClubRepository;
 use App\Repository\HistoriqueEnseignementRepository;
 use App\Repository\HistoriquePersonnalitesRepository;
@@ -119,14 +120,41 @@ class ClubController extends AbstractController
     /**
      * @Route("/dojo", name="dojo")
      */
-    public function dojoIndex(Breadcrumbs $breadcrumbs, RouterInterface $router)
+    public function dojoIndex(Breadcrumbs $breadcrumbs, RouterInterface $router, DojoRepository $dojoRepository)
     {
+        $senior = $dojoRepository->findOneBy([
+            'categorie' => 'Seniors'
+        ]);
+        $junior = $dojoRepository->findOneBy([
+            'categorie' => 'Juniors'
+        ]);
+        $cadet = $dojoRepository->findOneBy([
+            'categorie' => 'Cadets'
+        ]);
+        $minime = $dojoRepository->findOneBy([
+            'categorie' => 'Minimes'
+        ]);
+        $benjamin = $dojoRepository->findOneBy([
+            'categorie' => 'Benjamins'
+        ]);
+        $poussin = $dojoRepository->findOneBy([
+            'categorie' => 'Poussins'
+        ]);
+        $miniPoussin = $dojoRepository->findOneBy([
+            'categorie' => 'Mini-Poussins'
+        ]);
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Club");
         $breadcrumbs->addItem("Dojo");
 
         return $this->render('club/dojo.html.twig', [
-            'controller_name' => 'DojoController',
+            'miniPoussin' => $miniPoussin,
+            'poussin' => $poussin,
+            'benjamin' => $benjamin,
+            'minime' => $minime,
+            'cadet' => $cadet,
+            'junior' => $junior,
+            'senior' => $senior,
         ]);
     }
 }

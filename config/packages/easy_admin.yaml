@@ -18,6 +18,7 @@ easy_admin:
               children: ['HistoireClub', 'HistoirePresidents', 'HistoirePersonnalites', 'HistoireEnseignement']
             - { entity: 'Professeurs', label: 'Enseignants', icon: 'chalkboard-teacher' }
             - { entity: 'Bureau', icon: 'laptop-house' }
+            - { entity: 'Dojo', icon: 'door-open' }
             - { label: 'Disciplines' }
             - { label: 'Inscription' }
             - { entity: 'FicheInscription', label: "Fiche d'inscription", icon: 'copy' }
@@ -197,3 +198,15 @@ easy_admin:
             form:
                 fields:
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
+        Dojo:
+            class: App\Entity\Dojo
+            list:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'annee', label: 'Année' }
+                    - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
