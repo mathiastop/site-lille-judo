@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compétitions - Lille Judo{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Inscription {{ competition.lieu }}</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Send"/>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

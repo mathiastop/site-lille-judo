@@ -22,6 +22,7 @@ easy_admin:
             - { label: 'Disciplines' }
             - { label: 'Inscription' }
             - { entity: 'FicheInscription', label: "Fiche d'inscription", icon: 'copy' }
+            - { entity: 'Competition', icon: 'trophy' }
             - { label: 'Actualités' }
             - { entity: 'Post', icon: 'tag' }
             - { entity: 'PostClub', icon: 'tag' }
@@ -172,6 +173,8 @@ easy_admin:
             class: App\Entity\FicheInscription
             label: "Fiche d'inscription"
             list:
+                actions:
+                    - { name: 'downloadInscription', type: 'route', label: 'Voir Fiche' }
                 fields:
                     - { property: 'fiche', label: 'Fiche', type: 'string' }
             form:
@@ -210,3 +213,19 @@ easy_admin:
                     - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
                     - { property: 'annee', label: 'Année' }
                     - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
+        Competition:
+            class: App\Entity\Competition
+            label: 'Compétitions'
+            list:
+                actions:
+                    - { name: 'admin_competition_show', label: 'Voir Inscrit', type: 'route' }
+                fields:
+                    - { property: 'sport', label: 'Sport', type: 'string' }
+                    - { property: 'lieu', label: 'Lieu', type: 'string' }
+                    - { property: 'date', label: 'Date', type: 'date' }
+                    - { property: 'competitionInscrits', label: "Nombre d'inscrit" }
+            form:
+                fields:
+                    - { property: 'sport', label: 'Sport', type: 'choice', type_options: { choices: { Judo: 'Judo', JuJitsu: 'JuJitsu', Taiso: 'Taiso', NeWaza: 'NeWaza' } } }
+                    - { property: 'lieu', label: 'Lieu' }
+                    - { property: 'date', label: 'Date', type: 'date', type_options: { widget: 'single_text', html5: 'true' } }
