@@ -2,39 +2,82 @@
 
 {% block title %}Adhésion - Lille Judo{% endblock %}
 
+{% block stylesheets %}
+    <style>
+        .octagon {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <div class="container">
-        <ul class="nav nav-tabs flex-column flex-lg-row" id="adhesionTab" role="tablist">
+        <ul class="nav nav-tabs flex-column flex-lg-row" id="adhesionImagesTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="judo-tab" data-toggle="tab" href="#judo" aria-controls="judo" aria-selected="true">Judo</a>
+                <a class="nav-link active" id="avant-tab" data-toggle="tab" href="#avant" aria-controls="avant" aria-selected="true">
+                    <h3 class="text-center">Avant</h3>
+                    <img class="octagon img-fluid" src="https://dummyimage.com/280x280/000000/fff" alt="">
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="jujitsu-tab" data-toggle="tab" href="#jujitsu" aria-controls="jujitsu" aria-selected="false">Ju Jitsu</a>
+                <a class="nav-link" id="pendant-tab" data-toggle="tab" href="#pendant" aria-controls="pendant" aria-selected="true">
+                    <h3 class="text-center">Pendant</h3>
+                    <img class="octagon img-fluid" src="https://dummyimage.com/280x280/000000/fff" alt="">
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="taiso-tab" data-toggle="tab" href="#taiso" aria-controls="taiso" aria-selected="false">Taiso</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="newaza-tab" data-toggle="tab" href="#newaza" aria-controls="newaza" aria-selected="false">Ne Waza</a>
+                <a class="nav-link" id="apres-tab" data-toggle="tab" href="#apres" aria-controls="apres" aria-selected="true">
+                    <h3 class="text-center">Après</h3>
+                    <img class="octagon img-fluid" src="https://dummyimage.com/280x280/000000/fff" alt="">
+                </a>
             </li>
         </ul>
-        <div class="tab-content" id="adhesionTabContent">
-            <div id="judo" class="tab-pane fade show active" role="tabpanel" aria-labelledby="judo-tab">
-                <h3>Inscription Judo</h3>
-                <a href="{{ path('downloadInscription') }}" target="_blank">Fiche d'inscription</a>
+        <div class="tab-content" id="adhesionImagesTabContent">
+            <div id="avant" class="tab-pane fade show active" role="tabpanel" aria-labelledby="avant-tab">
+                <h3>Avant</h3>
+                <p>
+                    Je prépare dans mon sac mes affaires:
+                </p>
+                <ul class="nav nav-tabs flex-column flex-lg-row" id="adhesionImageAffairesTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="judo-tab" data-toggle="tab" href="#judo" aria-controls="judo" aria-selected="true">Judo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="jujitsu-tab" data-toggle="tab" href="#jujitsu" aria-controls="jujitsu" aria-selected="false">Ju Jitsu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="taiso-tab" data-toggle="tab" href="#taiso" aria-controls="taiso" aria-selected="false">Taiso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="newaza-tab" data-toggle="tab" href="#newaza" aria-controls="newaza" aria-selected="false">Ne Waza</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="adhesionImageAffairesTabContent">
+                    <div id="judo" class="tab-pane fade show active" role="tabpanel" aria-labelledby="judo-tab">
+                        <ul>
+                            <li>Mon judogi</li>
+                            <li>Mes zoories ou tongs</li>
+                            <li>Ma ceinture</li>
+                            <li>Ma bouteille d'eau</li>
+                        </ul>
+                    </div>
+                    <div id="jujitsu" class="tab-pane fade" role="tabpanel" aria-labelledby="jujitsu-tab">
+                    </div>
+                    <div id="taiso" class="tab-pane fade" role="tabpanel" aria-labelledby="taiso-tab">
+                    </div>
+                    <div id="newaza" class="tab-pane fade" role="tabpanel" aria-labelledby="newaza-tab">
+                    </div>
+                </div>
             </div>
-            <div id="jujitsu" class="tab-pane fade" role="tabpanel" aria-labelledby="jujitsu-tab">
-                <h3>Inscription Ju Jitsu</h3>
-                <a href="{{ path('downloadInscription') }}" target="_blank">Fiche d'inscription</a>
+            <div id="pendant" class="tab-pane fade" role="tabpanel" aria-labelledby="pendant-tab">
+                <h3>Pendant</h3>
             </div>
-            <div id="taiso" class="tab-pane fade" role="tabpanel" aria-labelledby="taiso-tab">
-                <h3>Inscription Taiso</h3>
-                <a href="{{ path('downloadInscription') }}" target="_blank">Fiche d'inscription</a>
-            </div>
-            <div id="newaza" class="tab-pane fade" role="tabpanel" aria-labelledby="newaza-tab">
-                <h3>Inscription Ne Waza</h3>
-                <a href="{{ path('downloadInscription') }}" target="_blank">Fiche d'inscription</a>
+            <div id="apres" class="tab-pane fade" role="tabpanel" aria-labelledby="apres-tab">
+                <h3>Après</h3>
             </div>
         </div>
+        <h2 class="text-center">
+            Tu veux te joindre à nous ? Clique <strong><a href="{{ path('downloadInscription') }}" target="_blank">ici</a></strong> !
+        </h2>
     </div>
 {% endblock %}
