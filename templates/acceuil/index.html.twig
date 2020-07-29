@@ -51,7 +51,7 @@
                         <li data-target="#carouselAcceuilPosts" data-slide-to="{{ second.id }}"></li>
                         <li data-target="#carouselAcceuilPosts" data-slide-to="{{ third.id }}"></li>
                         <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fourth.id }}"></li>
-                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fifth.id }}"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="planning"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -111,17 +111,11 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if fifth.image %}
-                                <a href="{{ path('actualites-club_show', {'id': fifth.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ fifth.image }}" alt="">
-                                </a>
-                            {% else %}
-                                <a href="{{ path('actualites-club_show', {'id': fifth.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
-                                </a>
-                            {% endif %}
+                            <a href="{{ path('dojo') }}">
+                                <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/000/fff&text=Planning" alt="">
+                            </a>
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ fifth.title }}</h5>
+                                <h5>Planning</h5>
                             </div>
                         </div>
                     </div>
