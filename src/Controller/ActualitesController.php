@@ -29,41 +29,6 @@ class ActualitesController extends AbstractController
     }
 
     /**
-     * @Route("/newsletter", name="newsletter")
-     */
-    public function indexNewletter(PostRepository $postRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
-    {
-        $data = $postRepository->findBy([],['createdAt' => 'desc']);
-        $posts = $paginator->paginate(
-            $data,
-            $request->query->getInt('page', 1),
-            10
-        );
-        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
-        $breadcrumbs->addItem("Actualités");
-        $breadcrumbs->addItem("Newsletter");
-
-        return $this->render('actualites/newsletter.html.twig', [
-            'posts' => $posts,
-        ]);
-    }
-
-    /**
-     * @Route("/newsletter/{id}", name="newsletter_show")
-     */
-    public function showNewsletter(Post $post, Breadcrumbs $breadcrumbs, RouterInterface $router)
-    {
-        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
-        $breadcrumbs->addItem("Actualités");
-        $breadcrumbs->addItem("Newsletter", $router->generate('newsletter'));
-        $breadcrumbs->addItem($post->getTitle());
-
-        return $this->render('actualites/newsletter-show.html.twig', [
-            'post' => $post,
-        ]);
-    }
-
-    /**
      * @Route("/actualites-club", name="actualites-club")
      */
     public function indexActualitesClub(PostClubRepository $postClubRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)

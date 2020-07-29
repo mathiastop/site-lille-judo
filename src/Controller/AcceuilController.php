@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PostClubRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,9 +12,9 @@ class AcceuilController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index(PostRepository $postRepository)
+    public function index(PostClubRepository $postClubRepository)
     {
-        $posts = $postRepository->findBy([],['id'=>'DESC'],5,0);
+        $posts = $postClubRepository->findBy([],['id'=>'DESC'],5,0);
         $first = $posts[0];
         $second = $posts[1];
         $third = $posts[2];
