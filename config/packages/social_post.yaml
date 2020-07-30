@@ -1,0 +1,16 @@
+# Usually part of config.yml
+# Follow this instructions in order to have al needed id and token:
+# https://stackoverflow.com/questions/17197970/facebook-permanent-page-access-token/28418469#28418469
+
+social_post:
+    publish_on: [facebook]
+    providers:
+        facebook:
+            app_id: "611669146430598"
+            app_secret: "2309144b4d461e40f86251b8ccea662b"
+            default_access_token: "EAAIsT1IxbIYBAKxS7ODTZAwuD7t1OsdlrHoHbpoG3rZBXc44orXAlb0C1pgYtKE5qHmMZARFZBHjwdYsUzv6P3asu1rWpm0xB4oHGaoxKOLu1yEZCtG8MEBKiaZBRB055goxuL8yVn5Dt1ZCZBIRiSyI23Vpopux5Yh5f39MHT7kYPpI6ha4mbFz0pGjZA3zpq24ZD"
+            page_id: "101946758287145"
+            enable_beta_mode: true
+            persistent_data_handler: "memory"         # Optional, also supports "session". Default is "memory".
+            pseudo_random_string_generator: "openssl" # Optional, also supports "mcrypt" and "urandom". Default is "openssl".
+            http_client_handler: "curl"               # Optional, also supports "stream" and "guzzle". Default is "curl".

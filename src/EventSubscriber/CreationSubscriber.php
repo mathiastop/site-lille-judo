@@ -8,7 +8,6 @@ use App\Entity\FicheInscription;
 use App\Entity\Gallery;
 use App\Entity\GalleryImage;
 use App\Entity\PhotosPassagesGrades;
-use App\Entity\Post;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
 use App\Entity\Professeurs;
@@ -16,6 +15,8 @@ use App\Entity\User;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\Common\EventSubscriber;
+use MartinGeorgiev\SocialPost\Message;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -23,11 +24,13 @@ class CreationSubscriber implements EventSubscriber
 {
     private $encoder;
     private $kernel;
+    private $container;
 
-    public function __construct(UserPasswordEncoderInterface $encoder, KernelInterface $kernel)
+    public function __construct(UserPasswordEncoderInterface $encoder, KernelInterface $kernel, ContainerInterface $container)
     {
         $this->encoder = $encoder;
         $this->kernel = $kernel;
+        $this->container = $container;
     }
 
     public function getSubscribedEvents()
@@ -43,20 +46,28 @@ class CreationSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Post) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
         if ($entity instanceof User) {
             $entity->setPassword($this->encoder->encodePassword($entity, $entity->getPassword()));
         }
         if ($entity instanceof PostClub) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
+            $message = new Message(
+                $entity->getTitle()//,
+//                'https://lillejudo.mathiastop.eu/actualites-club/'.$entity->getId()
+                // TODO: change URL before true launching
+            );
+            $this->container->get('social_post')->publish($message);
         }
         if ($entity instanceof PostNatio) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
+            $message = new Message(
+                $entity->getTitle()//,
+//                'https://lillejudo.mathiastop.eu/actualites-nationale-internationale/'.$entity->getId()
+            // TODO: change URL before true launching
+            );
+            $this->container->get('social_post')->publish($message);
         }
         if ($entity instanceof Professeurs) {
             $entity->setCreatedAt(new \DateTime());
@@ -92,9 +103,6 @@ class CreationSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Post) {
-            $entity->setUpdatedAt(new \DateTime());
-        }
         if ($entity instanceof PostClub) {
             $entity->setUpdatedAt(new \DateTime());
         }
@@ -127,13 +135,6 @@ class CreationSubscriber implements EventSubscriber
     public function preRemove(LifecycleEventArgs $args) {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Post) {
-            $imageName = $entity->getImage();
-            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/post/'.$imageName)) {
-                unlink($this->kernel->getProjectDir().'/public/uploads/post/'.$imageName);
-            }
-            $entity->setUpdatedAt(new \DateTime());
-        }
         if ($entity instanceof PostClub) {
             $imageName = $entity->getImage();
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName)) {

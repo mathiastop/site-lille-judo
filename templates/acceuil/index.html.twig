@@ -47,11 +47,11 @@
             <div class="col-xl-6 order-1 order-xl-2">
                 <div id="carouselAcceuilPosts" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ first.id }}" class="active"></li>
-                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ second.id }}"></li>
-                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ third.id }}"></li>
-                        <li data-target="#carouselAcceuilPosts" data-slide-to="{{ fourth.id }}"></li>
-                        <li data-target="#carouselAcceuilPosts" data-slide-to="planning"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="1"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="2"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="3"></li>
+                        <li data-target="#carouselAcceuilPosts" data-slide-to="4"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -69,7 +69,7 @@
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ first.title }}</h5>
+                                <h5 class="text-dark">{{ first.title }}</h5>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -87,7 +87,7 @@
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ second.title }}</h5>
+                                <h5 class="text-dark">{{ second.title }}</h5>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -105,7 +105,7 @@
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ third.title }}</h5>
+                                <h5 class="text-dark">{{ third.title }}</h5>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -123,7 +123,7 @@
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ fourth.title }}</h5>
+                                <h5 class="text-dark">{{ fourth.title }}</h5>
                             </div>
                         </div>
                         <div class="carousel-item">
