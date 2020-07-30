@@ -78,7 +78,7 @@ class InscriptionController extends AbstractController
     /**
      * @Route("/competitions/{id}", name="competitions_inscriptions")
      */
-    public function competitionsInscription(Competition $competition, Request $request)
+    public function competitionsInscription(Competition $competition, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $competitionInscrit = new CompetitionInscrit();
         $form = $this->createForm(CompetitionInscritType::class, $competitionInscrit);
@@ -93,7 +93,10 @@ class InscriptionController extends AbstractController
 
             return $this->redirectToRoute('competitions');
         }
-
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Inscription");
+        $breadcrumbs->addItem("Compétitions", $router->generate('competitions'));
+        $breadcrumbs->addItem("Inscription ".$competition->getLieu());
         return $this->render('inscription/competitions-inscription.html.twig', [
             'competition' => $competition,
             'form' => $form->createView(),
