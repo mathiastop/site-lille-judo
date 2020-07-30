@@ -2,6 +2,28 @@
 
 {% block title %}Ju-Jitsu - Lille Judo{% endblock %}
 
+{% block stylesheets %}
+    <style>
+        .iframe-outer, .iframe-inner {
+            height: 300px;
+            width: 300px;
+        }
+        .iframe-outer {
+            display: inline-block;
+            position: relative;
+        }
+        .iframe-inner {
+            overflow: hidden;
+            border-radius: 5000px;
+            position: absolute;
+        }
+        .iframe-inner iframe {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <ul class="nav nav-tabs flex-column flex-lg-row" id="jujitsuTab" role="tablist">
@@ -20,7 +42,143 @@
                 <h3>Histoire et Valeurs</h3>
             </div>
             <div class="tab-pane fade" id="cours" role="tabpanel" aria-labelledby="cours-tab">
-                <h3>Cours</h3>
+                <ul class="nav nav-tabs flex-column flex-lg-row" id="coursJuJitsuTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="miniPoussins-tab" data-toggle="tab" href="#miniPoussins" aria-controls="miniPoussins" aria-selected="true">Mini-Poussins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="poussins-tab" data-toggle="tab" href="#poussins" aria-controls="poussins" aria-selected="false">Poussins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="benjamins-tab" data-toggle="tab" href="#benjamins" aria-controls="benjamins" aria-selected="false">Benjamins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="minimes-tab" data-toggle="tab" href="#minimes" aria-controls="minimes" aria-selected="false">Minimes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="cadets-tab" data-toggle="tab" href="#cadets" aria-controls="cadets" aria-selected="false">Cadets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="juniors-tab" data-toggle="tab" href="#juniors" aria-controls="juniors" aria-selected="false">Juniors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="seniors-tab" data-toggle="tab" href="#seniors" aria-controls="seniors" aria-selected="false">Seniors</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="coursJuJitsuTabContent">
+                    <div id="miniPoussins" class="tab-pane fade show active" role="tabpanel" aria-labelledby="miniPoussins-tab">
+                        {% if miniPoussin %}
+                            <h3>Mini-Poussins - {{ miniPoussin.annee }}</h3>
+                            <p>
+                                {{ miniPoussin.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div id="poussins" class="tab-pane fade" role="tabpanel" aria-labelledby="poussins-tab">
+                        {% if poussin %}
+                            <h3>Poussins - {{ poussin.annee }}</h3>
+                            <p>
+                                {{ poussin.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div id="benjamins" class="tab-pane fade" role="tabpanel" aria-labelledby="benjamins-tab">
+                        {% if benjamin %}
+                            <h3>Benjamins - {{ benjamin.annee }}</h3>
+                            <p>
+                                {{ benjamin.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div id="minimes" class="tab-pane fade" role="tabpanel" aria-labelledby="minimes-tab">
+                        {% if minime %}
+                            <h3>Minimes - {{ minime.annee }}</h3>
+                            <p>
+                                {{ minime.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div id="cadets" class="tab-pane fade" role="tabpanel" aria-labelledby="cadets-tab">
+                        {% if cadet %}
+                            <h3>Cadets - {{ cadet.annee }}</h3>
+                            <p>
+                                {{ cadet.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div id="juniors" class="tab-pane fade" role="tabpanel" aria-labelledby="juniors-tab">
+                        {% if junior %}
+                            <h3>Juniors - {{ junior.annee }}</h3>
+                            <p>
+                                {{ junior.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div id="seniors" class="tab-pane fade" role="tabpanel" aria-labelledby="seniors-tab">
+                        {% if senior %}
+                            <h3>Seniors - {{ senior.annee }}</h3>
+                            <p>
+                                {{ senior.texte|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                no records found
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row text-center justify-content-center">
+                        <div class="col my-auto">
+                            <h2>SALLE DEBEYRE</h2>
+                            <div class="iframe-outer">
+                                <div class="iframe-inner">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.75805227567!2d3.071911315859676!3d50.63161128217546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d58ccd84a095%3A0x2bf07e00b55a0265!2sSalle%20Debeyre!5e0!3m2!1sfr!2sfr!4v1595951862220!5m2!1sfr!2sfr"
+                                            class="embed-responsive-item"
+                                            allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <h2>156 rue Charles Debierre</h2>
+                        </div>
+                        <div class="col my-auto">
+                            <h2>SALLE DEFAUCOMPRET</h2>
+                            <div class="iframe-outer">
+                                <div class="iframe-inner">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d894.800914630943!2d3.0873630056344954!3d50.62936125849722!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d5faea376d7d%3A0x4f55bddb5cd9f71d!2sEspace%20Sportif%20Defaucompret!5e0!3m2!1sfr!2sfr!4v1595857882269!5m2!1sfr!2sfr"
+                                            class="embed-responsive-item"
+                                            allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <h2>72-74 rue du Long Pot</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane fade" id="adhésion" role="tabpanel" aria-labelledby="adhésion-tab">
                 <h3>Inscription</h3>

@@ -20,6 +20,10 @@ easy_admin:
             - { entity: 'Bureau', icon: 'laptop-house' }
             - { entity: 'Dojo', icon: 'door-open' }
             - { label: 'Disciplines' }
+            - { entity: 'JudoCours', icon: 'school' }
+            - { entity: 'JuJitsuCours', icon: 'school' }
+            - { entity: 'TaisoCours', icon: 'school' }
+            - { entity: 'NeWazaCours', icon: 'school' }
             - { label: 'Inscription' }
             - { entity: 'FicheInscription', label: "Fiche d'inscription", icon: 'copy' }
             - { entity: 'Competition', icon: 'trophy' }
@@ -213,3 +217,55 @@ easy_admin:
                     - { property: 'sport', label: 'Sport', type: 'choice', type_options: { choices: { Judo: 'Judo', JuJitsu: 'JuJitsu', Taiso: 'Taiso', NeWaza: 'NeWaza' } } }
                     - { property: 'lieu', label: 'Lieu' }
                     - { property: 'date', label: 'Date', type: 'date', type_options: { widget: 'single_text', html5: 'true' } }
+        JudoCours:
+            class: App\Entity\JudoCours
+            label: 'Judo Cours'
+            list:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'text', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'annee', label: 'Année' }
+                    - { property: 'text', label: 'Texte', type: 'fos_ckeditor' }
+        JuJitsuCours:
+            class: App\Entity\JuJitsuCours
+            label: 'JuJitsu Cours'
+            list:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'annee', label: 'Année' }
+                    - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
+        TaisoCours:
+            class: App\Entity\TaisoCours
+            label: 'Taiso Cours'
+            list:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'annee', label: 'Année' }
+                    - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
+        NeWazaCours:
+            class: App\Entity\NeWazaCours
+            label: 'NeWaza Cours'
+            list:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'annee', label: 'Année' }
+                    - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
