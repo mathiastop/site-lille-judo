@@ -2,6 +2,9 @@
 
 {% block title %}Actualités - Lille Judo{% endblock %}
 
+{% block stylesheets %}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         {% for post in posts %}
@@ -9,8 +12,6 @@
                 <div class="col-md-3">
                     {% if post.image %}
                         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                             width="250"
-                             height="250"
                              src="{{ asset('uploads/club/') }}{{ post.image }}" alt="">
                     {% else %}
                         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
@@ -27,11 +28,13 @@
                         </svg>
                     {% endif%}
                 </div>
-                <div class="col-md-7">
+                <div class="col-10 col-md-7 text-truncate">
                     <h2 class="featurette-heading">{{ post.title }}</h2>
-                    <p class="lead">{{ post.body }}</p>
+                    <p class="lead">
+                        {{ post.body|raw }}
+                    </p>
+                    <a href="{{ path('actualites-club_show', {'id': post.id}) }}">Voir l'article</a>
                 </div>
-                <a href="{{ path('actualites-club_show', {'id': post.id}) }}">Voir l'article</a>
             </div>
             <hr class="featurette-divider">
         {% else %}
@@ -39,7 +42,7 @@
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
-        <div class="navigation text-center">
+        <div>
             {{ knp_pagination_render(posts) }}
         </div>
     </div>

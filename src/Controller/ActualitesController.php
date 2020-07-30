@@ -41,7 +41,7 @@ class ActualitesController extends AbstractController
         );
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Actualités");
-        $breadcrumbs->addItem("Actulités Club", $router->generate('actualites-club'));
+        $breadcrumbs->addItem("Actualités Club", $router->generate('actualites-club'));
 
         return $this->render('actualites/actualites-club.html.twig', [
             'posts' => $posts,
@@ -55,7 +55,7 @@ class ActualitesController extends AbstractController
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Actualités");
-        $breadcrumbs->addItem("Actulités Club", $router->generate('actualites-club'));
+        $breadcrumbs->addItem("Actualités Club", $router->generate('actualites-club'));
         $breadcrumbs->addItem($postClub->getTitle());
 
         return $this->render('actualites/actualites-club-show.html.twig', [
