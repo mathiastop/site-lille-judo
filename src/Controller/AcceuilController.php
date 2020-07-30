@@ -21,29 +21,45 @@ class AcceuilController extends AbstractController
 
         $first = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($first === $postsClub[$i]) {
+            $firstType = 'Club';
             $i++;
         } else {
+            $firstType = 'Natio';
             $y++;
         }
         $second = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($second === $postsClub[$i]) {
+            $secondType = 'Club';
             $i++;
         } else {
+            $secondType = 'Natio';
             $y++;
         }
         $third = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($third === $postsClub[$i]) {
+            $thirdType = 'Club';
             $i++;
         } else {
+            $thirdType = 'Natio';
             $y++;
         }
         $fourth = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
-
+        if ($fourth === $postsClub[$i]) {
+            $fourthType = 'Club';
+            $i++;
+        } else {
+            $fourthType = 'Natio';
+            $y++;
+        }
         return $this->render('acceuil/index.html.twig', [
             'first' => $first,
+            'firstType' => $firstType,
             'second' => $second,
+            'secondType' => $secondType,
             'third' => $third,
+            'thirdType' => $thirdType,
             'fourth' => $fourth,
+            'fourthType' => $fourthType,
         ]);
     }
 }

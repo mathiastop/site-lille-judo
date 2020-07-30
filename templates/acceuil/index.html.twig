@@ -32,7 +32,7 @@
     </div>
     <div class="container-fluid">
         <div class="row text-center justify-content-center">
-            <div class="col-xl my-auto">
+            <div class="col-xl my-auto order-2 order-xl-1">
                 <h2>SALLE DEBEYRE</h2>
                 <div class="iframe-outer">
                     <div class="iframe-inner">
@@ -44,7 +44,7 @@
                 </div>
                 <h2>156 rue Charles Debierre</h2>
             </div>
-            <div class="col-xl-6">
+            <div class="col-xl-6 order-1 order-xl-2">
                 <div id="carouselAcceuilPosts" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselAcceuilPosts" data-slide-to="{{ first.id }}" class="active"></li>
@@ -55,13 +55,17 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            {% if first.image %}
+                            {% if first.image and firstType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ first.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/club/') }}{{ first.image }}" alt="">
+                                </a>
+                            {% elseif first.image and firstType == 'Natio' %}
+                                <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/natio/') }}{{ first.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
@@ -69,13 +73,17 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if second.image %}
+                            {% if second.image and secondType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ second.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ second.image }}" alt="">
+                                </a>
+                            {% elseif second.image and secondType == 'Natio' %}
+                                <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ second.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
@@ -83,13 +91,17 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if third.image %}
+                            {% if third.image and thirdType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ third.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ third.image }}" alt="">
+                                </a>
+                            {% elseif third.image and thirdType == 'Natio' %}
+                                <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ third.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
@@ -97,13 +109,17 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if fourth.image %}
+                            {% if fourth.image and fourthType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/post/') }}{{ fourth.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ fourth.image }}" alt="">
+                                </a>
+                            {% elseif fourth.image and fourthType == 'Natio' %}
+                                <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ fourth.image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
                                 </a>
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
@@ -112,7 +128,7 @@
                         </div>
                         <div class="carousel-item">
                             <a href="{{ path('dojo') }}">
-                                <img class="img-fluid d-block w-100" src="https://dummyimage.com/600x400/000/fff&text=Planning" alt="">
+                                <img class="d-block w-100" src="https://dummyimage.com/600x400/000/fff&text=Planning" alt="">
                             </a>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Planning</h5>
@@ -129,7 +145,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl my-auto">
+            <div class="col-xl my-auto order-3">
                 <h2>SALLE DEFAUCOMPRET</h2>
                 <div class="iframe-outer">
                     <div class="iframe-inner">

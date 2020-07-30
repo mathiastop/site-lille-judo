@@ -59,7 +59,7 @@ easy_admin:
                   fields:
                       - { property: 'title', label: 'Titre', type: 'string' }
                       - { property: 'body', label: 'Corps', type: 'text' }
-                      - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_club_images%' }
+                      - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_natio_images%' }
                       - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                       - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
               form:
