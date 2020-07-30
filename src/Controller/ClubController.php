@@ -100,11 +100,17 @@ class ClubController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contactFormData = $form->getData();
+            $body = 'Nom: '.$contactFormData['Nom:']."\n".
+                'Prenom: '.$contactFormData['Prenom:']."\n".
+                'Mail: '.$contactFormData['Mail:']."\n".
+                "Message: \n".$contactFormData['Message:'];
+
             $message = (new \Swift_Message('Nouveau message - lillejudo.fr'))
                 ->setFrom('fiche.contact0000@gmail.com')
                 ->setTo('top.mathias7241@gmail.com')
-                ->setBody($contactFormData['Message:']);
+                ->setBody($body, 'text/plain');
             $mailer->send($message);
+            $this->addFlash('success', 'Votre message a bien été envoyé.');
 
             return $this->redirectToRoute('accueil');
         }
