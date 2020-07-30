@@ -4,20 +4,29 @@
 
 {% block body %}
     <div class="container">
-        <h1>Post</h1>
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Body</th>
-                <td>{{ post.body }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <a href="{{ path('actualites-nationale-internationale') }}">back to list</a>
+        <h1>{{ post.title }}</h1>
+        <hr/>
+        <p><i class="fa fa-fw fa-calendar"></i>{{ post.createdAt|date('d/m/Y') }}</p>
+        <hr/>
+        {% if post.image %}
+            <a href="{{ asset('uploads/club/') }}{{ post.image }}" data-toggle="lightbox">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                     src="{{ asset('uploads/club/') }}{{ post.image }}" alt="">
+            </a>
+        {% endif %}
+        <p>
+            {{ post.body|raw }}
+        </p>
+        <a href="{{ path('actualites-club') }}">Revenir à l'index</a>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 {% endblock %}
 
