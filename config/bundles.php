@@ -20,5 +20,6 @@ return [
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle::class => ['all' => true],
-    \MartinGeorgiev\SocialPostBundle\SocialPostBundle::class => ['all' => true]
+    MartinGeorgiev\SocialPostBundle\SocialPostBundle::class => ['all' => true],
+    CalendarBundle\CalendarBundle::class => ['all' => true],
 ];

@@ -37,3 +37,5 @@ services:
     App\EventSubscriber\CreationSubscriber:
         tags:
             - { name: 'doctrine.event_subscriber' }
+
+    App\EventSubscriber\CalendarSubscriber:

@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
 use App\Entity\Post;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
+use App\Repository\EvenementRepository;
 use App\Repository\PostClubRepository;
 use App\Repository\PostNatioRepository;
 use App\Repository\PostRepository;
@@ -95,6 +97,35 @@ class ActualitesController extends AbstractController
 
         return $this->render('actualites/actualites-nationale-internationale-show.html.twig', [
             'post' => $postNatio,
+        ]);
+    }
+
+    /**
+     * @Route("/evenements", name="evenements")
+     */
+    public function indexEvenements(Breadcrumbs $breadcrumbs, RouterInterface $router)
+    {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Evénements", $router->generate('evenements'));
+
+        return $this->render('actualites/evenements.html.twig', [
+            'controller_name' => 'EvenementsController'
+        ]);
+    }
+
+    /**
+     * @Route("/evenements/{id}", name="evenements_show")
+     */
+    public function showEvenements(Evenement $evenement, Breadcrumbs $breadcrumbs, RouterInterface $router)
+    {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Actualités");
+        $breadcrumbs->addItem("Evénements", $router->generate('evenements'));
+        $breadcrumbs->addItem($evenement->getTitre());
+
+        return $this->render('actualites/evenements-show.html.twig', [
+            'evenement' => $evenement
         ]);
     }
 }

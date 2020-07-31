@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenements - Lille Judo{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ evenement.titre }}</h1>
+        <hr/>
+        <p>
+            <i class="fa fa-fw fa-calendar"></i>{{ evenement.beginAt|date('d/m/Y h:i') }}
+            {% if evenement.endAt %}
+                - {{ evenement.endAt|date('d/m/Y h:i') }}
+            {% endif %}
+        </p>
+        <hr/>
+        <p>
+            {{ evenement.description|raw }}
+        </p>
+        <a href="{{ path('evenements') }}">Revenir au calendrier</a>
+    </div>
+{% endblock %}

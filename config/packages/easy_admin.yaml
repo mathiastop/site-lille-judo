@@ -30,6 +30,7 @@ easy_admin:
             - { label: 'Actualités' }
             - { entity: 'PostClub', icon: 'tag' }
             - { entity: 'PostNatio', icon: 'globe' }
+            - { entity: 'Evenements', icon: 'calendar-alt' }
             - { label: 'Documents' }
             - { entity: 'Gallery', icon: 'images' }
             - { entity: 'PhotosPassagesGrades', icon: 'graduation-cap' }
@@ -269,3 +270,18 @@ easy_admin:
                     - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
                     - { property: 'annee', label: 'Année' }
                     - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
+        Evenements:
+            class: App\Entity\Evenement
+            label: 'Evénements'
+            list:
+                fields:
+                    - { property: 'titre', label: 'Titre', type: 'string' }
+                    - { property: 'description', label: 'Description', type: 'text' }
+                    - { property: 'beginAt', label: 'Date de début', type: 'datetime' }
+                    - { property: 'endAt', label: 'Date de fin', type: 'datetime' }
+            form:
+                fields:
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
+                    - { property: 'beginAt', label: 'Date de début', type: 'datetime', type_options: { widget: 'single_text', html5: 'true' } }
+                    - { property: 'endAt', label: 'Date de fin', type: 'datetime', type_options: { widget: 'single_text', html5: 'true' } }
