@@ -24,8 +24,20 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             var calendarEl = document.getElementById('calendar-holder');
-
+            var header = {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                };
+            if ($(window).width() < 514) {
+                header = {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                };
+            }
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                height: 'auto',
                 locale: 'fr',
                 defaultView: 'dayGridMonth',
                 editable: true,
@@ -37,15 +49,11 @@
                             filters: JSON.stringify({})
                         },
                         failure: () => {
-                            alert("Une erreure s'est produite lors de l'affichage du calendrier");
+                            alert("Une erreur s'est produite lors de l'affichage du calendrier");
                         },
                     },
                 ],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
-                },
+                header: header,
                 plugins: [ 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
                 timeZone: 'UTC',
             });
