@@ -78,6 +78,7 @@ easy_admin:
                     - { property: 'grade', label: 'Grade', type: 'string' }
                     - { property: 'diplome', label: 'Diplomes', type: 'string' }
                     - { property: 'role', label: 'Role', type: 'string' }
+                    - { property: 'description', label: 'Description', type: 'text' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.professeurs_images%' }
             form:
                 fields:
@@ -86,6 +87,7 @@ easy_admin:
                     - { property: 'grade', label: 'Grade' }
                     - { property: 'diplome', label: 'Diplomes' }
                     - { property: 'role', label: 'Role' }
+                    - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
         Bureau:
             class: App\Entity\Bureau

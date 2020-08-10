@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Professeurs;
 use App\Form\ContactType;
 use App\Repository\BureauRepository;
 use App\Repository\DojoRepository;
@@ -63,6 +64,22 @@ class ClubController extends AbstractController
             'professeurs' => $professeursRepository->findAllOrderByName(),
         ]);
     }
+
+    /**
+     * @Route("/enseignants/{id}", name="enseignants_show")
+     */
+    public function showEnseigant(Professeurs $professeurs, Breadcrumbs $breadcrumbs, RouterInterface $router)
+    {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Les Enseignants", $router->generate('enseignants'));
+        $breadcrumbs->addItem($professeurs->getPrenom().' '.$professeurs->getNom());
+
+        return $this->render('club/enseignants-show.html.twig', [
+            'professeur' => $professeurs,
+        ]);
+    }
+
 
     /**
      * @Route("/bureau", name="bureau")
