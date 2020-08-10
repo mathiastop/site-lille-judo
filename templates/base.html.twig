@@ -22,43 +22,13 @@
                 background: lightgray;
             }
             .border {
-                border-width:5px !important;
+                border-width: 5px !important;
             }
-            .vertical-stripes-white-yellow {
-                background: repeating-linear-gradient(
-                    to right,
-                    white,
-                    white 10px,
-                    #ffde3d 10px,
-                    #ffde3d 20px
-                );
+            .border-little {
+                border-width: 2px !important;
             }
-            .vertical-stripes-yellow-orange {
-                background: repeating-linear-gradient(
-                        to right,
-                        #ffde3d,
-                        #ffde3d 10px,
-                        orange 10px,
-                        orange 20px
-                );
-            }
-            .vertical-stripes-orange-green {
-                background: repeating-linear-gradient(
-                        to right,
-                        orange,
-                        orange 10px,
-                        #489343 10px,
-                        #489343 20px
-                );
-            }
-            .vertical-stripes-green-blue {
-                background: repeating-linear-gradient(
-                        to right,
-                        #489343,
-                        #489343 10px,
-                        #0B70C0 10px,
-                        #0B70C0 20px
-                );
+            .border-black {
+                border-color: black !important;
             }
         </style>
         {% block stylesheets %}{% endblock %}
@@ -66,70 +36,87 @@
     <body class="d-flex flex-column">
         <div class="flex-grow-1 flex-shrink-0">
             <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background: #A93514">
-                <a class="navbar-brand" href="{{ path('accueil') }}"><img src="{{ asset('assets/luc_logo.png') }}" alt="luc_logo"></a>
+                <a class="border border-black" href="{{ path('accueil') }}" style="background: white"><img src="{{ asset('assets/luc_logo.png') }}" alt="luc_logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-center text-center" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item border border-white">
-                            <a class="nav-link" style="color: black; background: white" href="{{ path('accueil') }}">
-                                Accueil
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown border border-white">
-                            <a class="nav-link dropdown-toggle" style="color: black; background: #ffde3d" id="navbarClubMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Club
-                            </a>
-                            <div class="dropdown-menu" style="background: #ffde3d" aria-labelledby="navbarClubMenuLink">
-                                <a class="dropdown-item" href="{{ path('histoire') }}">Histoire</a>
-                                <a class="dropdown-item" href="{{ path('enseignants') }}">Les Enseignants</a>
-                                <a class="dropdown-item" href="{{ path('bureau') }}">Bureau</a>
-                                <a class="dropdown-item" href="{{ path('contact') }}">Contact</a>
-                                <a class="dropdown-item" href="{{ path('dojo') }}">Dojo</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown border border-white">
-                            <a class="nav-link dropdown-toggle" style="color: black; background: orange" id="navbarDisciplinesMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Disciplines
-                            </a>
-                            <div class="dropdown-menu" style="background: orange" aria-labelledby="navbarDisciplinesMenuLink">
-                                <a class="dropdown-item" href="{{ path('judo') }}">Judo</a>
-                                <a class="dropdown-item" href="{{ path('ju-jitsu') }}">Ju Jitsu</a>
-                                <a class="dropdown-item" href="{{ path('taiso') }}">Taiso</a>
-                                <a class="dropdown-item" href="{{ path('ne-waza') }}">Ne Waza</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown border border-white">
-                            <a class="nav-link dropdown-toggle" style="color: black; background: #489343" id="navbarInscriptionMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Inscription
-                            </a>
-                            <div class="dropdown-menu" style="background: #489343" aria-labelledby="navbarInscriptionMenuLink">
-                                <a class="dropdown-item" href="{{ path('adhesion') }}">Adhésion</a>
-                                <a class="dropdown-item" href="{{ path('competitions') }}">Compétitions</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown border border-white">
-                            <a class="nav-link dropdown-toggle" style="color: black; background: #0B70C0" id="navbarActualitesMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Actualités
-                            </a>
-                            <div class="dropdown-menu" style="background: #0B70C0" aria-labelledby="navbarActualitesMenuLink">
-                                <a class="dropdown-item" href="{{ path('evenements') }}">Evénements</a>
-                                <a class="dropdown-item" href="{{ path('actualites-club') }}">Actualités Club</a>
-                                <a class="dropdown-item" href="{{ path('actualites-nationale-internationale') }}">Actualités Nationale/Internationale</a>
-                            </div>
-                        </li>
-                        <li class="nav-item border border-white">
-                            <a class="nav-link" style="color: white; background: #503D07" href="{{ path('documents') }}">
-                                Documents
-                            </a>
-                        </li>
+                        <div class="border border-little border-black">
+                            <li class="nav-item border border-white">
+                                <a class="nav-link" style="color: black; background: white" href="{{ path('accueil') }}">
+                                    Acceuil
+                                </a>
+                            </li>
+                        </div>
+                        <div class="border border-little border-black">
+                            <li class="nav-item dropdown border border-white">
+                                <a class="nav-link dropdown-toggle" style="color: black; background: #ffde3d" id="navbarClubMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Club
+                                </a>
+                                <div class="dropdown-menu" style="background: #ffde3d" aria-labelledby="navbarClubMenuLink">
+                                    <a class="dropdown-item" href="{{ path('histoire') }}">Histoire</a>
+                                    <a class="dropdown-item" href="{{ path('enseignants') }}">Les Enseignants</a>
+                                    <a class="dropdown-item" href="{{ path('bureau') }}">Bureau</a>
+                                    <a class="dropdown-item" href="{{ path('contact') }}">Contact</a>
+                                    <a class="dropdown-item" href="{{ path('dojo') }}">Dojo</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="border border-little border-black">
+                            <li class="nav-item dropdown border border-white">
+                                <a class="nav-link dropdown-toggle" style="color: black; background: orange" id="navbarDisciplinesMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Disciplines
+                                </a>
+                                <div class="dropdown-menu" style="background: orange" aria-labelledby="navbarDisciplinesMenuLink">
+                                    <a class="dropdown-item" href="{{ path('judo') }}">Judo</a>
+                                    <a class="dropdown-item" href="{{ path('ju-jitsu') }}">Ju Jitsu</a>
+                                    <a class="dropdown-item" href="{{ path('taiso') }}">Taiso</a>
+                                    <a class="dropdown-item" href="{{ path('ne-waza') }}">Ne Waza</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="border border-little border-black">
+                            <li class="nav-item dropdown border border-white">
+                                <a class="nav-link dropdown-toggle" style="color: black; background: #489343" id="navbarInscriptionMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Inscription
+                                </a>
+                                <div class="dropdown-menu" style="background: #489343" aria-labelledby="navbarInscriptionMenuLink">
+                                    <a class="dropdown-item" href="{{ path('adhesion') }}">Adhésion</a>
+                                    <a class="dropdown-item" href="{{ path('competitions') }}">Compétitions</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="border border-little border-black">
+                            <li class="nav-item dropdown border border-white">
+                                <a class="nav-link dropdown-toggle" style="color: black; background: #0B70C0" id="navbarActualitesMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actualités
+                                </a>
+                                <div class="dropdown-menu" style="background: #0B70C0" aria-labelledby="navbarActualitesMenuLink">
+                                    <a class="dropdown-item" href="{{ path('evenements') }}">Evénements</a>
+                                    <a class="dropdown-item" href="{{ path('actualites-club') }}">Actualités Club</a>
+                                    <a class="dropdown-item" href="{{ path('actualites-nationale-internationale') }}">Actualités Nationale/Internationale</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="border border-little border-black">
+                            <li class="nav-item border border-white">
+                                <a class="nav-link" style="color: white; background: #503D07" href="{{ path('documents') }}">
+                                    Documents
+                                </a>
+                            </li>
+                        </div>
                     </ul>
+                </div>
+                <div class="d-none d-lg-block">
+                    <form class="form-inline">
+                        <a class="border border-black" href="{{ path('accueil') }}" style="background: white"><img src="{{ asset('assets/luc_logo.png') }}" alt="luc_logo"></a>
+                    </form>
                 </div>
             </nav>
             <div style="background: #A93514">
@@ -182,13 +169,23 @@
                             </div>
                         </div>
                         <div class="col d-none d-md-block">
-                            <h1 class="display-3 text-center" style="color: black"><strong>LUC JUDO</strong><br/>
-                                <small class="text-white">Judo - Ju Jitsu - Taiso - Ne Waza</small>
+                            <h1 class="display-3 text-center" style="color: black"><strong>LILLE UNIVERSITE CLUB</strong><br/>
+                                <small class="text-white">
+                                    <a href="{{ path('judo') }}" class="text-white">JUDO</a>
+                                    <a href="{{ path('ju-jitsu') }}" class="text-white">JUJITSU</a>
+                                    <a href="{{ path('taiso') }}" class="text-white">TAISO</a>
+                                    <a href="{{ path('ne-waza') }}" class="text-white">NEWAZA</a>
+                                </small>
                             </h1>
                         </div>
                         <div class="col d-md-none d-block">
-                            <h1 class="text-center" style="color: black"><strong>LUC JUDO</strong><br/>
-                                <small class="text-white">Judo - Ju Jitsu - Taiso - Ne Waza</small>
+                            <h1 class="text-center" style="color: black"><strong>LILLE UNIVERSITE CLUB</strong><br/>
+                                <small class="text-white">
+                                    <a href="{{ path('judo') }}" class="text-white">JUDO</a>
+                                    <a href="{{ path('ju-jitsu') }}" class="text-white">JUJITSU</a>
+                                    <a href="{{ path('taiso') }}" class="text-white">TAISO</a>
+                                    <a href="{{ path('ne-waza') }}" class="text-white">NEWAZA</a>
+                                </small>
                             </h1>
                         </div>
                         <div class="col d-none d-lg-block">
@@ -226,7 +223,7 @@
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="text-center">
                     Si vous voyez ceci, cela veut dire que vous êtes connecté en tant qu'administrateur.<br/>
-                    <a href="{{ absolute_url('/admin') }}">Accueil Administration </a>/
+                    <a href="{{ absolute_url('/admin') }}">Acceuil Administration </a>/
                     <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
             {% else %}
@@ -244,36 +241,6 @@
         </div>
         <hr/>
         <footer class="footer mt-auto py-3 flex-shrink-0">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFooter"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center text-center" id="navbarFooter">
-                    <ul class="navbar-nav">
-                        <li class="nav-item border border-white vertical-stripes-white-yellow">
-                            <a class="nav-link" style="color: black" href="{{ path('judo') }}">
-                                Judo
-                            </a>
-                        </li>
-                        <li class="nav-item border border-white vertical-stripes-yellow-orange">
-                            <a class="nav-link" style="color: black" href="{{ path('ju-jitsu') }}">
-                                Ju Jitsu
-                            </a>
-                        </li>
-                        <li class="nav-item border border-white vertical-stripes-orange-green">
-                            <a class="nav-link" style="color: black" href="{{ path('taiso') }}">
-                                Taiso
-                            </a>
-                        </li>
-                        <li class="nav-item border border-white vertical-stripes-green-blue">
-                            <a class="nav-link" style="color: black" href="{{ path('ne-waza') }}">
-                                Ne Waza
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
             <div class="container">
                 <a href="{{ path('contact') }}">
                     <h5 class="font-weight-bold text-uppercase mt-3 mb-4 text-center">Contact</h5>
