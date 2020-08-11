@@ -17,7 +17,8 @@ easy_admin:
             - label: 'Histoire'
               children: ['HistoireClub', 'HistoirePresidents', 'HistoirePersonnalites', 'HistoireEnseignement']
             - { entity: 'Professeurs', label: 'Enseignants', icon: 'chalkboard-teacher' }
-            - { entity: 'Bureau', icon: 'laptop-house' }
+            - label: 'Bureau'
+              children: ['Bureau', 'BureauRole']
             - { entity: 'Dojo', icon: 'door-open' }
             - { label: 'Disciplines' }
             - { entity: 'JudoCours', icon: 'school' }
@@ -95,14 +96,23 @@ easy_admin:
                 fields:
                     - { property: 'nom', label: 'Nom', type: 'string' }
                     - { property: 'prenom', label: 'Prénom', type: 'string' }
-                    - { property: 'role', label: 'Role', type: 'string' }
+                    - { property: 'role.nom', label: 'Role' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.bureau_images%' }
             form:
                 fields:
                     - { property: 'nom', label: 'Nom' }
                     - { property: 'prenom', label: 'Prénom' }
-                    - { property: 'role', label: 'Role', type: 'choice', type_options: { choices: { Président: 'Président', Trésorier: 'Trésorier', Secrétaire: 'Secrétaire', 'Secrétaire Adjointe': 'Secrétaire Adjointe' } } }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
+                    - { property: 'role', label: 'Role', type: 'entity', type_options: { choice_label: 'nom', required: true } }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
+        BureauRole:
+            class: App\Entity\BureauRole
+            label: 'Role'
+            list:
+                fields:
+                    - { property: 'nom', type: 'string' }
+            form:
+                fields:
+                    - { property: 'nom' }
         Gallery:
             class: App\Entity\Gallery
             label: 'Galerie'

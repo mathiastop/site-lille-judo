@@ -21,11 +21,6 @@ class Bureau
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $role;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -56,21 +51,14 @@ class Bureau
      */
     private $prenom;
 
+    /**
+     * @ORM\OneToOne(targetEntity=BureauRole::class, cascade={"persist", "remove"})
+     */
+    private $role;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -143,6 +131,18 @@ class Bureau
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getRole(): ?BureauRole
+    {
+        return $this->role;
+    }
+
+    public function setRole(?BureauRole $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }
