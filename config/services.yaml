@@ -39,3 +39,8 @@ services:
             - { name: 'doctrine.event_subscriber' }
 
     App\EventSubscriber\CalendarSubscriber:
+
+
+    App\EventListener\VichUploaderListener:
+        tags:
+            - { name: kernel.event_listener, event: vich_uploader.post_upload }
