@@ -12,6 +12,7 @@ use App\Entity\PostClub;
 use App\Entity\PostNatio;
 use App\Entity\Professeurs;
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\Common\EventSubscriber;
@@ -25,12 +26,14 @@ class CreationSubscriber implements EventSubscriber
     private $encoder;
     private $kernel;
     private $container;
+    private $entityManager;
 
-    public function __construct(UserPasswordEncoderInterface $encoder, KernelInterface $kernel, ContainerInterface $container)
+    public function __construct(UserPasswordEncoderInterface $encoder, KernelInterface $kernel, ContainerInterface $container, EntityManagerInterface $entityManager)
     {
         $this->encoder = $encoder;
         $this->kernel = $kernel;
         $this->container = $container;
+        $this->entityManager = $entityManager;
     }
 
     public function getSubscribedEvents()
@@ -39,7 +42,87 @@ class CreationSubscriber implements EventSubscriber
             Events::prePersist,
             Events::preUpdate,
             Events::preRemove,
+            Events::postPersist,
         ];
+    }
+
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+
+        if ($entity instanceof PostClub) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/club/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/club/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof PostNatio) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/natio/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/natio/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof PostNatio) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/professeurs/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/professeurs/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof Bureau) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/bureau/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/bureau/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof GalleryImage) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/gallery/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/gallery/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof FicheInscription) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/fiche/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/fiche/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof Boutique) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/boutique/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/boutique/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
+        if ($entity instanceof PhotosPassagesGrades) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$entity->getImage();
+            $uniqueId = md5(uniqid(rand(), true));
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$uniqueId);
+            $entity->setImage($uniqueId);
+            $entity->setUpdatedAt(new \DateTime());
+            $this->entityManager->persist($entity);
+            $this->entityManager->flush();
+        }
     }
 
     public function prePersist(LifecycleEventArgs $args)
