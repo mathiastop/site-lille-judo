@@ -91,7 +91,7 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Bureau");
 
         return $this->render('club/bureau.html.twig', [
-            'bureaux' => $bureauRepository->findAll(),
+            'bureaux' => $bureauRepository->findBy([], ['ordre' => 'ASC']),
         ]);
     }
 

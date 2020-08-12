@@ -52,9 +52,14 @@ class Bureau
     private $prenom;
 
     /**
-     * @ORM\OneToOne(targetEntity=BureauRole::class, cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255)
      */
     private $role;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $ordre;
 
     public function getId(): ?int
     {
@@ -135,14 +140,26 @@ class Bureau
         return $this;
     }
 
-    public function getRole(): ?BureauRole
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
-    public function setRole(?BureauRole $role): self
+    public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getOrdre(): ?int
+    {
+        return $this->ordre;
+    }
+
+    public function setOrdre(int $ordre): self
+    {
+        $this->ordre = $ordre;
 
         return $this;
     }
