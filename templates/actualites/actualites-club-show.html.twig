@@ -4,16 +4,16 @@
 
 {% block body %}
     <div class="container">
-        <h1>{{ post.title }}</h1>
-        <hr/>
-        <p><i class="fa fa-fw fa-calendar"></i>{{ post.createdAt|date('d/m/Y') }}</p>
-        <hr/>
         {% if post.image %}
             <a href="{{ asset('uploads/club/') }}{{ post.image }}" data-toggle="lightbox">
                 <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                      src="{{ asset('uploads/club/') }}{{ post.image }}" alt="">
             </a>
         {% endif %}
+        <h1>{{ post.title }}</h1>
+        <hr/>
+        <p><i class="fa fa-fw fa-calendar"></i>{{ post.createdAt|date('d/m/Y') }}</p>
+        <hr/>
         <p>
             {{ post.body|raw }}
         </p>
