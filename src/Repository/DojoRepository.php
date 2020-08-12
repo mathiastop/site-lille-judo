@@ -19,6 +19,15 @@ class DojoRepository extends ServiceEntityRepository
         parent::__construct($registry, Dojo::class);
     }
 
+    public function findAllExceptThis($int)
+    {
+        return $this->createQueryBuilder('dojo')
+            ->andWhere('dojo.ordre != :int')
+            ->orderBy('dojo.ordre', 'ASC')
+            ->setParameter('int', $int)
+            ->getQuery()
+            ->execute();
+    }
     // /**
     //  * @return Dojo[] Returns an array of Dojo objects
     //  */
