@@ -19,6 +19,15 @@ class TaisoCoursRepository extends ServiceEntityRepository
         parent::__construct($registry, TaisoCours::class);
     }
 
+    public function findAllExceptThisOrder($int)
+    {
+        return $this->createQueryBuilder('dojo')
+            ->andWhere('dojo.ordre != :int')
+            ->orderBy('dojo.ordre', 'ASC')
+            ->setParameter('int', $int)
+            ->getQuery()
+            ->execute();
+    }
     // /**
     //  * @return TaisoCours[] Returns an array of TaisoCours objects
     //  */

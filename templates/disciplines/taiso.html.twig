@@ -44,112 +44,29 @@
             <div class="tab-pane fade" id="cours" role="tabpanel" aria-labelledby="cours-tab">
                 <ul class="nav nav-tabs flex-column flex-lg-row" id="coursTaisoTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="miniPoussins-tab" data-toggle="tab" href="#miniPoussins" aria-controls="miniPoussins" aria-selected="true">Mini-Poussins</a>
+                        <a class="nav-item nav-link active" id="{{ first.id }}-tab" data-toggle="tab" href="#{{ first.id }}" aria-controls="{{ first.id }}" aria-selected="true">{{ first.categorie }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="poussins-tab" data-toggle="tab" href="#poussins" aria-controls="poussins" aria-selected="false">Poussins</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="benjamins-tab" data-toggle="tab" href="#benjamins" aria-controls="benjamins" aria-selected="false">Benjamins</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="minimes-tab" data-toggle="tab" href="#minimes" aria-controls="minimes" aria-selected="false">Minimes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="cadets-tab" data-toggle="tab" href="#cadets" aria-controls="cadets" aria-selected="false">Cadets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="juniors-tab" data-toggle="tab" href="#juniors" aria-controls="juniors" aria-selected="false">Juniors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="seniors-tab" data-toggle="tab" href="#seniors" aria-controls="seniors" aria-selected="false">Seniors</a>
-                    </li>
+                    {% for taiso in taisos %}
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" id="{{ taiso.id }}-tab" data-toggle="tab" href="#{{ taiso.id }}" aria-controls="{{ taiso.id }}" aria-selected="false">{{ taiso.categorie }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
                 <div class="tab-content" id="coursTaisoTabContent">
-                    <div id="miniPoussins" class="tab-pane fade show active" role="tabpanel" aria-labelledby="miniPoussins-tab">
-                        {% if miniPoussin %}
-                            <h3>Mini-Poussins - {{ miniPoussin.annee }}</h3>
-                            <p>
-                                {{ miniPoussin.texte|raw }}
-                            </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
+                    <div id="{{ first.id }}" class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{ first.id }}-tab">
+                        <h3>{{ first.categorie }} - {{ first.annee }}</h3>
+                        <p>
+                            {{ first.texte|raw }}
+                        </p>
                     </div>
-                    <div id="poussins" class="tab-pane fade" role="tabpanel" aria-labelledby="poussins-tab">
-                        {% if poussin %}
-                            <h3>Poussins - {{ poussin.annee }}</h3>
+                    {% for taiso in taisos %}
+                        <div id="{{ taiso.id }}" class="tab-pane fade" role="tabpanel" aria-labelledby="{{ taiso.id }}-tab">
+                            <h3>{{ taiso.categorie }} - {{ taiso.annee }}</h3>
                             <p>
-                                {{ poussin.texte|raw }}
+                                {{ taiso.texte|raw }}
                             </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
-                    </div>
-                    <div id="benjamins" class="tab-pane fade" role="tabpanel" aria-labelledby="benjamins-tab">
-                        {% if benjamin %}
-                            <h3>Benjamins - {{ benjamin.annee }}</h3>
-                            <p>
-                                {{ benjamin.texte|raw }}
-                            </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
-                    </div>
-                    <div id="minimes" class="tab-pane fade" role="tabpanel" aria-labelledby="minimes-tab">
-                        {% if minime %}
-                            <h3>Minimes - {{ minime.annee }}</h3>
-                            <p>
-                                {{ minime.texte|raw }}
-                            </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
-                    </div>
-                    <div id="cadets" class="tab-pane fade" role="tabpanel" aria-labelledby="cadets-tab">
-                        {% if cadet %}
-                            <h3>Cadets - {{ cadet.annee }}</h3>
-                            <p>
-                                {{ cadet.texte|raw }}
-                            </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
-                    </div>
-                    <div id="juniors" class="tab-pane fade" role="tabpanel" aria-labelledby="juniors-tab">
-                        {% if junior %}
-                            <h3>Juniors - {{ junior.annee }}</h3>
-                            <p>
-                                {{ junior.texte|raw }}
-                            </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
-                    </div>
-                    <div id="seniors" class="tab-pane fade" role="tabpanel" aria-labelledby="seniors-tab">
-                        {% if senior %}
-                            <h3>Seniors - {{ senior.annee }}</h3>
-                            <p>
-                                {{ senior.texte|raw }}
-                            </p>
-                        {% else %}
-                            <p>
-                                no records found
-                            </p>
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="container">
                     <div class="row text-center justify-content-center">

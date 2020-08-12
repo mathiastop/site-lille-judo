@@ -19,6 +19,15 @@ class JudoCoursRepository extends ServiceEntityRepository
         parent::__construct($registry, JudoCours::class);
     }
 
+    public function findAllExceptThisOrder($int)
+    {
+        return $this->createQueryBuilder('dojo')
+            ->andWhere('dojo.ordre != :int')
+            ->orderBy('dojo.ordre', 'ASC')
+            ->setParameter('int', $int)
+            ->getQuery()
+            ->execute();
+    }
     // /**
     //  * @return JudoCours[] Returns an array of JudoCours objects
     //  */

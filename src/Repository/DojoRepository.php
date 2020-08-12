@@ -19,7 +19,7 @@ class DojoRepository extends ServiceEntityRepository
         parent::__construct($registry, Dojo::class);
     }
 
-    public function findAllExceptThis($int)
+    public function findAllExceptThisOrder($int)
     {
         return $this->createQueryBuilder('dojo')
             ->andWhere('dojo.ordre != :int')

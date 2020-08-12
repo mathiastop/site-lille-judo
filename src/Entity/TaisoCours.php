@@ -32,6 +32,11 @@ class TaisoCours
      */
     private $texte;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $ordre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class TaisoCours
     public function setTexte(string $texte): self
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getOrdre(): ?int
+    {
+        return $this->ordre;
+    }
+
+    public function setOrdre(int $ordre): self
+    {
+        $this->ordre = $ordre;
 
         return $this;
     }

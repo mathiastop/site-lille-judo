@@ -32,6 +32,11 @@ class JudoCours
      */
     private $text;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $ordre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class JudoCours
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getOrdre(): ?int
+    {
+        return $this->ordre;
+    }
+
+    public function setOrdre(int $ordre): self
+    {
+        $this->ordre = $ordre;
 
         return $this;
     }

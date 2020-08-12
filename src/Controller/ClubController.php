@@ -138,7 +138,7 @@ class ClubController extends AbstractController
 
         return $this->render('club/dojo.html.twig', [
             'first' => $dojoRepository->findOneBy(['ordre' => '1']),
-            'dojos' => $dojoRepository->findAllExceptThis(1)
+            'dojos' => $dojoRepository->findAllExceptThisOrder(1)
         ]);
     }
 }

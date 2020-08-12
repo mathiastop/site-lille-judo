@@ -19,6 +19,15 @@ class NeWazaCoursRepository extends ServiceEntityRepository
         parent::__construct($registry, NeWazaCours::class);
     }
 
+    public function findAllExceptThisOrder($int)
+    {
+        return $this->createQueryBuilder('dojo')
+            ->andWhere('dojo.ordre != :int')
+            ->orderBy('dojo.ordre', 'ASC')
+            ->setParameter('int', $int)
+            ->getQuery()
+            ->execute();
+    }
     // /**
     //  * @return NeWazaCours[] Returns an array of NeWazaCours objects
     //  */

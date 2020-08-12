@@ -231,11 +231,13 @@ easy_admin:
                 fields:
                     - { property: 'categorie', label: 'Catégorie', type: 'string' }
                     - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'text', label: 'Texte', type: 'text' }
             form:
                 fields:
-                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'categorie', label: 'Catégorie' }
                     - { property: 'annee', label: 'Année' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'text', label: 'Texte', type: 'fos_ckeditor' }
         JuJitsuCours:
             class: App\Entity\JuJitsuCours
@@ -244,11 +246,13 @@ easy_admin:
                 fields:
                     - { property: 'categorie', label: 'Catégorie', type: 'string' }
                     - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
             form:
                 fields:
-                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'categorie', label: 'Catégorie' }
                     - { property: 'annee', label: 'Année' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
         TaisoCours:
             class: App\Entity\TaisoCours
@@ -257,11 +261,13 @@ easy_admin:
                 fields:
                     - { property: 'categorie', label: 'Catégorie', type: 'string' }
                     - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
             form:
                 fields:
-                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'categorie', label: 'Catégorie' }
                     - { property: 'annee', label: 'Année' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
         NeWazaCours:
             class: App\Entity\NeWazaCours
@@ -270,11 +276,13 @@ easy_admin:
                 fields:
                     - { property: 'categorie', label: 'Catégorie', type: 'string' }
                     - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
             form:
                 fields:
-                    - { property: 'categorie', label: 'Catégorie', type: 'choice', type_options: { choices: { Mini-Poussins: 'Mini-Poussins', Poussins: 'Poussins', Benjamins: 'Benjamins', Minimes: 'Minimes', Cadets: 'Cadets', Juniors: 'Juniors', Seniors: 'Seniors' } } }
+                    - { property: 'categorie', label: 'Catégorie' }
                     - { property: 'annee', label: 'Année' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
         Evenements:
             class: App\Entity\Evenement
