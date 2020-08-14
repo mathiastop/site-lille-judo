@@ -169,9 +169,10 @@ easy_admin:
                 actions:
                     - { name: 'downloadInscription', type: 'route', label: 'Voir Fiche' }
                 fields:
-                    - { property: 'fiche', label: 'Fiche', type: 'string' }
+                    - { property: 'titre', label: 'Fiche', type: 'string' }
             form:
                 fields:
+                    - { property: 'titre', label: 'Fiche' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
         Boutique:
             class: App\Entity\Boutique

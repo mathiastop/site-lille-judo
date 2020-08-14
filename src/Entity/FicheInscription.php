@@ -41,6 +41,11 @@ class FicheInscription
      */
     private $ficheFile;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,5 +99,17 @@ class FicheInscription
         if ($fiche) {
             $this->updatedAt = new \DateTime('now');
         }
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
     }
 }

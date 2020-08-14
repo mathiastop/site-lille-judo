@@ -27,7 +27,7 @@ class InscriptionController extends AbstractController
         if ($fiche) {
             $file = new File($this->getParameter('kernel.project_dir').'/public'.$this->getParameter('app.path.fiche_inscription').'/'.$fiche->getFiche());
 
-            return $this->file($file, $fiche->getFiche(), ResponseHeaderBag::DISPOSITION_INLINE);
+            return $this->file($file, $fiche->getTitre().'.'.pathinfo($fiche->getFiche(), PATHINFO_EXTENSION), ResponseHeaderBag::DISPOSITION_INLINE);
         }
         return $this->render('inscription/no-file.html.twig');
     }
