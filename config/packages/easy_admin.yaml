@@ -172,10 +172,14 @@ easy_admin:
                     - { name: 'downloadInscription', type: 'route', label: 'Voir Fiche' }
                 fields:
                     - { property: 'titre', label: 'Titre', type: 'string' }
-            form:
+            new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+            edit:
+                fields:
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
         Boutique:
             class: App\Entity\Boutique
             list:
@@ -183,20 +187,28 @@ easy_admin:
                     - { property: 'objet', label: 'Objet', type: 'string' }
                     - { property: 'prix', label: 'Prix', type: 'string' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.boutique_images%' }
-            form:
+            new:
                 fields:
                     - { property: 'objet', label: 'Objet' }
                     - { property: 'prix', label: 'Prix', type: 'money' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
+            edit:
+                fields:
+                    - { property: 'objet', label: 'Objet' }
+                    - { property: 'prix', label: 'Prix', type: 'money' }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
         PhotosPassagesGrades:
             class: App\Entity\PhotosPassagesGrades
             label: "Photos Passage Grades"
             list:
                 fields:
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.passage_grades_images%' }
-            form:
+            new:
                 fields:
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
+            edit:
+                fields:
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
         Dojo:
             class: App\Entity\Dojo
             list:
@@ -310,10 +322,14 @@ easy_admin:
                     - { name: 'boutiqueDocument', type: 'route', label: 'Voir Fiche' }
                 fields:
                     - { property: 'titre', label: 'Titre', type: 'string' }
-            form:
+            new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+            edit:
+                fields:
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
         DocumentsUtiles:
             class: App\Entity\DocumentsUtiles
             label: 'Documents Utiles'
@@ -322,7 +338,11 @@ easy_admin:
                     - { name: 'documentShow', type: 'route', label: 'Voir Fiche' }
                 fields:
                     - { property: 'titre', label: 'Fiche', type: 'string' }
-            form:
+            new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+            edit:
+                fields:
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
