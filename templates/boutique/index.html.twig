@@ -5,8 +5,11 @@
 {% block body %}
     <div class="container">
         <div class="alert alert-danger text-center" role="alert">
-            Pour tout achat, veuillez contacter votre enseignant.
+            Pour tout achat, veuillez contacter votre enseignant, muni de votre <strong><a href="{{ path('boutiqueDocument') }}">bon de commande</a></strong>.
         </div>
+        <h2 class="text-center">
+            Télécharger le bon de commande <strong><a href="{{ path('boutiqueDocument') }}" target="_blank">ici</a></strong>
+        </h2>
         <div class="row text-center justify-content-center">
             {% for boutique in boutiques %}
                 <div class="col-lg-4 col-md-4">

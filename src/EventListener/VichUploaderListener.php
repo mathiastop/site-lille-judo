@@ -4,6 +4,7 @@
 namespace App\EventListener;
 
 use App\Entity\Boutique;
+use App\Entity\BoutiqueFiche;
 use App\Entity\Bureau;
 use App\Entity\FicheInscription;
 use App\Entity\GalleryImage;
@@ -84,6 +85,13 @@ class VichUploaderListener
             $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
             rename($image, $this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$uniqueId);
             $object->setImage($uniqueId);
+        }
+        if ($object instanceof BoutiqueFiche && $object->getFiche()) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/boutique_fiche/'.$object->getFiche();
+            $extension = pathinfo($image, PATHINFO_EXTENSION);
+            $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/boutique_fiche/'.$uniqueId);
+            $object->setFiche($uniqueId);
         }
     }
 }

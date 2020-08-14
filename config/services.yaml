@@ -13,6 +13,7 @@ parameters:
     app.path.boutique_images: /uploads/boutique
     app.path.passage_grades_images: /uploads/passage_grades
     app.path.fiche_inscription: /uploads/fiche
+    app.path.boutique_fiche: /uploads/boutique_fiche
 
 services:
     # default configuration for services in *this* file

@@ -12,6 +12,7 @@ easy_admin:
         menu:
             - { label: 'Accueil Site', route: 'accueil', icon: 'home' }
             - { label: 'Boutique'}
+            - { entity: 'BoutiqueFiche', label: 'Boutique Fiche', icon: 'copy' }
             - { entity: 'Boutique', label: 'Boutique', icon: 'shopping-cart' }
             - { label: 'Club' }
             - label: 'Histoire'
@@ -300,3 +301,15 @@ easy_admin:
                     - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
                     - { property: 'beginAt', label: 'Date de début', type: 'datetime', type_options: { widget: 'single_text', html5: 'true' } }
                     - { property: 'endAt', label: 'Date de fin', type: 'datetime', type_options: { widget: 'single_text', html5: 'true' } }
+        BoutiqueFiche:
+            class: App\Entity\BoutiqueFiche
+            label: 'Boutique Fiche'
+            list:
+                actions:
+                    - { name: 'boutiqueDocument', type: 'route', label: 'Voir Fiche' }
+                fields:
+                    - { property: 'titre', label: 'Fiche', type: 'string' }
+            form:
+                fields:
+                    - { property: 'titre', label: 'Fiche' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }

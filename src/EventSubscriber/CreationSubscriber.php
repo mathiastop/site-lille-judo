@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Boutique;
+use App\Entity\BoutiqueFiche;
 use App\Entity\Bureau;
 use App\Entity\FicheInscription;
 use App\Entity\Gallery;
@@ -100,6 +101,10 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof BoutiqueFiche) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -131,6 +136,9 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PhotosPassagesGrades) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof BoutiqueFiche) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }
@@ -191,6 +199,13 @@ class CreationSubscriber implements EventSubscriber
             $imageName = $entity->getImage();
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/passage_grades/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof BoutiqueFiche) {
+            $imageName = $entity->getFiche();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/boutique_fiche/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/boutique_fiche/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }
