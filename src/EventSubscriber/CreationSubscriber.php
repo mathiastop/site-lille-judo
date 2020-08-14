@@ -5,6 +5,7 @@ namespace App\EventSubscriber;
 use App\Entity\Boutique;
 use App\Entity\BoutiqueFiche;
 use App\Entity\Bureau;
+use App\Entity\DocumentsUtiles;
 use App\Entity\FicheInscription;
 use App\Entity\Gallery;
 use App\Entity\GalleryImage;
@@ -105,6 +106,10 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof DocumentsUtiles) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -139,6 +144,9 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof BoutiqueFiche) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof DocumentsUtiles) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }
@@ -206,6 +214,13 @@ class CreationSubscriber implements EventSubscriber
             $imageName = $entity->getFiche();
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/boutique_fiche/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/boutique_fiche/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof DocumentsUtiles) {
+            $imageName = $entity->getFiche();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/documents_utiles/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/documents_utiles/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }

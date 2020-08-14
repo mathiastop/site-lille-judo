@@ -15,7 +15,7 @@
                 <a class="nav-link" id="galerie-tab" data-toggle="tab" href="#galerie" aria-controls="galerie" aria-selected="false">Galerie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="exemple-tab" data-toggle="tab" href="#exemple" aria-controls="exemple" aria-selected="false">Exemple</a>
+                <a class="nav-link" id="documents-utiles-tab" data-toggle="tab" href="#documents-utiles" aria-controls="documents-utiles" aria-selected="false">Documents Utiles</a>
             </li>
         </ul>
         <div class="tab-content" id="documentsTabContent">
@@ -121,8 +121,19 @@
                     </div>
                 {% endfor %}
             </div>
-            <div id="exemple" class="tab-pane fade" role="tabpanel" aria-labelledby="exemple-tab">
-                <h3>Exemple</h3>
+            <div id="documents-utiles" class="tab-pane fade" role="tabpanel" aria-labelledby="documents-utiles-tab">
+                <h3>Documents Utiles</h3>
+                <ul>
+                    {% for documentUtile in documentsUtiles %}
+                        <li>
+                            {{ documentUtile.titre }}: <a href="{{ path('documentShow', {'id': documentUtile.id }) }}" target="_blank">Voir Document</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            no records found
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

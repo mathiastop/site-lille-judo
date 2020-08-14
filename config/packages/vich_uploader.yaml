@@ -32,3 +32,6 @@ vich_uploader:
         boutique_fiche:
             uri_prefix: '%app.path.boutique_fiche%'
             upload_destination: '%kernel.project_dir%/public%app.path.boutique_fiche%'
+        documents_utiles:
+            uri_prefix: '%app.path.documents_utiles%'
+            upload_destination: '%kernel.project_dir%/public%app.path.documents_utiles%'

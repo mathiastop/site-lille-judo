@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\DocumentsUtiles;
+use App\Repository\DocumentsUtilesRepository;
 use App\Repository\GalleryRepository;
 use App\Repository\PhotosPassagesGradesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +18,7 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/documents", name="documents")
      */
-    public function index(GalleryRepository $galleryRepository, Breadcrumbs $breadcrumbs, RouterInterface $router, PhotosPassagesGradesRepository $photosPassagesGradesRepository)
+    public function index(GalleryRepository $galleryRepository, Breadcrumbs $breadcrumbs, RouterInterface $router, PhotosPassagesGradesRepository $photosPassagesGradesRepository, DocumentsUtilesRepository  $documentsUtilesRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Documents");
@@ -24,7 +26,18 @@ class DocumentsController extends AbstractController
         return $this->render('documents/index.html.twig', [
             'gallerys' => $galleryRepository->findBy([],['id'=>'DESC']),
             'photos_passages_grades' => $photosPassagesGradesRepository->findBy([],['id'=>'DESC']),
+            'documentsUtiles' => $documentsUtilesRepository->findAll(),
         ]);
+    }
+
+    /**
+     * @Route("/documents/{id}", name="documentShow")
+     */
+    public function documentShow(DocumentsUtiles $documentsUtiles)
+    {
+        $file = new File($this->getParameter('kernel.project_dir').'/public'.$this->getParameter('app.path.documents_utiles').'/'.$documentsUtiles->getFiche());
+
+        return $this->file($file, $documentsUtiles->getTitre().'.'.pathinfo($documentsUtiles->getFiche(), PATHINFO_EXTENSION), ResponseHeaderBag::DISPOSITION_INLINE);
     }
 
     /**

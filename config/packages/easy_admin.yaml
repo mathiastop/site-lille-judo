@@ -35,6 +35,7 @@ easy_admin:
             - { label: 'Documents' }
             - { entity: 'Gallery', icon: 'images' }
             - { entity: 'PhotosPassagesGrades', icon: 'graduation-cap' }
+            - { entity: 'DocumentsUtiles', label: 'Documents Utiles', icon: 'copy' }
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
@@ -170,11 +171,11 @@ easy_admin:
                 actions:
                     - { name: 'downloadInscription', type: 'route', label: 'Voir Fiche' }
                 fields:
-                    - { property: 'titre', label: 'Fiche', type: 'string' }
+                    - { property: 'titre', label: 'Titre', type: 'string' }
             form:
                 fields:
-                    - { property: 'titre', label: 'Fiche' }
-                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
         Boutique:
             class: App\Entity\Boutique
             list:
@@ -308,8 +309,20 @@ easy_admin:
                 actions:
                     - { name: 'boutiqueDocument', type: 'route', label: 'Voir Fiche' }
                 fields:
+                    - { property: 'titre', label: 'Titre', type: 'string' }
+            form:
+                fields:
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+        DocumentsUtiles:
+            class: App\Entity\DocumentsUtiles
+            label: 'Documents Utiles'
+            list:
+                actions:
+                    - { name: 'documentShow', type: 'route', label: 'Voir Fiche' }
+                fields:
                     - { property: 'titre', label: 'Fiche', type: 'string' }
             form:
                 fields:
-                    - { property: 'titre', label: 'Fiche' }
-                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
+                    - { property: 'titre', label: 'Titre' }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
