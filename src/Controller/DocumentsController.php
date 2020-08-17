@@ -24,9 +24,9 @@ class DocumentsController extends AbstractController
         $breadcrumbs->addItem("Documents");
 
         return $this->render('documents/index.html.twig', [
-            'gallerys' => $galleryRepository->findBy([],['id'=>'DESC']),
-            'photos_passages_grades' => $photosPassagesGradesRepository->findBy([],['id'=>'DESC']),
-            'documentsUtiles' => $documentsUtilesRepository->findAll(),
+            'gallerys' => $galleryRepository->findBy(['enabled' => true], ['id'=>'DESC']),
+            'photos_passages_grades' => $photosPassagesGradesRepository->findBy(['enabled' => true], ['id'=>'DESC']),
+            'documentsUtiles' => $documentsUtilesRepository->findBy(['enabled' => true]),
         ]);
     }
 

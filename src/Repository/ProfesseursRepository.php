@@ -19,24 +19,6 @@ class ProfesseursRepository extends ServiceEntityRepository
         parent::__construct($registry, Professeurs::class);
     }
 
-    /**
-     * @return Professeurs[]
-     */
-    public function findAllOrderByName(): array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-            SELECT *
-            FROM professeurs p
-            ORDER BY p.nom
-        ';
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll();
-    }
-
     // /**
     //  * @return Professeurs[] Returns an array of Professeurs objects
     //  */

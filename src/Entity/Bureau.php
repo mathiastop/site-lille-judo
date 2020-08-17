@@ -61,6 +61,11 @@ class Bureau
      */
     private $ordre;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -160,6 +165,18 @@ class Bureau
     public function setOrdre(int $ordre): self
     {
         $this->ordre = $ordre;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

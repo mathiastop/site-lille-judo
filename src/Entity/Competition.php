@@ -39,6 +39,11 @@ class Competition
      */
     private $competitionInscrits;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
     public function __construct()
     {
         $this->competitionInscrits = new ArrayCollection();
@@ -112,6 +117,18 @@ class Competition
                 $competitionInscrit->setCompetition(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

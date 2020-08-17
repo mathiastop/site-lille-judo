@@ -32,6 +32,11 @@ class HistoriqueClub
      */
     private $texte;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class HistoriqueClub
     public function setTexte(string $texte): self
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

@@ -29,6 +29,7 @@ class HistoriqueClubRepository extends ServiceEntityRepository
         $sql = '
             SELECT *
             FROM historique_club h
+            WHERE h.enabled IS true
             ORDER BY h.annee
         ';
         $stmt = $conn->prepare($sql);

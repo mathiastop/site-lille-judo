@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
-use App\Entity\Post;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
 use App\Repository\EvenementRepository;
@@ -35,7 +34,7 @@ class ActualitesController extends AbstractController
      */
     public function indexActualitesClub(PostClubRepository $postClubRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
-        $data = $postClubRepository->findBy([],['createdAt' => 'desc']);
+        $data = $postClubRepository->findBy(['enabled' => true], ['createdAt' => 'desc']);
         $posts = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -70,7 +69,7 @@ class ActualitesController extends AbstractController
      */
     public function indexActualitesNationaleInternationale(PostNatioRepository $postNatioRepository, PaginatorInterface $paginator, Request $request, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
-        $data = $postNatioRepository->findBy([],['createdAt' => 'desc']);
+        $data = $postNatioRepository->findBy(['enabled' => true], ['createdAt' => 'desc']);
         $posts = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),

@@ -52,16 +52,20 @@ class InscriptionController extends AbstractController
     public function indexCompetitions(Breadcrumbs $breadcrumbs, RouterInterface $router, CompetitionRepository $competitionRepository)
     {
         $competitionsJudo = $competitionRepository->findBy([
-            'sport' => 'Judo'
+            'sport' => 'Judo',
+            'enabled' => true,
         ]);
         $competitionsJuJitsu = $competitionRepository->findBy([
-            'sport' => 'JuJitsu'
+            'sport' => 'JuJitsu',
+            'enabled' => true,
         ]);
         $competitionsTaiso = $competitionRepository->findBy([
-            'sport' => 'Taiso'
+            'sport' => 'Taiso',
+            'enabled' => true,
         ]);
         $competitionsNeWaza = $competitionRepository->findBy([
-            'sport' => 'NeWaza'
+            'sport' => 'NeWaza',
+            'enabled' => true,
         ]);
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Inscription");

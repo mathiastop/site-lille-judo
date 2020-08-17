@@ -48,13 +48,15 @@ easy_admin:
                     - { property: 'title', label: 'Titre', type: 'string' }
                     - { property: 'body', label: 'Corps', type: 'text' }
                     - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_club_images%' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
                     - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                     - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
             form:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image'  }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'enabled', label: 'Affiché' }
         PostNatio:
               class: App\Entity\PostNatio
               label: 'Actualités Nationale/Internationale'
@@ -63,13 +65,15 @@ easy_admin:
                       - { property: 'title', label: 'Titre', type: 'string' }
                       - { property: 'body', label: 'Corps', type: 'text' }
                       - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_natio_images%' }
+                      - { property: 'enabled', label: 'Affiché', type: 'toggle' }
                       - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                       - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
               form:
                   fields:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                      - { property: 'imageFile', label: 'Image', type: 'vich_image'  }
+                      - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                      - { property: 'enabled', label: 'Affiché' }
         Professeurs:
             class: App\Entity\Professeurs
             label: 'Enseignants'
@@ -82,6 +86,7 @@ easy_admin:
                     - { property: 'role', label: 'Role', type: 'string' }
                     - { property: 'description', label: 'Description', type: 'text' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.professeurs_images%' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'nom', label: 'Nom' }
@@ -91,6 +96,7 @@ easy_admin:
                     - { property: 'role', label: 'Role' }
                     - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'enabled', label: 'Affiché' }
         Bureau:
             class: App\Entity\Bureau
             list:
@@ -100,6 +106,7 @@ easy_admin:
                     - { property: 'role', label: 'Role', type: 'string' }
                     - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.bureau_images%' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'nom', label: 'Nom' }
@@ -107,6 +114,7 @@ easy_admin:
                     - { property: 'role', label: 'Role' }
                     - { property: 'ordre', label: 'Ordre', type: 'integer' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'enabled', label: 'Affiché' }
         Gallery:
             class: App\Entity\Gallery
             label: 'Galerie'
@@ -114,10 +122,12 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'Nom', type: 'string' }
                     - { property: 'galleryImages', label: 'Images' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'galleryImages', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\GalleryImageType', by_reference: false } }
+                    - { property: 'enabled', label: 'Affiché' }
         HistoireClub:
             class: App\Entity\HistoriqueClub
             label: 'Historique du Club'
@@ -126,11 +136,13 @@ easy_admin:
                     - { property: 'titre', label: 'Titre', type: 'string' }
                     - { property: 'annee', label: 'Année', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'annee', label: 'Année', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'textarea' }
+                    - { property: 'enabled', label: 'Affiché' }
         HistoirePresidents:
             class: App\Entity\HistoriquePresidents
             label: 'Les Divers Présidents'
@@ -139,11 +151,13 @@ easy_admin:
                     - { property: 'titre', label: 'Nom', type: 'string' }
                     - { property: 'annee', label: 'Année', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'titre', label: 'Nom' }
                     - { property: 'annee', label: 'Année', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'textarea' }
+                    - { property: 'enabled', label: 'Affiché' }
         HistoirePersonnalites:
             class: App\Entity\HistoriquePersonnalites
             label: 'Quelques personnalités marquantes'
@@ -151,19 +165,23 @@ easy_admin:
                 fields:
                     - { property: 'titre', label: 'Nom', type: 'string' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'titre', label: 'Nom' }
                     - { property: 'texte', label: 'Texte', type: 'textarea' }
+                    - { property: 'enabled', label: 'Affiché' }
         HistoireEnseignement:
             class: App\Entity\HistoriqueEnseignement
             label: "L'enseignement"
             list:
                 fields:
                     - { property: 'texte', label: 'Texte', type: 'text' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'texte', label: 'Texte', type: 'textarea' }
+                    - { property: 'enabled', label: 'Affiché' }
         FicheInscription:
             class: App\Entity\FicheInscription
             label: "Fiche d'inscription"
@@ -187,28 +205,34 @@ easy_admin:
                     - { property: 'objet', label: 'Objet', type: 'string' }
                     - { property: 'prix', label: 'Prix', type: 'string' }
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.boutique_images%' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             new:
                 fields:
                     - { property: 'objet', label: 'Objet' }
                     - { property: 'prix', label: 'Prix', type: 'money' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'enabled', label: 'Affiché' }
             edit:
                 fields:
                     - { property: 'objet', label: 'Objet' }
                     - { property: 'prix', label: 'Prix', type: 'money' }
                     - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'enabled', label: 'Affiché' }
         PhotosPassagesGrades:
             class: App\Entity\PhotosPassagesGrades
             label: "Photos Passage Grades"
             list:
                 fields:
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.passage_grades_images%' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             new:
                 fields:
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'enabled', label: 'Affiché' }
             edit:
                 fields:
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
+                    - { property: 'enabled', label: 'Affiché' }
         Dojo:
             class: App\Entity\Dojo
             list:
@@ -234,11 +258,13 @@ easy_admin:
                     - { property: 'lieu', label: 'Lieu', type: 'string' }
                     - { property: 'date', label: 'Date', type: 'date' }
                     - { property: 'competitionInscrits', label: "Nombre d'inscrit" }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'sport', label: 'Sport', type: 'choice', type_options: { choices: { Judo: 'Judo', JuJitsu: 'JuJitsu', Taiso: 'Taiso', NeWaza: 'NeWaza' } } }
                     - { property: 'lieu', label: 'Lieu' }
                     - { property: 'date', label: 'Date', type: 'date', type_options: { widget: 'single_text', html5: 'true' } }
+                    - { property: 'enabled', label: 'Affiché' }
         JudoCours:
             class: App\Entity\JudoCours
             label: 'Judo Cours'
@@ -308,12 +334,14 @@ easy_admin:
                     - { property: 'description', label: 'Description', type: 'text' }
                     - { property: 'beginAt', label: 'Date de début', type: 'datetime' }
                     - { property: 'endAt', label: 'Date de fin', type: 'datetime' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
                     - { property: 'beginAt', label: 'Date de début', type: 'datetime', type_options: { widget: 'single_text', html5: 'true' } }
                     - { property: 'endAt', label: 'Date de fin', type: 'datetime', type_options: { widget: 'single_text', html5: 'true' } }
+                    - { property: 'enabled', label: 'Affiché' }
         BoutiqueFiche:
             class: App\Entity\BoutiqueFiche
             label: 'Boutique Fiche'
@@ -338,11 +366,14 @@ easy_admin:
                     - { name: 'documentShow', type: 'route', label: 'Voir Fiche' }
                 fields:
                     - { property: 'titre', label: 'Fiche', type: 'string' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { required: true } }
+                    - { property: 'enabled', label: 'Affiché' }
             edit:
                 fields:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
+                    - { property: 'enabled', label: 'Affiché' }

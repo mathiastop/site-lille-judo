@@ -34,7 +34,7 @@ class CalendarSubscriber implements EventSubscriberInterface
         $filters = $calendar->getFilters();
         $evenements = $this->evenementRepository
             ->createQueryBuilder('evenement')
-            ->where('evenement.beginAt BETWEEN :start and :end OR evenement.endAt BETWEEN :start and :end')
+            ->where('evenement.enabled = true and evenement.beginAt BETWEEN :start and :end OR evenement.endAt BETWEEN :start and :end')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
             ->getQuery()

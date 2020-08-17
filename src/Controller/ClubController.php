@@ -11,7 +11,6 @@ use App\Repository\HistoriqueEnseignementRepository;
 use App\Repository\HistoriquePersonnalitesRepository;
 use App\Repository\HistoriquePresidentsRepository;
 use App\Repository\ProfesseursRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,8 +45,8 @@ class ClubController extends AbstractController
         return $this->render('club/histoire.html.twig', [
             'historiques' => $historiqueClubRepository->findAllOrderByDate(),
             'presidents' => $historiquePresidentsRepository->findAllOrderByDate(),
-            'personnalites' => $historiquePersonnalitesRepository->findAll(),
-            'enseignements' => $historiqueEnseignementRepository->findAll(),
+            'personnalites' => $historiquePersonnalitesRepository->findBy(['enabled' => true]),
+            'enseignements' => $historiqueEnseignementRepository->findBy(['enabled' => true]),
         ]);
     }
 
@@ -61,7 +60,7 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Les Enseignants");
 
         return $this->render('club/enseignants.html.twig', [
-            'professeurs' => $professeursRepository->findAllOrderByName(),
+            'professeurs' => $professeursRepository->findBy(['enabled' => true], ['nom' => 'ASC']),
         ]);
     }
 
@@ -90,7 +89,7 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Bureau");
 
         return $this->render('club/bureau.html.twig', [
-            'bureaux' => $bureauRepository->findBy([], ['ordre' => 'ASC']),
+            'bureaux' => $bureauRepository->findBy(['enabled' => true], ['ordre' => 'ASC']),
         ]);
     }
 

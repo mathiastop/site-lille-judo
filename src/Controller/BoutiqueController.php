@@ -22,7 +22,7 @@ class BoutiqueController extends AbstractController
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Boutique");
         return $this->render('boutique/index.html.twig', [
-            'boutiques' => $boutiqueRepository->findAll(),
+            'boutiques' => $boutiqueRepository->findBy(['enabled' => true]),
         ]);
     }
 
