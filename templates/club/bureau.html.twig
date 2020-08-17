@@ -3,36 +3,34 @@
 {% block title %}Bureau - Lille Judo{% endblock %}
 
 {% block body %}
-    <div>
-        <div class="container">
-            <div class="row text-center justify-content-center">
-                {% for bureau in bureaux %}
-                    <div class="col-lg-3">
-                        {% if bureau.image %}
-                            <img class="rounded-circle"
-                                 src="{{ asset('uploads/bureau/') }}{{ bureau.image }}"
-                                 width="140"
-                                 height="140"
-                                 alt="">
-                        {% else %}
-                            <img class="rounded-circle"
-                                 src="http://placehold.it/140x140"
-                                 width="140"
-                                 height="140"
-                                 alt="">
-                        {% endif %}
-                        <h2>{{ bureau.role }}</h2>
-                        <p>
-                            {{ bureau.prenom }}
-                            {{ bureau.nom }}
-                        </p>
-                    </div>
-                {% else %}
-                    <div class="col-lg-3">
-                        no records found
-                    </div>
-                {% endfor %}
-            </div>
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            {% for bureau in bureaux %}
+                <div class="col-lg-3">
+                    {% if bureau.image %}
+                        <img class="rounded-circle"
+                             src="{{ asset('uploads/bureau/') }}{{ bureau.image }}"
+                             width="140"
+                             height="140"
+                             alt="">
+                    {% else %}
+                        <img class="rounded-circle"
+                             src="http://placehold.it/140x140"
+                             width="140"
+                             height="140"
+                             alt="">
+                    {% endif %}
+                    <h2>{{ bureau.role }}</h2>
+                    <p>
+                        {{ bureau.prenom }}
+                        {{ bureau.nom }}
+                    </p>
+                </div>
+            {% else %}
+                <div class="col-lg-3">
+                    no records found
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

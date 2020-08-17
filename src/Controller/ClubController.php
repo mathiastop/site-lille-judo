@@ -140,4 +140,16 @@ class ClubController extends AbstractController
             'dojos' => $dojoRepository->findAllExceptThisOrder(1)
         ]);
     }
+
+    /**
+     * @Route("/palmares", name="palmares")
+     */
+    public function palmaresIndex(Breadcrumbs $breadcrumbs, RouterInterface $router)
+    {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Club");
+        $breadcrumbs->addItem("Palmarès");
+
+        return $this->render('club/palmares.html.twig');
+    }
 }
