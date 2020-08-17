@@ -54,7 +54,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image'  }
         PostNatio:
               class: App\Entity\PostNatio
               label: 'Actualités Nationale/Internationale'
@@ -69,7 +69,7 @@ easy_admin:
                   fields:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                      - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
+                      - { property: 'imageFile', label: 'Image', type: 'vich_image'  }
         Professeurs:
             class: App\Entity\Professeurs
             label: 'Enseignants'
@@ -90,7 +90,7 @@ easy_admin:
                     - { property: 'diplome', label: 'Diplomes' }
                     - { property: 'role', label: 'Role' }
                     - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false }  }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
         Bureau:
             class: App\Entity\Bureau
             list:
@@ -106,7 +106,7 @@ easy_admin:
                     - { property: 'prenom', label: 'Prénom' }
                     - { property: 'role', label: 'Role' }
                     - { property: 'ordre', label: 'Ordre', type: 'integer' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
         Gallery:
             class: App\Entity\Gallery
             label: 'Galerie'
@@ -175,7 +175,7 @@ easy_admin:
             new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
-                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { required: true } }
             edit:
                 fields:
                     - { property: 'titre', label: 'Titre' }
@@ -191,12 +191,12 @@ easy_admin:
                 fields:
                     - { property: 'objet', label: 'Objet' }
                     - { property: 'prix', label: 'Prix', type: 'money' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { required: true } }
             edit:
                 fields:
                     - { property: 'objet', label: 'Objet' }
                     - { property: 'prix', label: 'Prix', type: 'money' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
         PhotosPassagesGrades:
             class: App\Entity\PhotosPassagesGrades
             label: "Photos Passage Grades"
@@ -205,7 +205,7 @@ easy_admin:
                     - { property: 'image', label: 'Image', type: 'image' , base_path: '%app.path.passage_grades_images%' }
             new:
                 fields:
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false, required: true } }
+                    - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { required: true } }
             edit:
                 fields:
                     - { property: 'imageFile', label: 'Image', type: 'vich_image', type_options: { allow_delete: false } }
@@ -325,7 +325,7 @@ easy_admin:
             new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
-                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { required: true } }
             edit:
                 fields:
                     - { property: 'titre', label: 'Titre' }
@@ -341,7 +341,7 @@ easy_admin:
             new:
                 fields:
                     - { property: 'titre', label: 'Titre' }
-                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false, required: true } }
+                    - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { required: true } }
             edit:
                 fields:
                     - { property: 'titre', label: 'Titre' }
