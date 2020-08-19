@@ -20,6 +20,7 @@ easy_admin:
             - { entity: 'Professeurs', label: 'Enseignants', icon: 'chalkboard-teacher' }
             - { entity: 'Bureau', icon: 'laptop-house' }
             - { entity: 'Dojo', icon: 'door-open' }
+            - { entity: 'Palmares', icon: 'medal' }
             - { label: 'Disciplines' }
             - { entity: 'JudoCours', icon: 'school' }
             - { entity: 'JuJitsuCours', icon: 'school' }
@@ -377,3 +378,14 @@ easy_admin:
                     - { property: 'titre', label: 'Titre' }
                     - { property: 'ficheFile', label: 'Fiche', type: 'vich_file', type_options: { allow_delete: false } }
                     - { property: 'enabled', label: 'Affiché' }
+        Palmares:
+            class: App\Entity\Palmares
+            label: 'Palmarès'
+            list:
+                fields:
+                    - { property: 'annee', label: 'Année', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'annee', label: 'Année', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }

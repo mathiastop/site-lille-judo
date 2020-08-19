@@ -10,6 +10,7 @@ use App\Repository\HistoriqueClubRepository;
 use App\Repository\HistoriqueEnseignementRepository;
 use App\Repository\HistoriquePersonnalitesRepository;
 use App\Repository\HistoriquePresidentsRepository;
+use App\Repository\PalmaresRepository;
 use App\Repository\ProfesseursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -144,12 +145,14 @@ class ClubController extends AbstractController
     /**
      * @Route("/palmares", name="palmares")
      */
-    public function palmaresIndex(Breadcrumbs $breadcrumbs, RouterInterface $router)
+    public function palmaresIndex(Breadcrumbs $breadcrumbs, RouterInterface $router, PalmaresRepository  $palmaresRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Club");
         $breadcrumbs->addItem("Palmarès");
 
-        return $this->render('club/palmares.html.twig');
+        return $this->render('club/palmares.html.twig', [
+            'palmaress' => $palmaresRepository->findAll(),
+        ]);
     }
 }
