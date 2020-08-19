@@ -48,7 +48,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre', type: 'string' }
                     - { property: 'body', label: 'Corps', type: 'text' }
-                    - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.post_club_images%' }
+                    - { property: 'images', label: 'Images' }
                     - { property: 'enabled', label: 'Affiché', type: 'toggle' }
                     - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                     - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
@@ -56,7 +56,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
-                    - { property: 'imageFile', label: 'Image', type: 'vich_image' }
+                    - { property: 'images', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\PostClubImageType', by_reference: false } }
                     - { property: 'enabled', label: 'Affiché' }
         PostNatio:
               class: App\Entity\PostNatio

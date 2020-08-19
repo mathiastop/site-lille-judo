@@ -11,6 +11,7 @@ use App\Entity\FicheInscription;
 use App\Entity\GalleryImage;
 use App\Entity\PhotosPassagesGrades;
 use App\Entity\PostClub;
+use App\Entity\PostClubImage;
 use App\Entity\PostNatio;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -31,7 +32,7 @@ class VichUploaderListener
     {
         $object = $event->getObject();
 
-        if ($object instanceof PostClub && $object->getImage()) {
+        if ($object instanceof PostClubImage && $object->getImage()) {
             $image = $this->kernel->getProjectDir().'/public/uploads/club/'.$object->getImage();
             $extension = pathinfo($image, PATHINFO_EXTENSION);
             $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;

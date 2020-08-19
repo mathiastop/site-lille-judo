@@ -55,13 +55,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            {% if first.image and firstType == 'Club' %}
+                            {% if first.images.count and firstType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/club/') }}{{ first.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/club/') }}{{ first.getImages()[0].image }}" alt="">
                                 </a>
-                            {% elseif first.image and firstType == 'Natio' %}
+                            {% elseif first.images.count and firstType == 'Natio' %}
                                 <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/natio/') }}{{ first.image }}" alt="">
+                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/natio/') }}{{ first.getImages()[0].image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
@@ -73,13 +73,13 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if second.image and secondType == 'Club' %}
+                            {% if second.images.count and secondType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ second.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ second.getImages()[0].image }}" alt="">
                                 </a>
-                            {% elseif second.image and secondType == 'Natio' %}
+                            {% elseif second.images.count and secondType == 'Natio' %}
                                 <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ second.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ second.getImages()[0].image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
@@ -91,13 +91,13 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if third.image and thirdType == 'Club' %}
+                            {% if third.images.count and thirdType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ third.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ third.getImages()[0].image }}" alt="">
                                 </a>
-                            {% elseif third.image and thirdType == 'Natio' %}
+                            {% elseif third.images.count and thirdType == 'Natio' %}
                                 <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ third.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ third.getImages()[0].image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
@@ -109,13 +109,13 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            {% if fourth.image and fourthType == 'Club' %}
+                            {% if fourth.images.count and fourthType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ fourth.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ fourth.getImages()[0].image }}" alt="">
                                 </a>
-                            {% elseif fourth.image and fourthType == 'Natio' %}
+                            {% elseif fourth.images.count and fourthType == 'Natio' %}
                                 <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ fourth.image }}" alt="">
+                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ fourth.getImages()[0].image }}" alt="">
                                 </a>
                             {% else %}
                                 <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">

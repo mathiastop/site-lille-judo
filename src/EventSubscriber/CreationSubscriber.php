@@ -11,6 +11,7 @@ use App\Entity\Gallery;
 use App\Entity\GalleryImage;
 use App\Entity\PhotosPassagesGrades;
 use App\Entity\PostClub;
+use App\Entity\PostClubImage;
 use App\Entity\PostNatio;
 use App\Entity\Professeurs;
 use App\Entity\User;
@@ -63,6 +64,10 @@ class CreationSubscriber implements EventSubscriber
                 // TODO: change URL before true launching
             );
             $this->container->get('social_post')->publish($message);
+        }
+        if ($entity instanceof PostClubImage) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatio) {
             $entity->setCreatedAt(new \DateTime());
@@ -119,6 +124,9 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof PostClub) {
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof PostClubImage) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
         if ($entity instanceof PostNatio) {
             $entity->setUpdatedAt(new \DateTime());
         }
@@ -154,7 +162,7 @@ class CreationSubscriber implements EventSubscriber
     public function preRemove(LifecycleEventArgs $args) {
         $entity = $args->getEntity();
 
-        if ($entity instanceof PostClub) {
+        if ($entity instanceof PostClubImage) {
             $imageName = $entity->getImage();
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName);

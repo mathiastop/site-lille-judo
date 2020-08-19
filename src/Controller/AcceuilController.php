@@ -21,8 +21,6 @@ class AcceuilController extends AbstractController
         $i = 0;
         $y = 0;
 
-        dump($postsClub);
-        dump($postsNatio);
         $first = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($first === $postsClub[$i]) {
             $firstType = 'Club';
