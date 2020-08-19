@@ -11,36 +11,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AcceuilController extends AbstractController
 {
-    private function checkOnline(int $mode, PostClub $postClub, PostNatio $postNatio)
-    {
-        if ($mode == 1) {
-            if ($postClub->getEnabled() == true)
-                return (0);
-            else
-                return (1);
-        } else {
-            if ($postNatio->getEnabled() == true)
-                return (0);
-            else
-                return (1);
-        }
-    }
     /**
      * @Route("/", name="accueil")
      */
     public function index(PostClubRepository $postClubRepository, PostNatioRepository $postNatioRepository)
     {
-        $postsClub = $postClubRepository->findBy([], ['createdAt' => 'DESC']);
-        $postsNatio = $postNatioRepository->findBy([], ['createdAt' => 'DESC']);
+        $postsClub = $postClubRepository->findBy(['enabled' => true], ['createdAt' => 'DESC']);
+        $postsNatio = $postNatioRepository->findBy(['enabled' => true], ['createdAt' => 'DESC']);
         $i = 0;
         $y = 0;
 
         dump($postsClub);
         dump($postsNatio);
-        if ($i < (count($postsClub) - 1))
-            $i += $this->checkOnline(1, $postsClub[$i], $postsNatio[$y]);
-        if ($y < (count($postsNatio) - 1))
-            $y += $this->checkOnline(2, $postsClub[$i], $postsNatio[$y]);
         $first = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($first === $postsClub[$i]) {
             $firstType = 'Club';
@@ -51,10 +33,6 @@ class AcceuilController extends AbstractController
             if ($y < (count($postsNatio) - 1))
                 $y++;
         }
-        if ($i < (count($postsClub) - 1))
-            $i += $this->checkOnline(1, $postsClub[$i], $postsNatio[$y]);
-        if ($y < (count($postsNatio) - 1))
-            $y += $this->checkOnline(2, $postsClub[$i], $postsNatio[$y]);
         $second = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($second === $postsClub[$i]) {
             $secondType = 'Club';
@@ -65,10 +43,6 @@ class AcceuilController extends AbstractController
             if ($y < (count($postsNatio) - 1))
                 $y++;
         }
-        if ($i < (count($postsClub) - 1))
-            $i += $this->checkOnline(1, $postsClub[$i], $postsNatio[$y]);
-        if ($y < (count($postsNatio) - 1))
-            $y += $this->checkOnline(2, $postsClub[$i], $postsNatio[$y]);
         $third = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($third === $postsClub[$i]) {
             $thirdType = 'Club';
@@ -79,10 +53,6 @@ class AcceuilController extends AbstractController
             if ($y < (count($postsNatio) - 1))
                 $y++;
         }
-        if ($i < (count($postsClub) - 1))
-            $i += $this->checkOnline(1, $postsClub[$i], $postsNatio[$y]);
-        if ($y < (count($postsNatio) - 1))
-            $y += $this->checkOnline(2, $postsClub[$i], $postsNatio[$y]);
         $fourth = $postsClub[$i]->getCreatedAt() > $postsNatio[$y]->getCreatedAt() ? $postsClub[$i] : $postsNatio[$y];
         if ($fourth === $postsClub[$i])
             $fourthType = 'Club';
