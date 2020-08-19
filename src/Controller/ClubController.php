@@ -152,7 +152,7 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Palmarès");
 
         return $this->render('club/palmares.html.twig', [
-            'palmaress' => $palmaresRepository->findBy([], ['annee' => 'ASC']),
+            'palmaress' => $palmaresRepository->findBy(['enabled' => true], ['annee' => 'ASC']),
         ]);
     }
 }

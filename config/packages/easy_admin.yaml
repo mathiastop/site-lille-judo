@@ -385,7 +385,9 @@ easy_admin:
                 fields:
                     - { property: 'annee', label: 'Année', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'text' }
+                    - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
                     - { property: 'annee', label: 'Année', type: 'integer' }
                     - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
+                    - { property: 'enabled', label: 'Affiché' }
