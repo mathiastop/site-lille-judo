@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PostNatioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -41,20 +43,19 @@ class PostNatio
     private $updatedAt;
 
     /**
-     * @Vich\UploadableField(mapping="post_natio_images", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $enabled;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PostNatioImage::class, mappedBy="postNatio", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -109,31 +110,6 @@ class PostNatio
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if ($image) {
-            $this->updatedAt = new \DateTime('now');
-        }
-    }
-
     public function getEnabled(): ?bool
     {
         return $this->enabled;
@@ -142,6 +118,37 @@ class PostNatio
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostNatioImage[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(PostNatioImage $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setPostNatio($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(PostNatioImage $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getPostNatio() === $this) {
+                $image->setPostNatio(null);
+            }
+        }
 
         return $this;
     }

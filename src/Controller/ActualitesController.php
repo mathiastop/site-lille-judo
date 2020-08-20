@@ -97,8 +97,12 @@ class ActualitesController extends AbstractController
         $breadcrumbs->addItem("Actualités");
         $breadcrumbs->addItem("Actualités Nationale Internationale", $router->generate('actualites-nationale-internationale'));
         $breadcrumbs->addItem($postNatio->getTitle());
+        $firstImage = null;
+        if ($postNatio->getImages()[0])
+            $firstImage = $postNatio->getImages()[0]->getImage();
 
         return $this->render('actualites/actualites-nationale-internationale-show.html.twig', [
+            'firstImage' => $firstImage,
             'post' => $postNatio,
         ]);
     }
