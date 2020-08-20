@@ -58,8 +58,12 @@ class ActualitesController extends AbstractController
         $breadcrumbs->addItem("Actualités");
         $breadcrumbs->addItem("Actualités Club", $router->generate('actualites-club'));
         $breadcrumbs->addItem($postClub->getTitle());
+        $firstImage = null;
+        if ($postClub->getImages()[0])
+            $firstImage = $postClub->getImages()[0]->getImage();
 
         return $this->render('actualites/actualites-club-show.html.twig', [
+            'firstImage' => $firstImage,
             'post' => $postClub,
         ]);
     }
