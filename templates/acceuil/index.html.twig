@@ -20,6 +20,20 @@
             height: 100%;
             width: 100%;
         }
+
+        /*.carousel-inner > .carousel-item {*/
+        /*    height: 65vh;*/
+        /*}*/
+        /*.carousel-inner > .carousel-item > img {*/
+        /*    position: absolute;*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    -webkit-transform: translate(-50%, -50%);*/
+        /*    -ms-transform: translate(-50%, -50%);*/
+        /*    transform: translate(-50%, -50%);*/
+        /*    max-height: 800px;*/
+        /*    width: auto;*/
+        /*}*/
     </style>
 {% endblock %}
 {% block body %}
@@ -45,6 +59,7 @@
                 <h2>156 rue Charles Debierre</h2>
             </div>
             <div class="col-xl-6 order-1 order-xl-2">
+{#                <div id="carouselAcceuilPosts" class="carousel slide d-none d-md-block" data-ride="carousel">#}
                 <div id="carouselAcceuilPosts" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselAcceuilPosts" data-slide-to="0" class="active"></li>
@@ -53,110 +68,141 @@
                         <li data-target="#carouselAcceuilPosts" data-slide-to="3"></li>
                         <li data-target="#carouselAcceuilPosts" data-slide-to="4"></li>
                     </ol>
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" style="background: lightgray">
                         <div class="carousel-item active">
                             {% if first.images.count and firstType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/club/') }}{{ first.images[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/club/') }}{{ first.images[0].image }}"
+                                         alt="">
                                 </a>
                             {% elseif first.images.count and firstType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
-                                    <img class="img-fluid d-block w-100" src="{{ asset('uploads/natio/') }}{{ first.images[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/natio/') }}{{ first.images[0].image }}"
+                                         alt="">
                                 </a>
                             {% else %}
                                 {% if firstType == 'Club' %}
                                     <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ first.title }}"
+                                             alt="">
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ first.title }}"
+                                             alt="">
                                     </a>
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="text-dark">{{ first.title }}</h5>
+                                <h1 class="text-dark" style="background: white">{{ first.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if second.images.count and secondType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ second.getImages()[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/club/') }}{{ second.getImages()[0].image }}"
+                                         alt="">
                                 </a>
                             {% elseif second.images.count and secondType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': second.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ second.getImages()[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/natio/') }}{{ second.getImages()[0].image }}"
+                                         alt="">
                                 </a>
                             {% else %}
                                 {% if secondType == 'Club' %}
-                                    <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <a href="{{ path('actualites-club_show', {'id': second.id}) }}">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ second.title }}"
+                                             alt="">
                                     </a>
                                 {% else %}
-                                    <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <a href="{{ path('actualites-nationale-internationale_show', {'id': second.id}) }}">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ second.title }}"
+                                             alt="">
                                     </a>
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="text-dark">{{ second.title }}</h5>
+                                <h1 class="text-dark" style="background: white">{{ second.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if third.images.count and thirdType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ third.getImages()[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/club/') }}{{ third.getImages()[0].image }}"
+                                         alt="">
                                 </a>
                             {% elseif third.images.count and thirdType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': third.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ third.getImages()[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/natio/') }}{{ third.getImages()[0].image }}"
+                                         alt="">
                                 </a>
                             {% else %}
                                 {% if thirdType == 'Club' %}
-                                    <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <a href="{{ path('actualites-club_show', {'id': third.id}) }}">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ third.title }}"
+                                             alt="">
                                     </a>
                                 {% else %}
-                                    <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <a href="{{ path('actualites-nationale-internationale_show', {'id': third.id}) }}">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ third.title }}"
+                                             alt="">
                                     </a>
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="text-dark">{{ third.title }}</h5>
+                                <h1 class="text-dark" style="background: white">{{ third.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
                             {% if fourth.images.count and fourthType == 'Club' %}
                                 <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/club/') }}{{ fourth.getImages()[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/club/') }}{{ fourth.getImages()[0].image }}"
+                                         alt="">
                                 </a>
                             {% elseif fourth.images.count and fourthType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': fourth.id}) }}">
-                                    <img class="d-block w-100" src="{{ asset('uploads/natio/') }}{{ fourth.getImages()[0].image }}" alt="">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('uploads/natio/') }}{{ fourth.getImages()[0].image }}"
+                                         alt="">
                                 </a>
                             {% else %}
                                 {% if fourthType == 'Club' %}
-                                    <a href="{{ path('actualites-club_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <a href="{{ path('actualites-club_show', {'id': fourth.id}) }}">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ fourth.title }}"
+                                             alt="">
                                     </a>
                                 {% else %}
-                                    <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
-                                        <img class="d-block w-100" src="https://dummyimage.com/600x400/8f8f8f/fff" alt="">
+                                    <a href="{{ path('actualites-nationale-internationale_show', {'id': fourth.id}) }}">
+                                        <img class="d-block w-100"
+                                             src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ fourth.title }}"
+                                             alt="">
                                     </a>
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="text-dark">{{ fourth.title }}</h5>
+                                <h1 class="text-dark" style="background: white">{{ fourth.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <a href="{{ path('dojo') }}">
-                                <img class="d-block w-100" src="https://dummyimage.com/600x400/000/fff&text=Planning" alt="">
+                                <img class="d-block w-100"
+                                     src="https://dummyimage.com/600x400/000/fff&text=Planning"
+                                     alt="">
                             </a>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Planning</h5>
-                            </div>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselAcceuilPosts" role="button" data-slide="prev">
