@@ -11,8 +11,10 @@ use App\Entity\Gallery;
 use App\Entity\GalleryImage;
 use App\Entity\PhotosPassagesGrades;
 use App\Entity\PostClub;
+use App\Entity\PostClubDocument;
 use App\Entity\PostClubImage;
 use App\Entity\PostNatio;
+use App\Entity\PostNatioDocument;
 use App\Entity\PostNatioImage;
 use App\Entity\Professeurs;
 use App\Entity\User;
@@ -70,6 +72,10 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof PostClubDocument) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
         if ($entity instanceof PostNatio) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
@@ -81,6 +87,10 @@ class CreationSubscriber implements EventSubscriber
             $this->container->get('social_post')->publish($message);
         }
         if ($entity instanceof PostNatioImage) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PostNatioDocument) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
@@ -132,10 +142,16 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof PostClubImage) {
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof PostClubDocument) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
         if ($entity instanceof PostNatio) {
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatioImage) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PostNatioDocument) {
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof Professeurs) {
@@ -177,8 +193,22 @@ class CreationSubscriber implements EventSubscriber
             }
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof PostClubDocument) {
+            $imageName = $entity->getDocument();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/club/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
         if ($entity instanceof PostNatioImage) {
             $imageName = $entity->getImage();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof PostNatioDocument) {
+            $imageName = $entity->getDocument();
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/natio/'.$imageName);
             }

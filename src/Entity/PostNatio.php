@@ -52,9 +52,15 @@ class PostNatio
      */
     private $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PostNatioDocument::class, mappedBy="postNatio", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $documents;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,6 +153,37 @@ class PostNatio
             // set the owning side to null (unless already changed)
             if ($image->getPostNatio() === $this) {
                 $image->setPostNatio(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostNatioDocument[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(PostNatioDocument $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setPostNatio($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(PostNatioDocument $document): self
+    {
+        if ($this->documents->contains($document)) {
+            $this->documents->removeElement($document);
+            // set the owning side to null (unless already changed)
+            if ($document->getPostNatio() === $this) {
+                $document->setPostNatio(null);
             }
         }
 

@@ -44,6 +44,16 @@
         <p>
             {{ post.body|raw }}
         </p>
+        {% if post.documents.count != 0 %}
+            <h2>Pièces Jointes</h2>
+            <ul>
+                {% for postDocument in post.documents %}
+                    <li>
+                        {{ postDocument.titre }}: <a target="_blank" href="{{ asset('uploads/club/') }}{{ postDocument.document }}">cliquez ici</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <a href="{{ path('actualites-club') }}">Revenir à l'index</a>
     </div>
 {% endblock %}

@@ -10,7 +10,9 @@ use App\Entity\DocumentsUtiles;
 use App\Entity\FicheInscription;
 use App\Entity\GalleryImage;
 use App\Entity\PhotosPassagesGrades;
+use App\Entity\PostClubDocument;
 use App\Entity\PostClubImage;
+use App\Entity\PostNatioDocument;
 use App\Entity\PostNatioImage;
 use App\Entity\Professeurs;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,12 +41,26 @@ class VichUploaderListener
             rename($image, $this->kernel->getProjectDir().'/public/uploads/club/'.$uniqueId);
             $object->setImage($uniqueId);
         }
+        if ($object instanceof PostClubDocument && $object->getDocument()) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/club/'.$object->getDocument();
+            $extension = pathinfo($image, PATHINFO_EXTENSION);
+            $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/club/'.$uniqueId);
+            $object->setDocument($uniqueId);
+        }
         if ($object instanceof PostNatioImage && $object->getImage()) {
             $image = $this->kernel->getProjectDir().'/public/uploads/natio/'.$object->getImage();
             $extension = pathinfo($image, PATHINFO_EXTENSION);
             $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
             rename($image, $this->kernel->getProjectDir().'/public/uploads/natio/'.$uniqueId);
             $object->setImage($uniqueId);
+        }
+        if ($object instanceof PostNatioDocument && $object->getDocument()) {
+            $image = $this->kernel->getProjectDir().'/public/uploads/natio/'.$object->getDocument();
+            $extension = pathinfo($image, PATHINFO_EXTENSION);
+            $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
+            rename($image, $this->kernel->getProjectDir().'/public/uploads/natio/'.$uniqueId);
+            $object->setDocument($uniqueId);
         }
         if ($object instanceof Professeurs && $object->getImage()) {
             $image = $this->kernel->getProjectDir().'/public/uploads/professeurs/'.$object->getImage();

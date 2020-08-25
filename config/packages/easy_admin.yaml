@@ -49,6 +49,7 @@ easy_admin:
                     - { property: 'title', label: 'Titre', type: 'string' }
                     - { property: 'body', label: 'Corps', type: 'text' }
                     - { property: 'images', label: 'Images' }
+                    - { property: 'documents', label: 'Documents' }
                     - { property: 'enabled', label: 'Affiché', type: 'toggle' }
                     - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                     - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
@@ -57,6 +58,7 @@ easy_admin:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
                     - { property: 'images', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\PostClubImageType', by_reference: false } }
+                    - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostClubDocumentType', by_reference: false } }
                     - { property: 'enabled', label: 'Affiché' }
         PostNatio:
               class: App\Entity\PostNatio
@@ -66,6 +68,7 @@ easy_admin:
                       - { property: 'title', label: 'Titre', type: 'string' }
                       - { property: 'body', label: 'Corps', type: 'text' }
                       - { property: 'images', label: 'Images' }
+                      - { property: 'documents', label: 'Documents' }
                       - { property: 'enabled', label: 'Affiché', type: 'toggle' }
                       - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                       - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
@@ -74,6 +77,7 @@ easy_admin:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
                       - { property: 'images', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioImageType', by_reference: false } }
+                      - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioDocumentType', by_reference: false } }
                       - { property: 'enabled', label: 'Affiché' }
         Professeurs:
             class: App\Entity\Professeurs

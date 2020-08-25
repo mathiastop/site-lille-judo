@@ -52,9 +52,15 @@ class PostClub
      */
     private $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PostClubDocument::class, mappedBy="postClub", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $documents;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,6 +153,37 @@ class PostClub
             // set the owning side to null (unless already changed)
             if ($image->getPostClub() === $this) {
                 $image->setPostClub(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostClubDocument[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(PostClubDocument $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setPostClub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(PostClubDocument $document): self
+    {
+        if ($this->documents->contains($document)) {
+            $this->documents->removeElement($document);
+            // set the owning side to null (unless already changed)
+            if ($document->getPostClub() === $this) {
+                $document->setPostClub(null);
             }
         }
 
