@@ -129,7 +129,7 @@
                 </div>
             </nav>
             <div style="background: #A93514">
-                <div class="container">
+                <div class="container-fluid d-block d-lg-none">
                     <div class="row text-center justify-content-center">
                         <div class="col my-auto">
                             <a href="{{ path('boutique') }}">
@@ -150,18 +150,15 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row text-center justify-content-center">
-                        <div class="col d-none d-md-block">
-                            <h1 class="display-3 text-center" style="color: black"><strong>LILLE UNIVERSITE CLUB</strong><br/>
-                                <small class="text-white">
-                                    <a href="{{ path('judo') }}" class="text-white">JUDO</a>
-                                    <a href="{{ path('ju-jitsu') }}" class="text-white">JUJITSU</a>
-                                    <a href="{{ path('taiso') }}" class="text-white">TAISO</a>
-                                    <a href="{{ path('ne-waza') }}" class="text-white">NEWAZA</a>
-                                </small>
-                            </h1>
+                        <div class="col-3 my-auto d-lg-block d-none">
+                            <a href="{{ path('boutique') }}">
+                                <img src="{{ asset('assets/boutique-logo.png') }}"
+                                     height="100"
+                                     alt="">
+                            </a>
                         </div>
                         <div class="col d-md-none d-block">
-                            <h1 class="text-center" style="color: black"><strong>LILLE UNIVERSITE CLUB</strong><br/>
+                            <h1 class="text-center text-white" style="color: black"><strong>LILLE UNIVERSITE CLUB</strong><br/>
                                 <small class="text-white">
                                     <a href="{{ path('judo') }}" class="text-white">JUDO</a>
                                     <a href="{{ path('ju-jitsu') }}" class="text-white">JUJITSU</a>
@@ -170,57 +167,105 @@
                                 </small>
                             </h1>
                         </div>
-                        <div class="w-100 d-none d-md-block"></div>
-                        <div class="col d-none d-lg-block">
-                            <div class="row">
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/politesse.png') }}" class="figure-img img-fluid" alt="Politesse idéogramme">
-                                        <figcaption class="figure-caption text-white">Politesse</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/courage.png') }}" class="figure-img img-fluid" alt="Courage idéogramme">
-                                        <figcaption class="figure-caption text-white">Courage</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/sincerite.png') }}" class="figure-img img-fluid" alt="Sincérité idéogramme">
-                                        <figcaption class="figure-caption text-white">Sincérité</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/honneur.png') }}" class="figure-img img-fluid" alt="Honneur idéogramme">
-                                        <figcaption class="figure-caption text-white">Honneur</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/modestie.png') }}" class="figure-img img-fluid" alt="Modestie idéogramme">
-                                        <figcaption class="figure-caption text-white">Modestie</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/respect.png') }}" class="figure-img img-fluid" alt="Respect idéogramme">
-                                        <figcaption class="figure-caption text-white">Respect</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/controle-de-soi.png') }}" class="figure-img img-fluid" alt="Contrôle de soi idéogramme">
-                                        <figcaption class="figure-caption text-white">Contrôle de soi</figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col">
-                                    <figure class="figure">
-                                        <img src="{{ asset('assets/amitie.png') }}" class="figure-img img-fluid" alt="Amitié idéogramme">
-                                        <figcaption class="figure-caption text-white">Amitié</figcaption>
-                                    </figure>
-                                </div>
+                        <div class="col d-none d-md-block">
+                            <h1 class="display-3 text-center text-white" style="color: black">
+                                <strong>LILLE UNIVERSITE CLUB</strong><br/>
+                            </h1>
+                        </div>
+                        <div class="col-3 my-auto d-lg-block d-none">
+                            <a href="https://www.facebook.com/pages/category/Amateur-Sports-Team/LUC-Judo-335783152973/" target="_blank">
+                                <img src="{{ asset('assets/fb_logo.png') }}"
+                                     height="100"
+                                     width="100"
+                                     alt="fb_logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid d-md-block d-none">
+                    <div class="row text-center justify-content-center">
+                        <div class="col">
+                            <h1 class="display-3">
+                                <small>
+                                    <a href="{{ path('judo') }}" class="text-white">JUDO</a>
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-3">
+                                <small>
+                                    <a href="{{ path('ju-jitsu') }}" class="text-white">JUJITSU</a>
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-3">
+                                <small>
+                                    <a href="{{ path('taiso') }}" class="text-white">TAISO</a>
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-3">
+                                <small>
+                                    <a href="{{ path('ne-waza') }}" class="text-white">NEWAZA</a>
+                                </small>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="col d-none d-lg-block">
+                        <div class="row text-center justify-content-center">
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/politesse.png') }}"
+                                         class="figure-img img-fluid"
+                                         alt="Politesse idéogramme">
+                                    <figcaption class="figure-caption text-white">Politesse</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/courage.png') }}" class="figure-img img-fluid" alt="Courage idéogramme">
+                                    <figcaption class="figure-caption text-white">Courage</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/sincerite.png') }}" class="figure-img img-fluid" alt="Sincérité idéogramme">
+                                    <figcaption class="figure-caption text-white">Sincérité</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/honneur.png') }}" class="figure-img img-fluid" alt="Honneur idéogramme">
+                                    <figcaption class="figure-caption text-white">Honneur</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/modestie.png') }}" class="figure-img img-fluid" alt="Modestie idéogramme">
+                                    <figcaption class="figure-caption text-white">Modestie</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/respect.png') }}" class="figure-img img-fluid" alt="Respect idéogramme">
+                                    <figcaption class="figure-caption text-white">Respect</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/controle-de-soi.png') }}" class="figure-img img-fluid" alt="Contrôle de soi idéogramme">
+                                    <figcaption class="figure-caption text-white">Contrôle de soi</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col">
+                                <figure class="figure">
+                                    <img src="{{ asset('assets/amitie.png') }}" class="figure-img img-fluid" alt="Amitié idéogramme">
+                                    <figcaption class="figure-caption text-white">Amitié</figcaption>
+                                </figure>
                             </div>
                         </div>
                     </div>
