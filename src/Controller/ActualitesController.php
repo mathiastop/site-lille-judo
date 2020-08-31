@@ -108,13 +108,13 @@ class ActualitesController extends AbstractController
     }
 
     /**
-     * @Route("/evenements", name="evenements")
+     * @Route("/calendrier", name="calendrier")
      */
     public function indexEvenements(Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Actualités");
-        $breadcrumbs->addItem("Evénements", $router->generate('evenements'));
+        $breadcrumbs->addItem("Calendrier", $router->generate('calendrier'));
 
         return $this->render('actualites/evenements.html.twig', [
             'controller_name' => 'EvenementsController'
@@ -122,13 +122,13 @@ class ActualitesController extends AbstractController
     }
 
     /**
-     * @Route("/evenements/{id}", name="evenements_show")
+     * @Route("/calendrier/{id}", name="evenements_show")
      */
     public function showEvenements(Evenement $evenement, Breadcrumbs $breadcrumbs, RouterInterface $router)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Actualités");
-        $breadcrumbs->addItem("Evénements", $router->generate('evenements'));
+        $breadcrumbs->addItem("Calendrier", $router->generate('calendrier'));
         $breadcrumbs->addItem($evenement->getTitre());
 
         return $this->render('actualites/evenements-show.html.twig', [
