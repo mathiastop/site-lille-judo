@@ -2,24 +2,21 @@
 
 {% block title %}Palmarès - Lille Judo{% endblock %}
 
-{% block stylesheets %}
-    <style>
-        .btn-red {
-            color: #fff;
-            background-color: #A93514;
-            border-color: #A93514;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
+    {% set color = 0 %}
     <div class="container">
         <div class="row text-center justify-content-center">
             {% for palmares in palmaress %}
                 <div class="col">
                     <a data-toggle="modal" data-target="#modal-{{ palmares.id }}">
                         <img class="rounded-circle"
-                             src="https://dummyimage.com/140x140/E9ECEF/000000&text={{ palmares.annee }}"
+                             {% if color == 0 %}
+                                 src="https://dummyimage.com/140x140/A93514/FFFFFF&text={{ palmares.annee }}"
+                                 {% set color = 1 %}
+                             {% else %}
+                                 src="https://dummyimage.com/140x140/E9ECEF/000000&text={{ palmares.annee }}"
+                                 {% set color = 0 %}
+                             {% endif %}
                              width="140"
                              height="140"
                              alt="">
