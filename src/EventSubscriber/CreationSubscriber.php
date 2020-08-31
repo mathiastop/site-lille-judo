@@ -61,12 +61,14 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof PostClub) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
-            $message = new Message(
-                $entity->getTitle()//,
-//                'https://lillejudo.mathiastop.eu/actualites-club/'.$entity->getId()
-                // TODO: change URL before true launching
-            );
-            $this->container->get('social_post')->publish($message);
+            if ($entity->getEnabled()) {
+                $message = new Message(
+                    $entity->getTitle()//,
+    //                'https://lillejudo.mathiastop.eu/actualites-club/'.$entity->getId()
+                    // TODO: change URL before true launching
+                );
+                $this->container->get('social_post')->publish($message);
+            }
         }
         if ($entity instanceof PostClubImage) {
             $entity->setCreatedAt(new \DateTime());
@@ -79,12 +81,14 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof PostNatio) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
-            $message = new Message(
-                $entity->getTitle()//,
-//                'https://lillejudo.mathiastop.eu/actualites-nationale-internationale/'.$entity->getId()
-            // TODO: change URL before true launching
-            );
-            $this->container->get('social_post')->publish($message);
+            if ($entity->getEnabled()) {
+                $message = new Message(
+                    $entity->getTitle()//,
+    //                'https://lillejudo.mathiastop.eu/actualites-nationale-internationale/'.$entity->getId()
+                // TODO: change URL before true launching
+                );
+                $this->container->get('social_post')->publish($message);
+            }
         }
         if ($entity instanceof PostNatioImage) {
             $entity->setCreatedAt(new \DateTime());
@@ -138,6 +142,14 @@ class CreationSubscriber implements EventSubscriber
 
         if ($entity instanceof PostClub) {
             $entity->setUpdatedAt(new \DateTime());
+            if ($entity->getEnabled()) {
+                $message = new Message(
+                    $entity->getTitle()//,
+                //                'https://lillejudo.mathiastop.eu/actualites-club/'.$entity->getId()
+                // TODO: change URL before true launching
+                );
+                $this->container->get('social_post')->publish($message);
+            }
         }
         if ($entity instanceof PostClubImage) {
             $entity->setUpdatedAt(new \DateTime());
@@ -147,6 +159,14 @@ class CreationSubscriber implements EventSubscriber
         }
         if ($entity instanceof PostNatio) {
             $entity->setUpdatedAt(new \DateTime());
+            if ($entity->getEnabled()) {
+                $message = new Message(
+                    $entity->getTitle()//,
+                //                'https://lillejudo.mathiastop.eu/actualites-nationale-internationale/'.$entity->getId()
+                // TODO: change URL before true launching
+                );
+                $this->container->get('social_post')->publish($message);
+            }
         }
         if ($entity instanceof PostNatioImage) {
             $entity->setUpdatedAt(new \DateTime());
