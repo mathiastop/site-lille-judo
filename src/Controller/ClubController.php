@@ -110,7 +110,7 @@ class ClubController extends AbstractController
                 "Message: \n".$contactFormData['Message:'];
             $message = (new \Swift_Message('Nouveau message - lillejudo.fr'))
                 ->setFrom('testlillejudo@mathiastop.eu')
-                ->setTo('top.mathias7241@gmail.com')
+                ->setTo('lucjudocontact@gmail.com')
                 ->setBody($body, 'text/plain');
             $mailer->send($message);
 
@@ -152,7 +152,7 @@ class ClubController extends AbstractController
         $breadcrumbs->addItem("Palmarès");
 
         return $this->render('club/palmares.html.twig', [
-            'palmaress' => $palmaresRepository->findBy(['enabled' => true], ['annee' => 'ASC']),
+            'palmaress' => $palmaresRepository->findBy(['enabled' => true], ['annee' => 'DESC']),
         ]);
     }
 }
