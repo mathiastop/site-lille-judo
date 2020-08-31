@@ -103,9 +103,15 @@
             </div>
             <div class="tab-pane fade" id="cours" role="tabpanel" aria-labelledby="cours-tab">
                 <ul class="nav nav-tabs flex-column flex-lg-row" id="coursJudoTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-item nav-link active" id="{{ first.id }}-tab" data-toggle="tab" href="#{{ first.id }}" aria-controls="{{ first.id }}" aria-selected="true">{{ first.categorie }}</a>
-                    </li>
+                    {% if first %}
+                        <li class="nav-item">
+                            <a class="nav-item nav-link active" id="{{ first.id }}-tab" data-toggle="tab" href="#{{ first.id }}" aria-controls="{{ first.id }}" aria-selected="true">{{ first.categorie }}</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-item nav-link active" id="none-tab" data-toggle="tab" href="#none" aria-controls="non" aria-selected="true">none</a>
+                        </li>
+                    {% endif %}
                     {% for judo in judos %}
                         <li class="nav-item">
                             <a class="nav-item nav-link" id="{{ judo.id }}-tab" data-toggle="tab" href="#{{ judo.id }}" aria-controls="{{ judo.id }}" aria-selected="false">{{ judo.categorie }}</a>
@@ -113,12 +119,20 @@
                     {% endfor %}
                 </ul>
                 <div class="tab-content" id="coursJudoTabContent">
-                    <div id="{{ first.id }}" class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{ first.id }}-tab">
-                        <h3>{{ first.categorie }} - {{ first.annee }}</h3>
-                        <p>
-                            {{ first.text|raw }}
-                        </p>
-                    </div>
+                    {% if first %}
+                        <div id="{{ first.id }}" class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{ first.id }}-tab">
+                            <h3>{{ first.categorie }} - {{ first.annee }}</h3>
+                            <p>
+                                {{ first.text|raw }}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div id="none" class="tab-pane fade show active" role="tabpanel" aria-labelledby="none-tab">
+                            <p>
+                                no records found
+                            </p>
+                        </div>
+                    {% endif %}
                     {% for judo in judos %}
                         <div id="{{ judo.id }}" class="tab-pane fade" role="tabpanel" aria-labelledby="{{ judo.id }}-tab">
                             <h3>{{ judo.categorie }} - {{ judo.annee }}</h3>

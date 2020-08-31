@@ -27,9 +27,15 @@
 {% block body %}
     <div class="container">
         <ul class="nav nav-tabs flex-column flex-lg-row" id="dojoTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-item nav-link active" id="{{ first.id }}-tab" data-toggle="tab" href="#{{ first.id }}" aria-controls="{{ first.id }}" aria-selected="true">{{ first.categorie }}</a>
-            </li>
+            {% if first %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link active" id="{{ first.id }}-tab" data-toggle="tab" href="#{{ first.id }}" aria-controls="{{ first.id }}" aria-selected="true">{{ first.categorie }}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link active" id="none-tab" data-toggle="tab" href="#none" aria-controls="non" aria-selected="true">none</a>
+                </li>
+            {% endif %}
             {% for dojo in dojos %}
                 <li class="nav-item">
                     <a class="nav-item nav-link" id="{{ dojo.id }}-tab" data-toggle="tab" href="#{{ dojo.id }}" aria-controls="{{ dojo.id }}" aria-selected="false">{{ dojo.categorie }}</a>
@@ -37,12 +43,20 @@
             {% endfor %}
         </ul>
         <div class="tab-content" id="dojoTabContent">
-            <div id="{{ first.id }}" class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{ first.id }}-tab">
-                <h3>{{ first.categorie }} - {{ first.annee }}</h3>
-                <p>
-                    {{ first.texte|raw }}
-                </p>
-            </div>
+            {% if first %}
+                <div id="{{ first.id }}" class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{ first.id }}-tab">
+                    <h3>{{ first.categorie }} - {{ first.annee }}</h3>
+                    <p>
+                        {{ first.texte|raw }}
+                    </p>
+                </div>
+            {% else %}
+                <div id="none" class="tab-pane fade show active" role="tabpanel" aria-labelledby="none-tab">
+                    <p>
+                        no records found
+                    </p>
+                </div>
+            {% endif %}
             {% for dojo in dojos %}
                 <div id="{{ dojo.id }}" class="tab-pane fade" role="tabpanel" aria-labelledby="{{ dojo.id }}-tab">
                     <h3>{{ dojo.categorie }} - {{ dojo.annee }}</h3>
