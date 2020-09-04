@@ -26,7 +26,7 @@ class DocumentsController extends AbstractController
         return $this->render('documents/index.html.twig', [
             'gallerys' => $galleryRepository->findBy(['enabled' => true], ['id'=>'DESC']),
             'photos_passages_grades' => $photosPassagesGradesRepository->findBy(['enabled' => true], ['id'=>'DESC']),
-            'documentsUtiles' => $documentsUtilesRepository->findBy(['enabled' => true]),
+            'documentsUtiles' => $documentsUtilesRepository->findBy(['enabled' => true], ['ordre' => 'ASC']),
         ]);
     }
 

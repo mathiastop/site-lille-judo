@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
+use App\Entity\EvenementDocument;
 use App\Entity\PostClub;
 use App\Entity\PostNatio;
+use App\Repository\EvenementDocumentRepository;
 use App\Repository\EvenementRepository;
 use App\Repository\PostClubRepository;
 use App\Repository\PostNatioRepository;
@@ -12,7 +14,9 @@ use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
@@ -134,5 +138,19 @@ class ActualitesController extends AbstractController
         return $this->render('actualites/evenements-show.html.twig', [
             'evenement' => $evenement
         ]);
+    }
+
+    /**
+     * @Route("/calendrierDocument", name="calendrierDocument")
+     */
+    public function calendrierDocument(EvenementDocumentRepository $evenementDocumentRepository)
+    {
+        $fiche = $evenementDocumentRepository->findOneBy([], ['id' => 'DESC']);
+        if ($fiche) {
+            $file = new File($this->getParameter('kernel.project_dir').'/public'.$this->getParameter('app.path.documents_evenement').'/'.$fiche->getFiche());
+
+            return $this->file($file, $fiche->getTitre().'.'.pathinfo($fiche->getFiche(), PATHINFO_EXTENSION), ResponseHeaderBag::DISPOSITION_INLINE);
+        }
+        return $this->render('inscription/no-file.html.twig');
     }
 }

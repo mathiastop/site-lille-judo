@@ -12,8 +12,11 @@
                 <thead>
                 <tr>
                     <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Sexe</th>
+                    <th>Poids</th>
+                    <th>Date de naissance</th>
                     <th>Mail</th>
-                    <th>Age</th>
                     <th>Categorie</th>
                 </tr>
                 </thead>
@@ -21,8 +24,11 @@
                 {% for inscrit in competition.competitionInscrits %}
                     <tr>
                         <td>{{ inscrit.nom }}</td>
+                        <td>{{ inscrit.prenom }}</td>
+                        <td>{{ inscrit.sexe }}</td>
+                        <td>{{ inscrit.poids }}</td>
+                        <td>{{ inscrit.dateNaissance|date('d/m/Y') }}</td>
                         <td>{{ inscrit.mail }}</td>
-                        <td>{{ inscrit.age }}</td>
                         <td>{{ inscrit.categorie }}</td>
                     </tr>
                 {% else %}

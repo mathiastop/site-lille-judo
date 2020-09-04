@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\CompetitionInscrit;
-use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,19 @@ class CompetitionInscritType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('age', NumberType::class)
+            ->add('prenom')
+            ->add('sexe', ChoiceType::class, [
+                'choices' => [
+                    'Femme' => 'Femme',
+                    'Homme' => 'Homme',
+                ],
+            ])
+            ->add('poids', NumberType::class, [
+                'label' => 'Poids (Kg)'
+            ])
+            ->add('dateNaissance', DateType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('mail', EmailType::class)
             ->add('categorie', ChoiceType::class, [
                 'choices' => [

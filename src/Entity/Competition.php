@@ -44,9 +44,25 @@ class Competition
      */
     private $enabled;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CompetitionDocument::class, mappedBy="competition", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $documents;
+
     public function __construct()
     {
         $this->competitionInscrits = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,6 +145,61 @@ class Competition
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CompetitionDocument[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(CompetitionDocument $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setZa($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(CompetitionDocument $document): self
+    {
+        if ($this->documents->contains($document)) {
+            $this->documents->removeElement($document);
+            // set the owning side to null (unless already changed)
+            if ($document->getZa() === $this) {
+                $document->setZa(null);
+            }
+        }
 
         return $this;
     }

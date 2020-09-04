@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\DocumentsUtilesRepository;
+use App\Repository\EvenementDocumentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Faker\Provider\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass=DocumentsUtilesRepository::class)
+ * @ORM\Entity(repositoryClass=EvenementDocumentRepository::class)
  * @Vich\Uploadable
  */
-class DocumentsUtiles
+class EvenementDocument
 {
     /**
      * @ORM\Id()
@@ -41,20 +41,10 @@ class DocumentsUtiles
     private $updatedAt;
 
     /**
-     * @Vich\UploadableField(mapping="documents_utiles", fileNameProperty="fiche")
+     * @Vich\UploadableField(mapping="documents_evenement", fileNameProperty="fiche")
      * @var File
      */
     private $ficheFile;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $enabled;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $ordre;
 
     public function getId(): ?int
     {
@@ -121,29 +111,5 @@ class DocumentsUtiles
         if ($fiche) {
             $this->updatedAt = new \DateTime('now');
         }
-    }
-
-    public function getEnabled(): ?bool
-    {
-        return $this->enabled;
-    }
-
-    public function setEnabled(bool $enabled): self
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    public function getOrdre(): ?int
-    {
-        return $this->ordre;
-    }
-
-    public function setOrdre(int $ordre): self
-    {
-        $this->ordre = $ordre;
-
-        return $this;
     }
 }

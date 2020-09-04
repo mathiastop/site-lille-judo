@@ -4,7 +4,26 @@
 
 {% block body %}
     <div class="container">
-        <h2>Inscription {{ competition.lieu }}</h2>
+        <h1>Inscription {{ competition.nom }}</h1>
+        <hr/>
+        <p><i class="fa fa-fw fa-calendar"></i>{{ competition.date|date('d/m/Y') }}</p>
+        <p><i class="fa fa-fw fa-map-marker"></i>{{ competition.lieu }}</p>
+        <hr/>
+        <p>
+            {{ competition.description|raw }}
+        </p>
+        {% if competition.documents.count != 0 %}
+            <h3>Documents</h3>
+            <ul>
+                {% for document in competition.documents %}
+                    <li>
+                        {{ document.titre }}: <a target="_blank" href="{{ asset('uploads/documents_competition/') }}{{ document.document }}">cliquez ici</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <hr/>
+        <h3>Inscription</h3>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Send"/>

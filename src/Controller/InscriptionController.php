@@ -7,6 +7,18 @@ use App\Entity\CompetitionInscrit;
 use App\Form\CompetitionInscritType;
 use App\Repository\CompetitionRepository;
 use App\Repository\FicheInscriptionRepository;
+use App\Repository\InscriptionApresCategorieRepository;
+use App\Repository\InscriptionApresDocumentRepository;
+use App\Repository\InscriptionApresPhotoRepository;
+use App\Repository\InscriptionApresTexteRepository;
+use App\Repository\InscriptionAvantCategorieRepository;
+use App\Repository\InscriptionAvantDocumentRepository;
+use App\Repository\InscriptionAvantPhotoRepository;
+use App\Repository\InscriptionAvantTexteRepository;
+use App\Repository\InscriptionPendantCategorieRepository;
+use App\Repository\InscriptionPendantDocumentRepository;
+use App\Repository\InscriptionPendantPhotoRepository;
+use App\Repository\InscriptionPendantTexteRepository;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
@@ -35,14 +47,41 @@ class InscriptionController extends AbstractController
     /**
      * @Route("/adhesion", name="adhesion")
      */
-    public function indexAdhesion(Breadcrumbs $breadcrumbs, RouterInterface $router)
+    public function indexAdhesion(Breadcrumbs $breadcrumbs,
+                                  RouterInterface $router,
+                                  InscriptionAvantTexteRepository $inscriptionAvantTexteRepository,
+                                  InscriptionAvantPhotoRepository $inscriptionAvantPhotoRepository,
+                                  InscriptionAvantDocumentRepository $inscriptionAvantDocumentRepository,
+                                  InscriptionAvantCategorieRepository $inscriptionAvantCategorieRepository,
+                                  InscriptionPendantTexteRepository $inscriptionPendantTexteRepository,
+                                  InscriptionPendantPhotoRepository $inscriptionPendantPhotoRepository,
+                                  InscriptionPendantDocumentRepository $inscriptionPendantDocumentRepository,
+                                  InscriptionPendantCategorieRepository $inscriptionPendantCategorieRepository,
+                                  InscriptionApresTexteRepository $inscriptionApresTexteRepository,
+                                  InscriptionApresPhotoRepository $inscriptionApresPhotoRepository,
+                                  InscriptionApresDocumentRepository $inscriptionApresDocumentRepository,
+                                  InscriptionApresCategorieRepository $inscriptionApresCategorieRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Inscription");
         $breadcrumbs->addItem("Adhésion");
 
         return $this->render('inscription/adhesion.html.twig', [
-            'controller_name' => 'AdhesionController',
+            'inscriptionAvantTexte' => $inscriptionAvantTexteRepository->findOneBy([], ['id' => 'DESC']),
+            'inscriptionAvantPhotos' => $inscriptionAvantPhotoRepository->findBy(['enabled' => true]),
+            'inscriptionAvantDocuments' => $inscriptionAvantDocumentRepository->findBy(['enabled' => true]),
+            'inscriptionAvantCategorieFirst' => $inscriptionAvantCategorieRepository->findOneBy(['ordre' => 1]),
+            'inscriptionAvantCategories' => $inscriptionAvantCategorieRepository->findAllExceptThisOrder(1),
+            'inscriptionPendantTexte' => $inscriptionPendantTexteRepository->findOneBy([], ['id' => 'DESC']),
+            'inscriptionPendantPhotos' => $inscriptionPendantPhotoRepository->findBy(['enabled' => true]),
+            'inscriptionPendantDocuments' => $inscriptionPendantDocumentRepository->findBy(['enabled' => true]),
+            'inscriptionPendantCategorieFirst' => $inscriptionPendantCategorieRepository->findOneBy(['ordre' => 1]),
+            'inscriptionPendantCategories' => $inscriptionPendantCategorieRepository->findAllExceptThisOrder(1),
+            'inscriptionApresTexte' => $inscriptionApresTexteRepository->findOneBy([], ['id' => 'DESC']),
+            'inscriptionApresPhotos' => $inscriptionApresPhotoRepository->findBy(['enabled' => true]),
+            'inscriptionApresDocuments' => $inscriptionApresDocumentRepository->findBy(['enabled' => true]),
+            'inscriptionApresCategorieFirst' => $inscriptionApresCategorieRepository->findOneBy(['ordre' => 1]),
+            'inscriptionApresCategories' => $inscriptionApresCategorieRepository->findAllExceptThisOrder(1),
         ]);
     }
 

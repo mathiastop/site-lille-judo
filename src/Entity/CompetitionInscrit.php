@@ -27,11 +27,6 @@ class CompetitionInscrit
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $age;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $mail;
 
     /**
@@ -43,6 +38,26 @@ class CompetitionInscrit
      * @ORM\ManyToOne(targetEntity=Competition::class, inversedBy="competitionInscrits")
      */
     private $competition;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sexe;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $poids;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateNaissance;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prenom;
 
     public function __construct()
     {
@@ -62,18 +77,6 @@ class CompetitionInscrit
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getAge(): ?string
-    {
-        return $this->age;
-    }
-
-    public function setAge(string $age): self
-    {
-        $this->age = $age;
 
         return $this;
     }
@@ -110,6 +113,54 @@ class CompetitionInscrit
     public function setCompetition(?Competition $competition): self
     {
         $this->competition = $competition;
+
+        return $this;
+    }
+
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(string $sexe): self
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getPoids(): ?int
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(int $poids): self
+    {
+        $this->poids = $poids;
+
+        return $this;
+    }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->dateNaissance;
+    }
+
+    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    {
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }

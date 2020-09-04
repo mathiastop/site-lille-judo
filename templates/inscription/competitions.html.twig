@@ -29,7 +29,7 @@
                 <ul>
                     {% for competition in competitionsJudo %}
                         <li>
-                            {{ competition.lieu }}, {{ competition.date|date('d/m/Y') }}: <a href="{{ path('competitions_inscriptions', {'id': competition.id}) }}">S'inscrire</a>
+                            {{ competition.nom }}, {{ competition.lieu }}, {{ competition.date|date('d/m/Y') }}: <a href="{{ path('competitions_inscriptions', {'id': competition.id}) }}">S'inscrire</a>
                         </li>
                     {% else %}
                         <li>

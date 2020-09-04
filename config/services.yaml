@@ -15,6 +15,11 @@ parameters:
     app.path.fiche_inscription: /uploads/fiche
     app.path.boutique_fiche: /uploads/boutique_fiche
     app.path.documents_utiles: /uploads/documents_utiles
+    app.path.documents_competition: /uploads/documents_competition
+    app.path.documents_evenement: /uploads/documents_evenement
+    app.path.inscription_avant: /uploads/inscription_avant
+    app.path.inscription_pendant: /uploads/inscription_pendant
+    app.path.inscription_apres: /uploads/inscription_apres
 
 services:
     # default configuration for services in *this* file

@@ -5,10 +5,18 @@ namespace App\EventSubscriber;
 use App\Entity\Boutique;
 use App\Entity\BoutiqueFiche;
 use App\Entity\Bureau;
+use App\Entity\CompetitionDocument;
 use App\Entity\DocumentsUtiles;
+use App\Entity\EvenementDocument;
 use App\Entity\FicheInscription;
 use App\Entity\Gallery;
 use App\Entity\GalleryImage;
+use App\Entity\InscriptionApresDocument;
+use App\Entity\InscriptionApresPhoto;
+use App\Entity\InscriptionAvantDocument;
+use App\Entity\InscriptionAvantPhoto;
+use App\Entity\InscriptionPendantDocument;
+use App\Entity\InscriptionPendantPhoto;
 use App\Entity\PhotosPassagesGrades;
 use App\Entity\PostClub;
 use App\Entity\PostClubDocument;
@@ -134,6 +142,38 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
+        if ($entity instanceof CompetitionDocument) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof EvenementDocument) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionAvantPhoto) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionAvantDocument) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionPendantPhoto) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionPendantDocument) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionApresPhoto) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionApresDocument) {
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -199,6 +239,30 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof DocumentsUtiles) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof CompetitionDocument) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof EvenementDocument) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionAvantPhoto) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionAvantDocument) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionPendantPhoto) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionPendantDocument) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionApresPhoto) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionApresDocument) {
             $entity->setUpdatedAt(new \DateTime());
         }
     }
@@ -280,6 +344,62 @@ class CreationSubscriber implements EventSubscriber
             $imageName = $entity->getFiche();
             if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/documents_utiles/'.$imageName)) {
                 unlink($this->kernel->getProjectDir().'/public/uploads/documents_utiles/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof CompetitionDocument) {
+            $imageName = $entity->getDocument();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/documents_competition/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/documents_competition/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof EvenementDocument) {
+            $imageName = $entity->getFiche();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/documents_evenement/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/documents_evenement/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionAvantPhoto) {
+            $imageName = $entity->getImage();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/inscription_avant/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/inscription_avant/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionAvantDocument) {
+            $imageName = $entity->getDocument();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/inscription_avant/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/inscription_avant/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionPendantPhoto) {
+            $imageName = $entity->getImage();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/inscription_pendant/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/inscription_pendant/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionPendantDocument) {
+            $imageName = $entity->getDocument();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/inscription_pendant/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/inscription_pendant/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionApresPhoto) {
+            $imageName = $entity->getImage();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/inscription_apres/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/inscription_apres/'.$imageName);
+            }
+            $entity->setUpdatedAt(new \DateTime());
+        }
+        if ($entity instanceof InscriptionApresDocument) {
+            $imageName = $entity->getDocument();
+            if ($imageName && file_exists($this->kernel->getProjectDir().'/public/uploads/inscription_apres/'.$imageName)) {
+                unlink($this->kernel->getProjectDir().'/public/uploads/inscription_apres/'.$imageName);
             }
             $entity->setUpdatedAt(new \DateTime());
         }

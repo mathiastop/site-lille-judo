@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\DocumentsUtilesRepository;
+use App\Repository\InscriptionAvantPhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Faker\Provider\File;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass=DocumentsUtilesRepository::class)
+ * @ORM\Entity(repositoryClass=InscriptionAvantPhotoRepository::class)
  * @Vich\Uploadable
  */
-class DocumentsUtiles
+class InscriptionAvantPhoto
 {
     /**
      * @ORM\Id()
@@ -19,16 +19,6 @@ class DocumentsUtiles
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $titre;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $fiche;
 
     /**
      * @ORM\Column(type="datetime")
@@ -41,10 +31,9 @@ class DocumentsUtiles
     private $updatedAt;
 
     /**
-     * @Vich\UploadableField(mapping="documents_utiles", fileNameProperty="fiche")
-     * @var File
+     * @ORM\Column(type="string", length=255)
      */
-    private $ficheFile;
+    private $image;
 
     /**
      * @ORM\Column(type="boolean")
@@ -52,37 +41,14 @@ class DocumentsUtiles
     private $enabled;
 
     /**
-     * @ORM\Column(type="integer")
+     * @Vich\UploadableField(mapping="inscription_avant", fileNameProperty="image")
+     * @var File
      */
-    private $ordre;
+    private $imageFile;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitre(): ?string
-    {
-        return $this->titre;
-    }
-
-    public function setTitre(string $titre): self
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getFiche(): ?string
-    {
-        return $this->fiche;
-    }
-
-    public function setFiche(?string $fiche): self
-    {
-        $this->fiche = $fiche;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -109,18 +75,16 @@ class DocumentsUtiles
         return $this;
     }
 
-    public function getFicheFile()
+    public function getImage(): ?string
     {
-        return $this->ficheFile;
+        return $this->image;
     }
 
-    public function setFicheFile(\Symfony\Component\HttpFoundation\File\File $fiche = null)
+    public function setImage(string $image): self
     {
-        $this->ficheFile = $fiche;
+        $this->image = $image;
 
-        if ($fiche) {
-            $this->updatedAt = new \DateTime('now');
-        }
+        return $this;
     }
 
     public function getEnabled(): ?bool
@@ -135,15 +99,17 @@ class DocumentsUtiles
         return $this;
     }
 
-    public function getOrdre(): ?int
+    public function getImageFile()
     {
-        return $this->ordre;
+        return $this->imageFile;
     }
 
-    public function setOrdre(int $ordre): self
+    public function setImageFile(File $image = null)
     {
-        $this->ordre = $ordre;
+        $this->imageFile = $image;
 
-        return $this;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
     }
 }

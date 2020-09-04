@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\DocumentsUtilesRepository;
+use App\Repository\CompetitionDocumentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Faker\Provider\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass=DocumentsUtilesRepository::class)
+ * @ORM\Entity(repositoryClass=CompetitionDocumentRepository::class)
  * @Vich\Uploadable
  */
-class DocumentsUtiles
+class CompetitionDocument
 {
     /**
      * @ORM\Id()
@@ -28,7 +28,7 @@ class DocumentsUtiles
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $fiche;
+    private $document;
 
     /**
      * @ORM\Column(type="datetime")
@@ -41,20 +41,15 @@ class DocumentsUtiles
     private $updatedAt;
 
     /**
-     * @Vich\UploadableField(mapping="documents_utiles", fileNameProperty="fiche")
+     * @Vich\UploadableField(mapping="documents_competition", fileNameProperty="document")
      * @var File
      */
-    private $ficheFile;
+    private $documentFile;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\ManyToOne(targetEntity=Competition::class, inversedBy="documents")
      */
-    private $enabled;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $ordre;
+    private $competition;
 
     public function getId(): ?int
     {
@@ -73,14 +68,14 @@ class DocumentsUtiles
         return $this;
     }
 
-    public function getFiche(): ?string
+    public function getDocument(): ?string
     {
-        return $this->fiche;
+        return $this->document;
     }
 
-    public function setFiche(?string $fiche): self
+    public function setDocument(?string $document): self
     {
-        $this->fiche = $fiche;
+        $this->document = $document;
 
         return $this;
     }
@@ -109,40 +104,28 @@ class DocumentsUtiles
         return $this;
     }
 
-    public function getFicheFile()
+    public function getDocumentFile()
     {
-        return $this->ficheFile;
+        return $this->documentFile;
     }
 
-    public function setFicheFile(\Symfony\Component\HttpFoundation\File\File $fiche = null)
+    public function setDocumentFile(\Symfony\Component\HttpFoundation\File\File $document = null)
     {
-        $this->ficheFile = $fiche;
+        $this->documentFile = $document;
 
-        if ($fiche) {
+        if ($document) {
             $this->updatedAt = new \DateTime('now');
         }
     }
 
-    public function getEnabled(): ?bool
+    public function getCompetition(): ?Competition
     {
-        return $this->enabled;
+        return $this->competition;
     }
 
-    public function setEnabled(bool $enabled): self
+    public function setCompetition(?Competition $competition): self
     {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    public function getOrdre(): ?int
-    {
-        return $this->ordre;
-    }
-
-    public function setOrdre(int $ordre): self
-    {
-        $this->ordre = $ordre;
+        $this->competition = $competition;
 
         return $this;
     }

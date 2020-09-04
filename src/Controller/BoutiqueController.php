@@ -29,7 +29,7 @@ class BoutiqueController extends AbstractController
     /**
      * @Route("/boutique/document", name="boutiqueDocument")
      */
-    public function inscriptionJudo(BoutiqueFicheRepository $boutiqueFicheRepository)
+    public function boutiqueDocument(BoutiqueFicheRepository $boutiqueFicheRepository)
     {
         $fiche = $boutiqueFicheRepository->findOneBy([], ['id' => 'DESC']);
         if ($fiche) {
