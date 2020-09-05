@@ -138,8 +138,8 @@
                     <div class="row text-center justify-content-center">
                         {% for inscriptionPendantPhoto in inscriptionPendantPhotos %}
                             <div class="col-lg-3 col-md-4 col-6">
-                                <a href="{{ asset('uploads/inscription_pendant/') }}{{ inscriptionPendantPhotos.image }}" data-toggle="lightbox">
-                                    <img class="img-fluid img-thumbnail" src="{{ asset('uploads/inscription_pendant/') }}{{ inscriptionPendantPhotos.image }}" alt="">
+                                <a href="{{ asset('uploads/inscription_pendant/') }}{{ inscriptionPendantPhoto.image }}" data-toggle="lightbox">
+                                    <img class="img-fluid img-thumbnail" src="{{ asset('uploads/inscription_pendant/') }}{{ inscriptionPendantPhoto.image }}" alt="">
                                 </a>
                             </div>
                         {% else %}
