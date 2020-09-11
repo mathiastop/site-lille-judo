@@ -128,13 +128,13 @@ class ClubController extends AbstractController
     }
 
     /**
-     * @Route("/dojo", name="dojo")
+     * @Route("/dojo-horaires", name="dojo")
      */
     public function dojoIndex(Breadcrumbs $breadcrumbs, RouterInterface $router, DojoRepository $dojoRepository)
     {
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Club");
-        $breadcrumbs->addItem("Dojo");
+        $breadcrumbs->addItem("Dojo-Horaires");
 
         return $this->render('club/dojo.html.twig', [
             'first' => $dojoRepository->findOneBy(['ordre' => '1']),

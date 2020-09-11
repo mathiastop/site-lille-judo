@@ -41,7 +41,7 @@ class DocumentsController extends AbstractController
     }
 
     /**
-     * @Route("/documents/jaune", name="jaune")
+     * @Route("/documentsJaune", name="jaune")
      */
     public function jaune()
     {
@@ -51,7 +51,7 @@ class DocumentsController extends AbstractController
     }
 
     /**
-     * @Route("/documents/orange", name="orange")
+     * @Route("/documentsOrange", name="orange")
      */
     public function orange()
     {
@@ -61,7 +61,7 @@ class DocumentsController extends AbstractController
     }
 
     /**
-     * @Route("/documents/verte", name="verte")
+     * @Route("/documentsVerte", name="verte")
      */
     public function verte()
     {
@@ -71,7 +71,7 @@ class DocumentsController extends AbstractController
     }
 
     /**
-     * @Route("/documents/marron", name="marron")
+     * @Route("/documentsMarron", name="marron")
      */
     public function marron()
     {
