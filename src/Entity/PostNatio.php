@@ -57,6 +57,11 @@ class PostNatio
      */
     private $documents;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $carrousel;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -186,6 +191,18 @@ class PostNatio
                 $document->setPostNatio(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCarrousel(): ?bool
+    {
+        return $this->carrousel;
+    }
+
+    public function setCarrousel(bool $carrousel): self
+    {
+        $this->carrousel = $carrousel;
 
         return $this;
     }

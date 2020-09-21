@@ -5,11 +5,13 @@ App\Entity\User:
     roles: '[ROLE_ADMIN]'
 
 App\Entity\PostClub:
-  postClub{1..100}:
+  postClub{1..10}:
     title: '<word()>'
     body: '<text()>'
+    enabled: true
 
 App\Entity\PostNatio:
-  postNatio{1..100}:
+  postNatio{1..10}:
     title: '<word()>'
     body: '<text()>'
+    enabled: true

@@ -6,6 +6,9 @@ fos_ck_editor:
     configs:
         base_config:
             toolbar: full
+    toolbars:
+        items:
+            full.insert: ['Image', 'Flash', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe']
 twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

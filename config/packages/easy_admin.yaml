@@ -58,6 +58,7 @@ easy_admin:
                     - { property: 'images', label: 'Images' }
                     - { property: 'documents', label: 'Documents' }
                     - { property: 'enabled', label: 'Affiché', type: 'toggle' }
+                    - { property: 'carrousel', label: 'Carrousel', type: 'toggle' }
                     - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                     - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
             form:
@@ -65,8 +66,9 @@ easy_admin:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
                     - { property: 'images', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\PostClubImageType', by_reference: false } }
-                    - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostClubDocumentType', by_reference: false } }
+                    - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostClubDocumentType', by_reference: false, required: true } }
                     - { property: 'enabled', label: 'Affiché' }
+                    - { property: 'carrousel', label: 'Carrousel' }
         PostNatio:
               class: App\Entity\PostNatio
               label: 'Actualités Nationale/Internationale'
@@ -77,6 +79,7 @@ easy_admin:
                       - { property: 'images', label: 'Images' }
                       - { property: 'documents', label: 'Documents' }
                       - { property: 'enabled', label: 'Affiché', type: 'toggle' }
+                      - { property: 'carrousel', label: 'Carrousel', type: 'toggle' }
                       - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                       - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
               form:
@@ -84,8 +87,9 @@ easy_admin:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
                       - { property: 'images', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioImageType', by_reference: false } }
-                      - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioDocumentType', by_reference: false } }
+                      - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioDocumentType', by_reference: false, require: true } }
                       - { property: 'enabled', label: 'Affiché' }
+                      - { property: 'carrousel', label: 'Carrousel' }
         Professeurs:
             class: App\Entity\Professeurs
             label: 'Enseignants'
@@ -281,7 +285,7 @@ easy_admin:
                     - { property: 'lieu', label: 'Lieu' }
                     - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
                     - { property: 'date', label: 'Date', type: 'date', type_options: { widget: 'single_text', html5: 'true' } }
-                    - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\CompetitionDocumentType', by_reference: false } }
+                    - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\CompetitionDocumentType', by_reference: false, required: true } }
                     - { property: 'enabled', label: 'Affiché' }
         JudoCours:
             class: App\Entity\JudoCours

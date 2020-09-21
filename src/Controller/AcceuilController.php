@@ -16,8 +16,8 @@ class AcceuilController extends AbstractController
      */
     public function index(PostClubRepository $postClubRepository, PostNatioRepository $postNatioRepository)
     {
-        $postsClub = $postClubRepository->findBy(['enabled' => true], ['createdAt' => 'DESC']);
-        $postsNatio = $postNatioRepository->findBy(['enabled' => true], ['createdAt' => 'DESC']);
+        $postsClub = $postClubRepository->findBy(['enabled' => true, 'carrousel' => true], ['createdAt' => 'DESC']);
+        $postsNatio = $postNatioRepository->findBy(['enabled' => true, 'carrousel' => true], ['createdAt' => 'DESC']);
         $i = 0;
         $y = 0;
 

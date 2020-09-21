@@ -7,8 +7,11 @@ social_post:
     providers:
         facebook:
             app_id: "611669146430598"
+#            987576148384955
             app_secret: "2309144b4d461e40f86251b8ccea662b"
+#            917cdc3e768106bc470d3d740000f43a
             default_access_token: "EAAIsT1IxbIYBAKxS7ODTZAwuD7t1OsdlrHoHbpoG3rZBXc44orXAlb0C1pgYtKE5qHmMZARFZBHjwdYsUzv6P3asu1rWpm0xB4oHGaoxKOLu1yEZCtG8MEBKiaZBRB055goxuL8yVn5Dt1ZCZBIRiSyI23Vpopux5Yh5f39MHT7kYPpI6ha4mbFz0pGjZA3zpq24ZD"
+#            EAAOCMf2DXLsBABvJSZBD1aTHQgUNp9NR9qcMLic1fUtHBsc1tSwRcM4D4RV6KiUjYXPPkQJpcrpEJbnl6Dp90uq22o2ZA7lWFqAWzjYxjsBvTPF6uaE2TlzCfCKntHnavzezUMVTvU7nTO64nxSubcLQlseVAiT1qXgZC5Q0AZDZD
             page_id: "101946758287145"
             enable_beta_mode: true
             persistent_data_handler: "memory"         # Optional, also supports "session". Default is "memory".
