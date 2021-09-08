@@ -9,9 +9,11 @@ App\Entity\PostClub:
     title: '<word()>'
     body: '<text()>'
     enabled: true
+    carrousel: true
 
 App\Entity\PostNatio:
   postNatio{1..10}:
     title: '<word()>'
     body: '<text()>'
     enabled: true
+    carrousel: true
