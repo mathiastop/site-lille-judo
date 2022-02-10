@@ -18,6 +18,7 @@ class CompetitionInscritType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
+            ->add('club')
             ->add('sexe', ChoiceType::class, [
                 'choices' => [
                     'Femme' => 'Femme',
@@ -33,6 +34,7 @@ class CompetitionInscritType extends AbstractType
             ->add('mail', EmailType::class)
             ->add('categorie', ChoiceType::class, [
                 'choices' => [
+                    'Baby' => 'Baby',
                     'Mini-Poussins' => 'Mini-Poussins',
                     'Poussins' => 'Poussins',
                     'Benjamins' => 'Benjamins',
