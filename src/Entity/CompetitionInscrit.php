@@ -59,6 +59,11 @@ class CompetitionInscrit
      */
     private $prenom;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $club;
+
     public function __construct()
     {
         $this->competition = new ArrayCollection();
@@ -161,6 +166,18 @@ class CompetitionInscrit
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getClub(): ?string
+    {
+        return $this->club;
+    }
+
+    public function setClub(string $club): self
+    {
+        $this->club = $club;
 
         return $this;
     }

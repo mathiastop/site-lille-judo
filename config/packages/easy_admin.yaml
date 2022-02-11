@@ -87,7 +87,7 @@ easy_admin:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
                       - { property: 'images', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioImageType', by_reference: false } }
-                      - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioDocumentType', by_reference: false, require: true } }
+                      - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioDocumentType', by_reference: false } }
                       - { property: 'enabled', label: 'Affiché' }
                       - { property: 'carrousel', label: 'Carrousel' }
         Professeurs:
