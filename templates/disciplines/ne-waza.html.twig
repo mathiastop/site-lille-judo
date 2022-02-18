@@ -26,12 +26,6 @@
 
 {% block body %}
     <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-            <strong>Attention!</strong> Cette page est encore en construction.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
         <ul class="nav nav-tabs flex-column flex-lg-row" id="newazaTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="histoireValeurs-tab" data-toggle="tab" href="#histoireValeurs" aria-controls="histoireValeurs" aria-selected="true">Histoire et Valeurs</a>
@@ -46,6 +40,51 @@
         <div class="tab-content" id="newazaTabContent">
             <div class="tab-pane fade show active" id="histoireValeurs" role="tabpanel" aria-labelledby="histoireValeurs-tab">
                 <h3>Histoire et Valeurs</h3>
+                <p>
+                    Le <b>Ne-Waza</b> (en japonais : 寝技 de "Ne" qui signifie couché et "Waza" qui signifie technique) est un terme japonais utilisé
+                    dans le judo et le ju-jitsu et qui sert à désigner des <b>techniques au sol</b>, et plus généralement désignant tout le domaine du combat au sol.
+                </p>
+                <p>
+                    Lors du ne waza, les deux combattants sont au sol en règle générale, ils ont à leur disposition différentes techniques :
+                </p>
+                <ul>
+                    <li>
+                        Les <b>katame waza</b> (techniques de contrôles) pour contrôler l'adversaire et prendre une position dominante.
+                    </li>
+                    <li>
+                        Les <b>shime waza</b> (techniques d'étranglements) qui permettent de faire abandonner l'adversaire en comprimant soit
+                        les voies aériennes (trachée) soit sanguines (carotides)
+                    </li>
+                    <li>
+                        Les <b>kantetsu waza</b> (techniques de luxations), qui permettent par des clés ou luxations de mettre en hyperextension une
+                        articulation quelconque et de provoquer l'abandon de l'adversaire.
+                    </li>
+                </ul>
+                <p>
+                    Si les Osaekomi-Waza s'effectuent toujours au sol (Ne-Waza), les Kansetsu-Waza et les Shime-Waza peuvent
+                    également s'effectuer debout (Tachi-Waza).
+                </p>
+                <p>
+                    Le Ne-Waza est une discipline de combat spécifiquement longue à maîtriser, les débutants utilisant énormément
+                    de force et d'énergie en vain et les progrès se faisant lentement.
+                </p>
+                <h3>
+                    Une discipline ouverte à tous
+                </h3>
+                <p>
+                    Toutes les techniques sont bien sûr enseignées en fonction du niveau des élèves et les possibilités sont tellement nombreuses
+                    en Ne-waza qu’il existe forcément un cours adapté à votre niveau de connaissances, votre condition physique et vos envies.
+                </p>
+                <h4 class="text-center">
+                    <b>
+                        <u>
+                            AUCUNE EXCUSE DONC, A VOUS D’ESSAYER
+                        </u>
+                    </b>
+                </h4>
+                <div class="text-center">
+                    <img src="{{ asset('assets/newaza-image.jpeg') }}" class="img-fluid">
+                </div>
             </div>
             <div class="tab-pane fade" id="cours" role="tabpanel" aria-labelledby="cours-tab">
                 <ul class="nav nav-tabs flex-column flex-lg-row" id="coursNeWazaTab" role="tablist">
