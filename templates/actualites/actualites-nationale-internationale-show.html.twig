@@ -65,7 +65,7 @@
                 <div class="carousel-inner">
                     {% for index, postImage in post.images %}
                         <div class="carousel-item {{ index == 0 ? 'active' : '' }}">
-                            <img class="img-fluid d-block" src="{{ asset('uploads/natio/') }}{{ postImage.image }}" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('uploads/natio/') }}{{ postImage.image }}" alt="">
                         </div>
                     {% endfor %}
                 </div>
@@ -88,7 +88,7 @@
                 <div class="carousel-inner-little">
                     {% for index, postImage in post.images %}
                         <div class="carousel-item {{ index == 0 ? 'active' : '' }}">
-                            <img class="img-fluid d-block" src="{{ asset('uploads/natio/') }}{{ postImage.image }}" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('uploads/natio/') }}{{ postImage.image }}" alt="">
                         </div>
                     {% endfor %}
                 </div>
