@@ -105,12 +105,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ first.images[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif first.images.count and firstType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ first.images[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if firstType == 'Club' %}
@@ -118,18 +124,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ first.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ first.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             {% if second.images.count and secondType == 'Club' %}
@@ -137,12 +146,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ second.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif second.images.count and secondType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': second.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ second.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if secondType == 'Club' %}
@@ -150,18 +165,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ second.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': second.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ second.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             {% if third.images.count and thirdType == 'Club' %}
@@ -169,12 +187,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ third.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif third.images.count and thirdType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': third.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ third.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if thirdType == 'Club' %}
@@ -182,18 +206,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ third.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': third.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ third.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             {% if fourth.images.count and fourthType == 'Club' %}
@@ -201,12 +228,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ fourth.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif fourth.images.count and fourthType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': fourth.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ fourth.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if fourthType == 'Club' %}
@@ -214,18 +247,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ fourth.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': fourth.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ fourth.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             <a href="{{ path('calendrier') }}">
@@ -262,12 +298,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ first.images[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif first.images.count and firstType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ first.images[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if firstType == 'Club' %}
@@ -275,18 +317,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ first.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': first.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ first.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             {% if second.images.count and secondType == 'Club' %}
@@ -294,12 +339,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ second.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif second.images.count and secondType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': second.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ second.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if secondType == 'Club' %}
@@ -307,18 +358,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ second.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': second.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ second.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             {% if third.images.count and thirdType == 'Club' %}
@@ -326,12 +380,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ third.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif third.images.count and thirdType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': third.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ third.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if thirdType == 'Club' %}
@@ -339,18 +399,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ third.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': third.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ third.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             {% if fourth.images.count and fourthType == 'Club' %}
@@ -358,12 +421,18 @@
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/club/') }}{{ fourth.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                    </div>
                                 </a>
                             {% elseif fourth.images.count and fourthType == 'Natio' %}
                                 <a href="{{ path('actualites-nationale-internationale_show', {'id': fourth.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('uploads/natio/') }}{{ fourth.getImages()[0].image }}"
                                          alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                    </div>
                                 </a>
                             {% else %}
                                 {% if fourthType == 'Club' %}
@@ -371,18 +440,21 @@
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ fourth.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                        </div>
                                     </a>
                                 {% else %}
                                     <a href="{{ path('actualites-nationale-internationale_show', {'id': fourth.id}) }}">
                                         <img class="d-block w-100"
                                              src="https://dummyimage.com/600x400/8f8f8f/ffffff&text={{ fourth.title }}"
                                              alt="">
+                                        <div class="carousel-caption">
+                                            <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
+                                        </div>
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            <div class="carousel-caption">
-                                <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
-                            </div>
                         </div>
                         <div class="carousel-item">
                             <a href="{{ path('calendrier') }}">

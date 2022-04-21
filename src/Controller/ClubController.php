@@ -109,7 +109,7 @@ class ClubController extends AbstractController
                 'Mail: '.$contactFormData['Mail:']."\n".
                 "Message: \n".$contactFormData['Message:'];
             $message = (new \Swift_Message('Nouveau message - lillejudo.fr'))
-                ->setFrom('testlillejudo@mathiastop.eu')
+                ->setFrom($contactFormData['Mail:'])
                 ->setTo('lucjudocontact@gmail.com')
                 ->setBody($body, 'text/plain');
             $mailer->send($message);
