@@ -66,6 +66,12 @@
             font-size: 55px;
             color: #A93514;
         }
+
+        @media screen and (max-width:767px) {
+            .carousel-title {
+                font-size: 100%;
+            }
+        }
     </style>
 {% endblock %}
 {% block body %}
@@ -122,7 +128,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ first.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -154,7 +160,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ second.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -186,7 +192,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ third.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -218,7 +224,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ fourth.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -228,7 +234,7 @@
                                      alt="">
                             </a>
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">Calendrier</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">Calendrier</h1>
                             </div>
                         </div>
                     </div>
@@ -279,7 +285,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ first.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ first.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -311,7 +317,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ second.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ second.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -343,7 +349,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ third.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ third.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -375,7 +381,7 @@
                                 {% endif %}
                             {% endif %}
                             <div class="carousel-caption">
-                                <h1 class="text-dark" style="background: white">{{ fourth.title }}</h1>
+                                <h1 class="text-dark carousel-title" style="background: white">{{ fourth.title }}</h1>
                             </div>
                         </div>
                         <div class="carousel-item">

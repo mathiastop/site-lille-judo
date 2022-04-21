@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  mysql1.6:
+  mysql:
     image: mysql:5.6
     container_name: lillejudo-mysql
     ports:
@@ -11,17 +11,29 @@ services:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_DATABASE: 'lillejudo'
-#    volumes:
-#      - lillejudo-db:/var/lib/mysql16
-
+    volumes:
+      - lillejudo-db:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: lillejudo-phpmyadmin
     ports:
       - '8080:80'
     environment:
-      PMA_HOST: mysql1.6
+      PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: 'root'
 
+  php:
+    build:
+      context: .
+    container_name: lillejudo-php
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./:/app:rw"
+    restart: on-failure
+    entrypoint: > 
+      sh -c "composer install && symfony server:start"
+
 volumes:
-  db-volumes: {}
+  lillejudo-db: {}
