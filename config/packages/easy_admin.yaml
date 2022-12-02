@@ -55,7 +55,15 @@ easy_admin:
                     - { property: 'carrousel', label: 'Carrousel', type: 'toggle' }
                     - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                     - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
-            form:
+            new:
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
+                    - { property: 'imagesField', label: 'Images', type: 'file_upload', type_options: { multiple: true, upload_dir: 'public/uploads/' }  }
+                    - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostClubDocumentType', by_reference: false, required: true } }
+                    - { property: 'enabled', label: 'Affiché' }
+                    - { property: 'carrousel', label: 'Carrousel' }
+            edit:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
@@ -76,7 +84,15 @@ easy_admin:
                       - { property: 'carrousel', label: 'Carrousel', type: 'toggle' }
                       - { property: 'createdAt', label: 'Date de création', type: 'datetime' }
                       - { property: 'updatedAt', label: 'Date de mise à jour', type: 'datetime' }
-              form:
+              new:
+                  fields:
+                      - { property: 'title', label: 'Titre' }
+                      - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
+                      - { property: 'imagesField', label: 'Images', type: 'file_upload', type_options: { multiple: true, upload_dir: 'public/uploads/' }  }
+                      - { property: 'documents', label: 'Documents', type: 'collection', type_options: { entry_type: 'App\Form\PostNatioDocumentType', by_reference: false } }
+                      - { property: 'enabled', label: 'Affiché' }
+                      - { property: 'carrousel', label: 'Carrousel' }
+              edit:
                   fields:
                       - { property: 'title', label: 'Titre' }
                       - { property: 'body', label: 'Corps', type: 'fos_ckeditor' }
@@ -133,7 +149,12 @@ easy_admin:
                     - { property: 'name', label: 'Nom', type: 'string' }
                     - { property: 'galleryImages', label: 'Images' }
                     - { property: 'enabled', label: 'Affiché', type: 'toggle' }
-            form:
+            new:
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'imagesField', label: 'Images', type: 'file_upload', type_options: { multiple: true, upload_dir: 'public/uploads/' }  }
+                    - { property: 'enabled', label: 'Affiché' }
+            edit:
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'galleryImages', label: 'Images', type: 'collection', type_options: { entry_type: 'App\Form\GalleryImageType', by_reference: false } }

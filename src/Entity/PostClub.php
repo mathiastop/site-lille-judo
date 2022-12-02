@@ -47,6 +47,8 @@ class PostClub
      */
     private $enabled;
 
+    private $imagesField;
+
     /**
      * @ORM\OneToMany(targetEntity=PostClubImage::class, mappedBy="postClub", cascade={"persist", "remove"}, orphanRemoval=true)
      */
@@ -205,5 +207,21 @@ class PostClub
         $this->carrousel = $carrousel;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImagesField()
+    {
+        return $this->imagesField;
+    }
+
+    /**
+     * @param mixed $imagesField
+     */
+    public function setImagesField($imagesField): void
+    {
+        $this->imagesField = $imagesField;
     }
 }
