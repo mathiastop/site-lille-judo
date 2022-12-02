@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  APP_ENV: test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+
+      - name: Build images
+        run: docker-compose build
