@@ -62,7 +62,7 @@ class CreationSubscriber implements EventSubscriber
             $entity->setPassword($this->encoder->encodePassword($entity, $entity->getPassword()));
         }
         if ($entity instanceof PostClub) {
-            foreach ($entity->getImagesField() as $imagePath) {
+            foreach ($entity->getImagesField() ?? [] as $imagePath) {
                 $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
                 $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
                 if (!file_exists($this->kernel->getProjectDir().'/public/uploads/club')) {
@@ -92,7 +92,7 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatio) {
-            foreach ($entity->getImagesField() as $imagePath) {
+            foreach ($entity->getImagesField() ?? [] as $imagePath) {
                 $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
                 $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
                 if (!file_exists($this->kernel->getProjectDir().'/public/uploads/natio')) {
