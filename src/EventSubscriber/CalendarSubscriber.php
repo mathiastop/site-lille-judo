@@ -47,7 +47,7 @@ class CalendarSubscriber implements EventSubscriberInterface
                 $evenement->getEndAt()
             );
             $calendarEvent->setOptions([
-                'backgroundColor' => '#A93514',
+                'backgroundColor' => '#533791',
                 'borderColor' => '#000000',
             ]);
             $calendarEvent->addOption('url', $this->urlGenerator->generate('evenements_show', [

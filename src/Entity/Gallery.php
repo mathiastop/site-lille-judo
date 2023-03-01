@@ -24,6 +24,8 @@ class Gallery
      */
     private $name;
 
+    private $imagesField;
+
     /**
      * @ORM\OneToMany(targetEntity=GalleryImage::class, mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
      */
@@ -131,5 +133,21 @@ class Gallery
         $this->enabled = $enabled;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImagesField()
+    {
+        return $this->imagesField;
+    }
+
+    /**
+     * @param mixed $imagesField
+     */
+    public function setImagesField($imagesField): void
+    {
+        $this->imagesField = $imagesField;
     }
 }

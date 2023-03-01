@@ -11,12 +11,6 @@ use App\Entity\EvenementDocument;
 use App\Entity\FicheInscription;
 use App\Entity\Gallery;
 use App\Entity\GalleryImage;
-use App\Entity\InscriptionApresDocument;
-use App\Entity\InscriptionApresPhoto;
-use App\Entity\InscriptionAvantDocument;
-use App\Entity\InscriptionAvantPhoto;
-use App\Entity\InscriptionPendantDocument;
-use App\Entity\InscriptionPendantPhoto;
 use App\Entity\PhotosPassagesGrades;
 use App\Entity\PostClub;
 use App\Entity\PostClubDocument;
@@ -34,6 +28,7 @@ use MartinGeorgiev\SocialPost\Message;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 class CreationSubscriber implements EventSubscriber
 {
@@ -67,6 +62,17 @@ class CreationSubscriber implements EventSubscriber
             $entity->setPassword($this->encoder->encodePassword($entity, $entity->getPassword()));
         }
         if ($entity instanceof PostClub) {
+            foreach ($entity->getImagesField() ?? [] as $imagePath) {
+                $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
+                $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
+                if (!file_exists($this->kernel->getProjectDir().'/public/uploads/club')) {
+                    mkdir($this->kernel->getProjectDir().'/public/uploads/club', 0777, true);
+                }
+                rename($imagePath, $this->kernel->getProjectDir().'/public/uploads/club/'.$uniqueId);
+                $image = new PostClubImage();
+                $image->setImage($uniqueId);
+                $entity->addImage($image);
+            }
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
             if ($entity->getEnabled() && getenv('APP_ENV') == 'prod') {
@@ -86,6 +92,17 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof PostNatio) {
+            foreach ($entity->getImagesField() ?? [] as $imagePath) {
+                $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
+                $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
+                if (!file_exists($this->kernel->getProjectDir().'/public/uploads/natio')) {
+                    mkdir($this->kernel->getProjectDir().'/public/uploads/natio', 0777, true);
+                }
+                rename($imagePath, $this->kernel->getProjectDir().'/public/uploads/natio/'.$uniqueId);
+                $image = new PostNatioImage();
+                $image->setImage($uniqueId);
+                $entity->addImage($image);
+            }
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
             if ($entity->getEnabled() && getenv('APP_ENV') == 'prod') {
@@ -113,6 +130,17 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof Gallery) {
+            foreach ($entity->getImagesField() as $imagePath) {
+                $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
+                $uniqueId = md5(uniqid(rand(), true)).'.'.$extension;
+                if (!file_exists($this->kernel->getProjectDir().'/public/uploads/gallery')) {
+                    mkdir($this->kernel->getProjectDir().'/public/uploads/gallery', 0777, true);
+                }
+                rename($imagePath, $this->kernel->getProjectDir().'/public/uploads/gallery/'.$uniqueId);
+                $image = new GalleryImage();
+                $image->setImage($uniqueId);
+                $entity->addGalleryImage($image);
+            }
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
@@ -145,30 +173,6 @@ class CreationSubscriber implements EventSubscriber
             $entity->setUpdatedAt(new \DateTime());
         }
         if ($entity instanceof EvenementDocument) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        if ($entity instanceof InscriptionAvantPhoto) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        if ($entity instanceof InscriptionAvantDocument) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        if ($entity instanceof InscriptionPendantPhoto) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        if ($entity instanceof InscriptionPendantDocument) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        if ($entity instanceof InscriptionApresPhoto) {
-            $entity->setCreatedAt(new \DateTime());
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        if ($entity instanceof InscriptionApresDocument) {
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
         }
