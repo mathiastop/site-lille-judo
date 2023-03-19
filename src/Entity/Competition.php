@@ -185,7 +185,7 @@ class Competition
     {
         if (!$this->documents->contains($document)) {
             $this->documents[] = $document;
-            $document->setZa($this);
+            $document->setCompetition($this);
         }
 
         return $this;
@@ -196,8 +196,8 @@ class Competition
         if ($this->documents->contains($document)) {
             $this->documents->removeElement($document);
             // set the owning side to null (unless already changed)
-            if ($document->getZa() === $this) {
-                $document->setZa(null);
+            if ($document->getCompetition() === $this) {
+                $document->setCompetition(null);
             }
         }
 
