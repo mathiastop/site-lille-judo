@@ -24,11 +24,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\Common\EventSubscriber;
-use MartinGeorgiev\SocialPost\Message;
+use Facebook\Facebook;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\HttpFoundation\File\File;
 
 class CreationSubscriber implements EventSubscriber
 {
@@ -54,6 +53,30 @@ class CreationSubscriber implements EventSubscriber
         ];
     }
 
+    private function postToFacebook($entity)
+    {
+        $appId = getenv('FACEBOOK_APP_ID');
+        $appSecret = getenv('FACEBOOK_APP_SECRET');
+        $accessToken = getenv('FACEBOOK_ACCESS_TOKEN');
+        $pageId = getenv('FACEBOOK_PAGE_ID');
+        $graphVersion = getenv('FACEBOOK_GRAPH_API_VERSION');
+
+        $fb = new Facebook([
+            'app_id' => $appId,
+            'app_secret' => $appSecret,
+            'default_graph_version' => $graphVersion,
+            'default_access_token' => $accessToken,
+        ]);
+
+        $params = [
+            'message' => $entity->getTitle(),
+            'link' => 'https://lillejudo.fr/actualites-club/'.$entity->getId()
+            // Other possible parameters : 'link', 'picture', 'source', 'name', 'caption', 'description'
+        ];
+
+        $fb->post("/$pageId/feed", $params);
+    }
+
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -76,11 +99,7 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
             if ($entity->getEnabled() && getenv('APP_ENV') == 'prod') {
-                $message = new Message(
-                    $entity->getTitle(),
-                    'https://lillejudo.fr/actualites-club/'.$entity->getId()
-                );
-                $this->container->get('social_post')->publish($message);
+                $this->postToFacebook($entity);
             }
         }
         if ($entity instanceof PostClubImage) {
@@ -106,11 +125,7 @@ class CreationSubscriber implements EventSubscriber
             $entity->setCreatedAt(new \DateTime());
             $entity->setUpdatedAt(new \DateTime());
             if ($entity->getEnabled() && getenv('APP_ENV') == 'prod') {
-                $message = new Message(
-                    $entity->getTitle(),
-                    'https://lillejudo.fr/actualites-nationale-internationale/'.$entity->getId()
-                );
-                $this->container->get('social_post')->publish($message);
+                $this->postToFacebook($entity);
             }
         }
         if ($entity instanceof PostNatioImage) {
@@ -185,11 +200,7 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof PostClub) {
             $entity->setUpdatedAt(new \DateTime());
             if ($entity->getEnabled() && getenv('APP_ENV') == 'prod') {
-                $message = new Message(
-                    $entity->getTitle(),
-                    'https://lillejudo.fr/actualites-club/'.$entity->getId()
-                );
-                $this->container->get('social_post')->publish($message);
+                $this->postToFacebook($entity);
             }
         }
         if ($entity instanceof PostClubImage) {
@@ -201,11 +212,7 @@ class CreationSubscriber implements EventSubscriber
         if ($entity instanceof PostNatio) {
             $entity->setUpdatedAt(new \DateTime());
             if ($entity->getEnabled() && getenv('APP_ENV') == 'prod') {
-                $message = new Message(
-                    $entity->getTitle(),
-                    'https://lillejudo.fr/actualites-nationale-internationale/'.$entity->getId()
-                );
-                $this->container->get('social_post')->publish($message);
+                $this->postToFacebook($entity);
             }
         }
         if ($entity instanceof PostNatioImage) {
