@@ -15,6 +15,7 @@
         "knplabs/knp-paginator-bundle": "^5.2",
         "martin-georgiev/social-post-bundle": "^3.1",
         "mhujer/breadcrumbs-bundle": "^1.5",
+        "nyholm/psr7": "^1.5",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
@@ -63,7 +64,8 @@
         },
         "sort-packages": true,
         "allow-plugins": {
-            "symfony/flex": true
+            "symfony/flex": true,
+            "php-http/discovery": true
         }
     },
     "autoload": {
