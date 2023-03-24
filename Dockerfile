@@ -48,7 +48,7 @@ RUN set -eux; \
 RUN wget https://github.com/symfony-cli/symfony-cli/releases/download/v5.4.2/symfony-cli_5.4.2_x86.apk
 RUN apk add --allow-untrusted ./symfony-cli_5.4.2_x86.apk
 
-COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.5.5 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
