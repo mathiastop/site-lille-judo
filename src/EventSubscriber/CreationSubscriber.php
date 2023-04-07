@@ -55,11 +55,16 @@ class CreationSubscriber implements EventSubscriber
 
     private function postToFacebook($entity)
     {
-        $appId = getenv('FACEBOOK_APP_ID');
-        $appSecret = getenv('FACEBOOK_APP_SECRET');
-        $accessToken = getenv('FACEBOOK_ACCESS_TOKEN');
-        $pageId = getenv('FACEBOOK_PAGE_ID');
-        $graphVersion = getenv('FACEBOOK_GRAPH_API_VERSION');
+        try {
+            $appId = $_ENV['FACEBOOK_APP_ID'];
+            $appSecret = $_ENV['FACEBOOK_APP_SECRET'];
+            $accessToken = $_ENV['FACEBOOK_ACCESS_TOKEN'];
+            $pageId = $_ENV['FACEBOOK_PAGE_ID'];
+            $graphVersion = $_ENV['FACEBOOK_GRAPH_API_VERSION'];
+        } catch (\Exception $e) {
+            // don't try to send to facebook if one of these var is false
+            return;
+        }
 
         $fb = new Facebook([
             'app_id' => $appId,
