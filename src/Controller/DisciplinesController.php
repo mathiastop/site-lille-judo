@@ -6,6 +6,7 @@ use App\Repository\FicheInscriptionRepository;
 use App\Repository\JudoCoursRepository;
 use App\Repository\JuJitsuCoursRepository;
 use App\Repository\NeWazaCoursRepository;
+use App\Repository\SamboCoursRepository;
 use App\Repository\TaisoCoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
@@ -83,6 +84,21 @@ class DisciplinesController extends AbstractController
         return $this->render('disciplines/ne-waza.html.twig', [
             'first' => $neWazaCoursRepository->findOneBy(['ordre' => '1']),
             'newazas' => $neWazaCoursRepository->findAllExceptThisOrder(1)
+        ]);
+    }
+
+    /**
+     * @Route("/sambo", name="sambo")
+     */
+    public function indexSambo(Breadcrumbs $breadcrumbs, RouterInterface $router, SamboCoursRepository $samboCoursRepository)
+    {
+        $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
+        $breadcrumbs->addItem("Disciplines");
+        $breadcrumbs->addItem("Sambo");
+
+        return $this->render('disciplines/sambo.html.twig', [
+            'first' => $samboCoursRepository->findOneBy(['ordre' => '1']),
+            'sambos' => $samboCoursRepository->findAllExceptThisOrder(1)
         ]);
     }
 }
