@@ -79,6 +79,10 @@ class InscriptionController extends AbstractController
             'sport' => 'NeWaza',
             'enabled' => true,
         ]);
+        $competitionsSambo = $competitionRepository->findBy([
+            'sport' => 'Sambo',
+            'enabled' => true,
+        ]);
         $breadcrumbs->addItem("Accueil", $router->generate('accueil'));
         $breadcrumbs->addItem("Inscription");
         $breadcrumbs->addItem("Compétitions");
@@ -88,6 +92,7 @@ class InscriptionController extends AbstractController
             'competitionsJuJitsu' => $competitionsJuJitsu,
             'competitionsTaiso' => $competitionsTaiso,
             'competitionsNeWaza' => $competitionsNeWaza,
+            'competitionsSambo' => $competitionsSambo,
         ]);
     }
 

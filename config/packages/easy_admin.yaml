@@ -26,6 +26,7 @@ easy_admin:
             - { entity: 'JuJitsuCours', icon: 'school' }
             - { entity: 'TaisoCours', icon: 'school' }
             - { entity: 'NeWazaCours', icon: 'school' }
+            - { entity: 'SamboCours', icon: 'school' }
             - { label: 'Inscription' }
             - { entity: 'FicheInscription', label: "Fiche d'inscription", icon: 'copy' }
             - { entity: 'Competition', icon: 'trophy' }
@@ -295,7 +296,7 @@ easy_admin:
                     - { property: 'enabled', label: 'Affiché', type: 'toggle' }
             form:
                 fields:
-                    - { property: 'sport', label: 'Sport', type: 'choice', type_options: { choices: { Judo: 'Judo', JuJitsu: 'JuJitsu', Taiso: 'Taiso', NeWaza: 'NeWaza' } } }
+                    - { property: 'sport', label: 'Sport', type: 'choice', type_options: { choices: { Judo: 'Judo', JuJitsu: 'JuJitsu', Taiso: 'Taiso', NeWaza: 'NeWaza', Sambo: 'Sambo' } } }
                     - { property: 'nom', label: 'Nom' }
                     - { property: 'lieu', label: 'Lieu' }
                     - { property: 'description', label: 'Description', type: 'fos_ckeditor' }
@@ -350,6 +351,21 @@ easy_admin:
         NeWazaCours:
             class: App\Entity\NeWazaCours
             label: 'NeWaza Cours'
+            list:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie', type: 'string' }
+                    - { property: 'annee', label: 'Année', type: 'string' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'text' }
+            form:
+                fields:
+                    - { property: 'categorie', label: 'Catégorie' }
+                    - { property: 'annee', label: 'Année' }
+                    - { property: 'ordre', label: 'Ordre', type: 'integer' }
+                    - { property: 'texte', label: 'Texte', type: 'fos_ckeditor' }
+        SamboCours:
+            class: App\Entity\SamboCours
+            label: 'Sambo Cours'
             list:
                 fields:
                     - { property: 'categorie', label: 'Catégorie', type: 'string' }

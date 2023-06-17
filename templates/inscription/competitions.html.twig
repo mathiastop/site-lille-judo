@@ -22,6 +22,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="newaza-tab" data-toggle="tab" href="#newaza" aria-controls="newaza" aria-selected="false">Ne Waza</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sambo-tab" data-toggle="tab" href="#sambo" aria-controls="sambo" aria-selected="false">Sambo</a>
+            </li>
         </ul>
         <div class="tab-content" id="competitionsTabContent">
             <div id="judo" class="tab-pane fade show active" role="tabpanel" aria-labelledby="judo-tab">
@@ -70,6 +73,20 @@
                 <h3>Compétitions Ne Waza</h3>
                 <ul>
                     {% for competition in competitionsNeWaza %}
+                        <li>
+                            {{ competition.lieu }}, {{ competition.date|date('d/m/Y') }}: <a href="{{ path('competitions_inscriptions', {'id': competition.id}) }}">S'inscrire</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            Pas de compétitions actuellement
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="sambo" class="tab-pane fade" role="tabpanel" aria-labelledby="sambo-tab">
+                <h3>Compétitions Sambo</h3>
+                <ul>
+                    {% for competition in competitionsSambo %}
                         <li>
                             {{ competition.lieu }}, {{ competition.date|date('d/m/Y') }}: <a href="{{ path('competitions_inscriptions', {'id': competition.id}) }}">S'inscrire</a>
                         </li>
